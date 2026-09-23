@@ -1478,16 +1478,12 @@ td.num-cell {
 
 /* ==================== PASSCODE GATEWAY (MENANG2029) ==================== */
 .passcode-gate-backdrop {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.97) 0%, rgba(6, 9, 19, 0.99) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  z-index: 999999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  z-index: -9999;
 }
 .passcode-card {
   width: 100%;
@@ -1862,8 +1858,8 @@ td.num-cell {
 
 <body>
 
-<!-- ==================== PASSCODE GATEWAY (TERENKRIPSI) ==================== -->
-<div id="passcodeGate" class="passcode-gate-backdrop" style="display:none;">
+<!-- ==================== PASSCODE GATEWAY (DINONAKTIFKAN — DIGANTI RBAC 2FA) ==================== -->
+<div id="passcodeGate" class="passcode-gate-backdrop" style="display:none !important; pointer-events:none !important; visibility:hidden !important;">
   <div class="passcode-card">
     <div class="passcode-brand">
       <div class="passcode-icon">🦅</div>
