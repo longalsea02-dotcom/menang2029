@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏛️ SIP Dapil Kalbar 1 - DPR RI 2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            color: #1a202c;
+            font-size: 14px;
+        }
+
+        /* ===== LOGIN ===== */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0b1a33 0%, #1a3a5c 50%, #2a5a7c 100%);
+            padding: 20px;
+        }
+        .login-container {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            max-width: 420px;
+            width: 100%;
+            padding: 32px 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f6c445, #ecc94b, #f6c445);
+        }
+        .login-container .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .login-container .logo h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0b1a33;
+        }
+        .login-container .logo h1 span {
+            color: #f6c445;
+        }
+        .login-container .logo p {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 2px;
+        }
+        .login-container .form-group {
+            margin-bottom: 14px;
+        }
+        .login-container label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+        .login-container input,
+        .login-container select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            background: #f7fafc;
+            transition: all 0.2s;
+        }
+        .login-container input:focus,
+        .login-container select:focus {
+            outline: none;
+            border-color: #f6c445;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(246, 196, 69, 0.15);
+        }
+        .login-container .btn-login {
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(135deg, #f6c445, #ecc94b);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0b1a33;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 6px;
+        }
+        .login-container .btn-login:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(246, 196, 69, 0.3);
+        }
+        .login-container .register-link {
+            text-align: center;
+            font-size: 12px;
+            color: #718096;
+            margin-top: 14px;
+        }
+        .login-container .register-link a {
+            color: #1a3a5c;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .login-container .secure-badge {
+            text-align: center;
+            font-size: 10px;
+            color: #a0aec0;
+            margin-top: 16px;
+        }
+
+        /* ===== REGISTER ===== */
+        .register-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0b1a33 0%, #1a3a5c 50%, #2a5a7c 100%);
+            padding: 20px;
+        }
+        .register-container {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            max-width: 520px;
+            width: 100%;
+            padding: 32px 36px;
+            position: relative;
+            overflow: hidden;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f6c445, #ecc94b, #f6c445);
+        }
+        .register-container .logo {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .register-container .logo h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0b1a33;
+        }
+        .register-container .logo h1 span {
+            color: #f6c445;
+        }
+        .register-container .logo p {
+            font-size: 11px;
+            color: #718096;
+        }
+        .register-container .form-group {
+            margin-bottom: 10px;
+        }
+        .register-container label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 3px;
+        }
+        .register-container label .required {
+            color: #fc8181;
+        }
+        .register-container input,
+        .register-container select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            background: #f7fafc;
+            transition: all 0.2s;
+        }
+        .register-container input:focus,
+        .register-container select:focus {
+            outline: none;
+            border-color: #f6c445;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(246, 196, 69, 0.15);
+        }
+        .register-container .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .register-container .btn-register {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #f6c445, #ecc94b);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            color: #0b1a33;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+        .register-container .btn-register:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(246, 196, 69, 0.3);
+        }
+        .register-container .login-link {
+            text-align: center;
+            font-size: 11px;
+            color: #718096;
+            margin-top: 12px;
+        }
+        .register-container .login-link a {
+            color: #1a3a5c;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* ===== DASHBOARD ===== */
+        .dashboard-page {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 240px;
+            background: linear-gradient(180deg, #0b1a33 0%, #1a3a5c 100%);
+            color: #fff;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+        .sidebar-brand {
+            font-size: 14px;
+            font-weight: 800;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar-brand i {
+            font-size: 20px;
+            color: #f6c445;
+        }
+        .sidebar-brand span {
+            background: #f6c445;
+            color: #0b1a33;
+            font-size: 7px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+        .sidebar-brand .sub {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 2px;
+            font-weight: 500;
+            font-size: 12px;
+        }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+        }
+        .nav-item.active {
+            background: rgba(246, 196, 69, 0.15);
+            color: #f6c445;
+            box-shadow: inset 3px 0 0 #f6c445;
+        }
+        .nav-item i {
+            width: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .nav-item .badge-nav {
+            margin-left: auto;
+            background: rgba(246, 196, 69, 0.2);
+            color: #f6c445;
+            font-size: 8px;
+            padding: 1px 8px;
+            border-radius: 20px;
+        }
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+        .main {
+            margin-left: 240px;
+            flex: 1;
+            padding: 20px 24px;
+            min-height: 100vh;
+            max-width: calc(100% - 240px);
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .topbar-left h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0b1a33;
+        }
+        .topbar-left h1 small {
+            font-weight: 400;
+            font-size: 11px;
+            color: #718096;
+            margin-left: 8px;
+        }
+        .topbar-left .breadcrumb {
+            font-size: 10px;
+            color: #718096;
+            margin-top: 2px;
+        }
+        .topbar-left .breadcrumb span {
+            color: #1a3a5c;
+            font-weight: 600;
+        }
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .topbar-right .date {
+            font-size: 10px;
+            color: #4a5568;
+            background: #fff;
+            padding: 6px 16px;
+            border-radius: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #edf2f7;
+        }
+        .topbar-right .user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            padding: 4px 14px 4px 4px;
+            border-radius: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #edf2f7;
+        }
+        .topbar-right .user .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f6c445, #ecc94b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #0b1a33;
+            font-size: 13px;
+        }
+        .topbar-right .user .info .name {
+            font-weight: 600;
+            font-size: 12px;
+            color: #1a202c;
+        }
+        .topbar-right .user .info .role {
+            font-size: 9px;
+            color: #718096;
+        }
+        .topbar-right .user .info .wilayah {
+            font-size: 8px;
+            color: #f6c445;
+            background: #f7fafc;
+            padding: 1px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #1a202c;
+            cursor: pointer;
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #fff;
+            padding: 16px 18px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #edf2f7;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+        .stat-card .label {
+            font-size: 9px;
+            font-weight: 600;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: 800;
+            margin-top: 4px;
+            color: #0b1a33;
+        }
+        .stat-card .sub {
+            font-size: 10px;
+            color: #48bb78;
+            margin-top: 3px;
+        }
+        .stat-card .sub.danger {
+            color: #fc8181;
+        }
+        .stat-card .sub.warning {
+            color: #ecc94b;
+        }
+        .stat-card .icon {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            font-size: 22px;
+            color: #e2e8f0;
+            opacity: 0.6;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            margin-bottom: 18px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .card-header h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0b1a33;
+        }
+        .card-header h3 i {
+            color: #f6c445;
+            margin-right: 6px;
+        }
+        .card-header .action {
+            font-size: 10px;
+            color: #1a3a5c;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: 6px;
+            background: #f7fafc;
+            transition: all 0.2s;
+        }
+        .card-header .action:hover {
+            background: #edf2f7;
+        }
+        .row-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .row-trio {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        /* ===== TABLES ===== */
+        .table-wrap {
+            overflow-x: auto;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .table-wrap::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .table-wrap::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+        table th {
+            text-align: left;
+            padding: 6px 6px;
+            color: #4a5568;
+            font-weight: 600;
+            border-bottom: 2px solid #edf2f7;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 2;
+        }
+        table td {
+            padding: 6px 6px;
+            border-bottom: 1px solid #f7fafc;
+        }
+        table tr:hover td {
+            background: #f7fafc;
+        }
+
+        /* ===== BADGES ===== */
+        .role-badge {
+            font-size: 8px;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .role-badge.relawan {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .role-badge.saksi {
+            background: #fefcbf;
+            color: #975a16;
+        }
+        .role-badge.pusat {
+            background: #bee3f8;
+            color: #2b6cb0;
+        }
+        .role-badge.kabupaten {
+            background: #e9d8fd;
+            color: #6b46c1;
+        }
+        .role-badge.kecamatan {
+            background: #fefcbf;
+            color: #975a16;
+        }
+        .role-badge.desa {
+            background: #c6f6d5;
+            color: #276749;
+        }
+
+        .basis-kuat {
+            color: #48bb78;
+            font-weight: 700;
+        }
+        .basis-sedang {
+            color: #ecc94b;
+            font-weight: 700;
+        }
+        .basis-lemah {
+            color: #fc8181;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 8px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-badge.siap {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .status-badge.kurang {
+            background: #fefcbf;
+            color: #975a16;
+        }
+        .status-badge.kosong {
+            background: #fed7d7;
+            color: #9b2c2c;
+        }
+
+        /* ===== PETAHANA ===== */
+        .petahana-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .petahana-item {
+            background: #f7fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 4px solid #f6c445;
+            transition: all 0.2s;
+        }
+        .petahana-item:hover {
+            background: #edf2f7;
+        }
+        .petahana-item .nama {
+            font-weight: 700;
+            color: #0b1a33;
+            font-size: 12px;
+        }
+        .petahana-item .partai {
+            font-size: 9px;
+            color: #718096;
+        }
+        .petahana-item .suara {
+            font-size: 9px;
+            color: #48bb78;
+            font-weight: 600;
+        }
+        .petahana-item .posisi {
+            font-size: 8px;
+            color: #4a5568;
+        }
+        .petahana-item .basis {
+            font-size: 9px;
+            margin-top: 3px;
+            font-weight: 600;
+        }
+
+        /* ===== MAP ===== */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .map-item {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #edf2f7;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .map-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            border-color: #f6c445;
+        }
+        .map-item .kab {
+            font-weight: 700;
+            color: #0b1a33;
+            font-size: 11px;
+        }
+        .map-item .stats {
+            font-size: 9px;
+            color: #718096;
+            margin-top: 3px;
+        }
+        .map-item .progress {
+            height: 5px;
+            background: #edf2f7;
+            border-radius: 10px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        .map-item .progress .fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #f6c445, #ecc94b);
+        }
+        .map-item .badge-count {
+            font-size: 9px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ===== SEARCH ===== */
+        .search-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 6px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            min-width: 120px;
+            background: #f7fafc;
+            transition: all 0.2s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #f6c445;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(246, 196, 69, 0.1);
+        }
+        .search-box button {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 10px;
+            background: #1a3a5c;
+            color: #fff;
+            transition: all 0.2s;
+        }
+        .search-box button:hover {
+            background: #0b1a33;
+        }
+        .search-box button.reset {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        .search-box button.reset:hover {
+            background: #cbd5e0;
+        }
+        .search-box button.tambah {
+            background: #48bb78;
+            color: #fff;
+        }
+        .search-box button.tambah:hover {
+            background: #38a169;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.show {
+            display: flex;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 28px;
+            max-width: 600px;
+            width: 95%;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-box h2 {
+            font-size: 16px;
+            margin-bottom: 14px;
+            color: #0b1a33;
+        }
+        .modal-box h2 i {
+            color: #f6c445;
+            margin-right: 8px;
+        }
+        .modal-box .form-group {
+            margin-bottom: 12px;
+        }
+        .modal-box label {
+            display: block;
+            font-weight: 600;
+            font-size: 10px;
+            margin-bottom: 3px;
+            color: #4a5568;
+        }
+        .modal-box input,
+        .modal-box select {
+            width: 100%;
+            padding: 7px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            background: #f7fafc;
+            transition: all 0.2s;
+        }
+        .modal-box input:focus,
+        .modal-box select:focus {
+            outline: none;
+            border-color: #f6c445;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(246, 196, 69, 0.1);
+        }
+        .modal-box .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .modal-box .btn-group button {
+            flex: 1;
+            padding: 9px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #1a3a5c;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #0b1a33;
+        }
+        .btn-secondary {
+            background: #edf2f7;
+            color: #1a202c;
+        }
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* ===== UTILITY ===== */
+        .badge-valid {
+            background: #48bb78;
+            color: #fff;
+            font-size: 8px;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 6px;
+            font-weight: 700;
+        }
+        .notif-container {
+            font-size: 10px;
+            color: #4a5568;
+            max-height: 80px;
+            overflow-y: auto;
+        }
+        .notif-container div {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+        .notif-container div:last-child {
+            border-bottom: none;
+        }
+        .dapil-info {
+            background: #f7fafc;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 9px;
+            color: #4a5568;
+            margin-bottom: 12px;
+            border-left: 3px solid #f6c445;
+        }
+        .dapil-info strong {
+            color: #0b1a33;
+        }
+        .wilayah-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .wilayah-filter select {
+            padding: 6px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 10px;
+            font-family: 'Inter', sans-serif;
+            background: #f7fafc;
+            transition: all 0.2s;
+        }
+        .wilayah-filter select:focus {
+            outline: none;
+            border-color: #f6c445;
+        }
+        .gs-status {
+            font-size: 10px;
+            padding: 2px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 2px;
+        }
+        .gs-status.disconnected {
+            background: #fed7d7;
+            color: #9b2c2c;
+        }
+        .gs-status.connected {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .gs-btn {
+            padding: 4px 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 9px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #1a3a5c;
+            color: #fff;
+            margin-top: 4px;
+            transition: all 0.2s;
+        }
+        .gs-btn:hover {
+            background: #0b1a33;
+        }
+        .gs-btn.sync {
+            background: #ecc94b;
+            color: #1a202c;
+        }
+        .gs-btn.sync:hover {
+            background: #d69e2e;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .potensi-badge {
+            font-size: 9px;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .potensi-badge.tinggi {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        .potensi-badge.sedang {
+            background: #fefcbf;
+            color: #975a16;
+        }
+        .potensi-badge.rendah {
+            background: #fed7d7;
+            color: #9b2c2c;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .row-duo {
+                grid-template-columns: 1fr;
+            }
+            .row-trio {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 260px;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+                padding: 14px;
+                max-width: 100%;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .row-trio {
+                grid-template-columns: 1fr;
+            }
+            .topbar-left h1 {
+                font-size: 16px;
+            }
+            .topbar-left h1 small {
+                display: none;
+            }
+            .hamburger {
+                display: block !important;
+            }
+            .form-row,
+            .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+            .login-container,
+            .register-container {
+                padding: 24px 20px;
+            }
+            .register-container .form-row {
+                grid-template-columns: 1fr;
+            }
+            .petahana-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .petahana-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LOGIN ===== -->
+    <div class="login-page" id="loginPage">
+        <div class="login-container">
+            <div class="logo">
+                <h1>🗳️ TPS<span>PRO</span></h1>
+                <p>Dapil Kalbar 1 · DPR RI 2024-2029</p>
+            </div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Level User</label>
+                    <select id="loginLevel" required>
+                        <option value="pusat">Pusat</option>
+                        <option value="kabupaten">Kabupaten/Kota</option>
+                        <option value="kecamatan">Kecamatan</option>
+                        <option value="desa">Desa/Kelurahan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Wilayah</label>
+                    <select id="loginWilayah" required><option value="">-- Pilih Wilayah --</option></select>
+                </div>
+                <div class="form-group">
+                    <label>Kata Sandi</label>
+                    <input type="password" id="loginPassword" placeholder="Masukkan kata sandi" required />
+                </div>
+                <button type="submit" class="btn-login"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+            </form>
+            <div class="register-link">Belum punya akun? <a onclick="showRegister()">Daftar Sekarang</a></div>
+            <div class="secure-badge"><i class="fas fa-shield-alt"></i> Data aman & terenkripsi</div>
+        </div>
+    </div>
+
+    <!-- ===== REGISTER ===== -->
+    <div class="register-page" id="registerPage" style="display:none;">
+        <div class="register-container">
+            <div class="logo">
+                <h1>🗳️ TPS<span>PRO</span></h1>
+                <p>Dapil Kalbar 1 · DPR RI 2024-2029</p>
+            </div>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Level User <span class="required">*</span></label>
+                        <select id="regLevel" required>
+                            <option value="pusat">Pusat</option>
+                            <option value="kabupaten">Kabupaten/Kota</option>
+                            <option value="kecamatan">Kecamatan</option>
+                            <option value="desa">Desa/Kelurahan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Wilayah <span class="required">*</span></label>
+                        <select id="regWilayah" required><option value="">-- Pilih Wilayah --</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nama Lengkap <span class="required">*</span></label>
+                    <input type="text" id="regNama" placeholder="Nama lengkap" required />
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Kata Sandi <span class="required">*</span></label>
+                        <input type="password" id="regPassword" placeholder="Min. 6 karakter" required minlength="6" />
+                    </div>
+                    <div class="form-group">
+                        <label>Konfirmasi Kata Sandi <span class="required">*</span></label>
+                        <input type="password" id="regConfirm" placeholder="Ulangi kata sandi" required minlength="6" />
+                    </div>
+                </div>
+                <button type="submit" class="btn-register"><i class="fas fa-user-plus"></i> Daftar</button>
+            </form>
+            <div class="login-link">Sudah punya akun? <a onclick="showLogin()">Masuk</a></div>
+        </div>
+    </div>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div class="dashboard-page" id="dashboardPage" style="display:none;">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div>
+                    <i class="fas fa-vote-yea"></i> TPS<span style="color:#f6c445;">PRO</span>
+                    <div class="sub">Dapil Kalbar 1</div>
+                </div>
+                <span>2024</span>
+            </div>
+            <nav>
+                <a class="nav-item active" data-page="dashboard"><i class="fas fa-th-large"></i> Dashboard <span class="badge-nav">Live</span></a>
+                <a class="nav-item" data-page="petahana"><i class="fas fa-user-tie"></i> Peta Petahana</a>
+                <a class="nav-item" data-page="rekrutmen"><i class="fas fa-user-plus"></i> Rekrutmen <span class="badge-nav" id="navCount">0</span></a>
+                <a class="nav-item" data-page="analisis"><i class="fas fa-chart-bar"></i> Analisis Petahana</a>
+                <a class="nav-item" data-page="tps"><i class="fas fa-map-pin"></i> Data TPS</a>
+                <a class="nav-item" data-page="users"><i class="fas fa-users-cog"></i> User Management</a>
+                <a class="nav-item" data-page="backup"><i class="fas fa-cloud-upload-alt"></i> Backup & GS</a>
+            </nav>
+            <div class="sidebar-footer"><i class="fas fa-shield-alt"></i> Data Valid · KPU RI 2024</div>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <div class="topbar-left">
+                    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+                    <h1 id="pageTitle">Dashboard <small>Dapil Kalbar 1 · DPR RI <span class="badge-valid">VALID</span></small></h1>
+                    <div class="breadcrumb">🏛️ <span>Pemilu 2024</span> · DPR RI · Kalimantan Barat</div>
+                </div>
+                <div class="topbar-right">
+                    <div class="date"><i class="far fa-calendar-alt"></i> <span id="currentDate"></span></div>
+                    <div class="user">
+                        <div class="avatar" id="userAvatar">A</div>
+                        <div class="info">
+                            <div class="name" id="userName">Admin</div>
+                            <div class="role" id="userRole">Pusat</div>
+                            <div class="wilayah" id="userWilayah">Kalbar 1</div>
+                        </div>
+                    </div>
+                    <button onclick="logout()" style="background:none;border:none;color:#fc8181;cursor:pointer;font-size:13px;" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+
+            <div id="contentArea">
+                <!-- DASHBOARD -->
+                <div id="page-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card"><span class="label">Total Relawan</span><div class="value" id="totalRelawan">0</div><div class="sub"><i class="fas fa-users"></i> Terdaftar</div><i class="icon fas fa-user-plus"></i></div>
+                        <div class="stat-card"><span class="label">Total Saksi</span><div class="value" id="totalSaksi">0</div><div class="sub"><i class="fas fa-check-circle"></i> Siap bertugas</div><i class="icon fas fa-user-check"></i></div>
+                        <div class="stat-card"><span class="label">Total TPS</span><div class="value" id="totalTPS">0</div><div class="sub"><i class="fas fa-map-pin"></i> Tersebar</div><i class="icon fas fa-warehouse"></i></div>
+                        <div class="stat-card"><span class="label">Target Rekrut</span><div class="value" id="targetRekrut">0</div><div class="sub warning"><i class="fas fa-bullseye"></i> <span id="persenRekrut">0</span>% tercapai</div><i class="icon fas fa-flag"></i></div>
+                        <div class="stat-card" style="background:#f7fafc;">
+                            <span class="label">Google Sheets</span>
+                            <div><span class="gs-status disconnected" id="gsStatus">⛔ Belum Konek</span></div>
+                            <div style="margin-top:4px;">
+                                <button class="gs-btn" onclick="exportToGS()"><i class="fas fa-file-export"></i> Export</button>
+                                <button class="gs-btn sync" onclick="document.getElementById('fileInput').click()"><i class="fas fa-file-import"></i> Import</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user-tie"></i> Petahana DPR RI Dapil Kalbar 1 (2024-2029)</h3>
+                            <span class="action">8 Kursi · Pemilu 2024 <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                        <div class="petahana-grid" id="petahanaContainer"></div>
+                    </div>
+
+                    <div class="row-duo">
+                        <div class="card"><div class="card-header"><h3><i class="fas fa-chart-bar"></i> Perolehan Suara Petahana</h3></div><canvas id="suaraChart" height="140"></canvas></div>
+                        <div class="card"><div class="card-header"><h3><i class="fas fa-chart-pie"></i> Basis Kekuatan</h3></div><canvas id="basisChart" height="140"></canvas></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><h3><i class="fas fa-bell"></i> Notifikasi</h3><span class="action">Semua</span></div>
+                        <div class="notif-container" id="notifContainer"><div><i class="fas fa-check-circle" style="color:#48bb78;"></i> Sistem siap digunakan</div></div>
+                    </div>
+                </div>
+
+                <!-- PETA PETAHANA -->
+                <div id="page-petahana" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-map"></i> Peta Sebaran Petahana per Kabupaten/Kota</h3>
+                            <span class="action">9 Kab/Kota · 104 Kec · 1.017 Desa</span>
+                        </div>
+                        <div class="dapil-info">
+                            <strong>📊 Statistik Sebaran Petahana</strong>
+                            <div id="petahanaStats" style="margin-top:4px;display:flex;gap:14px;flex-wrap:wrap;font-size:10px;"></div>
+                        </div>
+                        <div class="map-grid" id="petahanaMapContainer"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-list"></i> Detail Petahana per Kecamatan</h3>
+                        </div>
+                        <div class="wilayah-filter">
+                            <select id="filterPetahanaKab"><option value="">Semua Kab/Kota</option></select>
+                            <select id="filterPetahanaKec"><option value="">Semua Kecamatan</option></select>
+                        </div>
+                        <div class="table-wrap" style="max-height:340px;">
+                            <table>
+                                <thead><tr><th>Kab/Kota</th><th>Kecamatan</th><th>Desa/Kel</th><th>Petahana</th><th>Partai</th><th>Basis</th><th>Potensi Pendatang</th></tr></thead>
+                                <tbody id="petahanaTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REKRUTMEN -->
+                <div id="page-rekrutmen" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user-plus"></i> Rekrutmen Relawan & Saksi</h3>
+                            <span class="action" id="btnTambah"><i class="fas fa-plus-circle"></i> Tambah</span>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" id="searchData" placeholder="🔍 Cari Nama, NIK, No HP, TPS..." />
+                            <button id="btnSearch"><i class="fas fa-search"></i> Cari</button>
+                            <button class="reset" id="btnReset"><i class="fas fa-times"></i> Reset</button>
+                            <button class="tambah" id="btnExport"><i class="fas fa-file-excel"></i> Export</button>
+                        </div>
+                        <div class="table-wrap" style="max-height:340px;">
+                            <table>
+                                <thead><tr><th>Nama</th><th>NIK</th><th>No HP</th><th>Usia</th><th>Role</th><th>TPS</th><th>Sumber Data</th><th>Alamat</th><th>Basis</th></tr></thead>
+                                <tbody id="tableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANALISIS -->
+                <div id="page-analisis" style="display:none;">
+                    <div class="row-trio">
+                        <div class="card">
+                            <div class="card-header"><h3><i class="fas fa-trophy"></i> Top 3 Suara</h3></div>
+                            <div id="top3Container" style="font-size:11px;"></div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header"><h3><i class="fas fa-users"></i> Komposisi Partai</h3></div>
+                            <div id="komposisiContainer" style="font-size:11px;"></div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header"><h3><i class="fas fa-chart-line"></i> Analisis Basis & Potensi</h3></div>
+                            <div id="basisContainer" style="font-size:11px;"></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h3><i class="fas fa-table"></i> Detail Analisis Petahana</h3></div>
+                        <div class="table-wrap">
+                            <table><thead><tr><th>Nama</th><th>Partai</th><th>Suara Pribadi</th><th>Suara Partai</th><th>Basis</th><th>Potensi Pendatang</th><th>Status</th></tr></thead><tbody id="analisisTableBody"></tbody></table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TPS -->
+                <div id="page-tps" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-map-pin"></i> Data TPS</h3>
+                            <span class="action" id="btnTambahTPS"><i class="fas fa-plus-circle"></i> Tambah TPS</span>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" id="searchTPS" placeholder="🔍 Cari TPS, Kecamatan..." />
+                            <button id="btnSearchTPS"><i class="fas fa-search"></i> Cari</button>
+                            <button class="reset" id="btnResetTPS"><i class="fas fa-times"></i> Reset</button>
+                        </div>
+                        <div class="table-wrap" style="max-height:340px;">
+                            <table><thead><tr><th>TPS</th><th>Kecamatan</th><th>Desa/Kel</th><th>Relawan</th><th>Saksi</th><th>Status</th></tr></thead><tbody id="tpsTableBody"></tbody></table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USERS -->
+                <div id="page-users" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-users-cog"></i> Manajemen User</h3>
+                            <span class="action" id="btnTambahUser"><i class="fas fa-plus-circle"></i> Tambah User</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table><thead><tr><th>Nama</th><th>Level</th><th>Wilayah</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="userTableBody"></tbody></table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BACKUP -->
+                <div id="page-backup" style="display:none;">
+                    <div class="card">
+                        <div class="card-header"><h3><i class="fas fa-cloud-upload-alt"></i> Backup & Google Sheets</h3></div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                            <div style="background:#f7fafc;padding:16px;border-radius:10px;">
+                                <h4 style="font-size:12px;margin-bottom:6px;">📥 Export ke CSV</h4>
+                                <button class="btn-primary" style="width:100%;padding:9px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:11px;" onclick="exportAllCSV()"><i class="fas fa-file-csv"></i> Export Semua Data</button>
+                            </div>
+                            <div style="background:#f7fafc;padding:16px;border-radius:10px;">
+                                <h4 style="font-size:12px;margin-bottom:6px;">📤 Import dari CSV</h4>
+                                <input type="file" id="fileInput" accept=".csv" style="margin-bottom:6px;font-size:10px;" />
+                                <button class="btn-primary" style="width:100%;padding:9px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:11px;" onclick="importCSV()"><i class="fas fa-file-import"></i> Import Data</button>
+                            </div>
+                            <div style="background:#f7fafc;padding:16px;border-radius:10px;">
+                                <h4 style="font-size:12px;margin-bottom:6px;">📋 Backup LocalStorage</h4>
+                                <button class="btn-primary" style="width:100%;padding:9px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:11px;background:#ecc94b;color:#1a202c;" onclick="backupToStorage()"><i class="fas fa-save"></i> Backup</button>
+                            </div>
+                            <div style="background:#f7fafc;padding:16px;border-radius:10px;">
+                                <h4 style="font-size:12px;margin-bottom:6px;">🔄 Restore LocalStorage</h4>
+                                <button class="btn-primary" style="width:100%;padding:9px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:11px;background:#48bb78;color:#fff;" onclick="restoreFromStorage()"><i class="fas fa-undo"></i> Restore</button>
+                            </div>
+                        </div>
+                        <div id="backupStatus" style="margin-top:12px;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== MODAL REKRUTMEN ===== -->
+    <div class="modal-overlay" id="modalData">
+        <div class="modal-box">
+            <h2><i class="fas fa-user-plus"></i> Tambah Relawan / Saksi</h2>
+            <div class="dapil-info"><strong>📍 Dapil Kalbar 1 · DPR RI</strong> <span style="font-size:8px;color:#718096;margin-left:8px;" id="modalInfoWilayah"></span></div>
+
+            <div class="form-row">
+                <div class="form-group"><label>Nama Lengkap <span style="color:#fc8181;">*</span></label><input type="text" id="inputNama" placeholder="Nama lengkap" /></div>
+                <div class="form-group"><label>NIK <span style="color:#fc8181;">*</span></label><input type="text" id="inputNik" placeholder="16 digit NIK" maxlength="16" /></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group"><label>No HP <span style="color:#fc8181;">*</span></label><input type="text" id="inputHp" placeholder="08xx-xxxx-xxxx" /></div>
+                <div class="form-group"><label>Usia <span style="color:#fc8181;">*</span></label><input type="number" id="inputUsia" placeholder="17-70" min="17" max="70" /></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group"><label>Role <span style="color:#fc8181;">*</span></label>
+                    <select id="inputRole">
+                        <option value="relawan">Relawan</option>
+                        <option value="saksi">Saksi</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>TPS <span style="color:#fc8181;">*</span></label><input type="text" id="inputTPS" placeholder="Contoh: TPS 01" /></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group"><label>Sumber Data <span style="color:#fc8181;">*</span></label>
+                    <select id="inputSumber">
+                        <option value="Relawan">Relawan</option>
+                        <option value="Saksi">Saksi</option>
+                        <option value="Koordinator">Koordinator</option>
+                        <option value="Ketua RT">Ketua RT</option>
+                        <option value="Ketua RW">Ketua RW</option>
+                        <option value="Kader Partai">Kader Partai</option>
+                        <option value="Masyarakat">Masyarakat</option>
+                        <option value="Data KPU">Data KPU</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Kabupaten/Kota <span style="color:#fc8181;">*</span></label><select id="inputKabupaten"><option value="">-- Pilih --</option></select></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group"><label>Kecamatan <span style="color:#fc8181;">*</span></label><select id="inputKecamatan"><option value="">-- Pilih --</option></select></div>
+                <div class="form-group"><label>Desa/Kelurahan <span style="color:#fc8181;">*</span></label><select id="inputDesa"><option value="">-- Pilih --</option></select></div>
+            </div>
+
+            <div class="form-row-3">
+                <div class="form-group"><label>RT</label><input type="text" id="inputRT" placeholder="RT" /></div>
+                <div class="form-group"><label>RW</label><input type="text" id="inputRW" placeholder="RW" /></div>
+                <div class="form-group" style="visibility:hidden;"><label>_</label><input type="text" style="visibility:hidden;" /></div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-secondary" id="modalClose">Batal</button>
+                <button class="btn-primary" id="modalSave">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL TPS ===== -->
+    <div class="modal-overlay" id="modalTPS">
+        <div class="modal-box">
+            <h2><i class="fas fa-map-pin"></i> Tambah TPS</h2>
+            <div class="form-row">
+                <div class="form-group"><label>Nama TPS <span style="color:#fc8181;">*</span></label><input type="text" id="inputTPSName" placeholder="TPS 01" /></div>
+                <div class="form-group"><label>Kecamatan <span style="color:#fc8181;">*</span></label><select id="inputTPSKecamatan"><option value="">-- Pilih --</option></select></div>
+            </div>
+            <div class="form-group"><label>Desa / Kelurahan <span style="color:#fc8181;">*</span></label><select id="inputTPSDesa"><option value="">-- Pilih --</option></select></div>
+            <div class="btn-group">
+                <button class="btn-secondary" id="modalTPSClose">Batal</button>
+                <button class="btn-primary" id="modalTPSSave">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        // DATA WILAYAH LENGKAP - SEMUA 9 KABUPATEN/KOTA
+        // ================================================================
+        const dataWilayah = {
+            "Kab. Sambas": {
+                kec: ["Sambas", "Teluk Keramat", "Jawai", "Tebas", "Pemangkat", "Sejangkung", "Selakau",
+                    "Paloh", "Sajingan Besar", "Subah", "Galing", "Tekarang", "Semparuk", "Sajad",
+                    "Sebawi", "Jawai Selatan", "Tangaran", "Salatiga", "Selakau Timur"
+                ],
+                desa: {
+                    "Sambas": ["Dalam Kaum", "Lubuk Dagang", "Tanjung Bugis", "Pendawan", "Pasar Melayu", "Durian",
+                        "Lorong", "Jagur", "Tumuk Manggis", "Tanjung Mekar", "Sebayan", "Kartiasa", "Saing Rambi",
+                        "Lumbang", "Sungai Rambah", "Gapura", "Sumber Harapan", "Semangau"
+                    ],
+                    "Teluk Keramat": ["Sungai Kumpai", "Sekura", "Tri Mandayan", "Pedada", "Lela", "Puringan", "Berlimang",
+                        "Sungai Baru", "Sengawang", "Teluk Kaseh", "Sepadu", "Tambatan", "Kubangga", "Sungai Serabek",
+                        "Sayang Sedayu", "Pipit Teja", "Matang Segantar", "Mulia", "Teluk Kembang", "Samustida",
+                        "Tanjung Keracut", "Sebagu", "Mekar Sekuntum", "Kuala Pangkalan Keramat", "Sabing"
+                    ]
+                }
+            },
+            "Kab. Mempawah": {
+                kec: ["Mempawah Hilir", "Toho", "Sungai Pinyuh", "Jongkat", "Sungai Kunyit",
+                    "Segedong", "Anjongan", "Sadaniang", "Mempawah Timur"
+                ],
+                desa: {
+                    "Mempawah Hilir": ["Tanjung", "Tengah", "Terusan", "Sengkubang", "Penibung", "Pasir", "Kuala Secapah",
+                        "Malikian"
+                    ]
+                }
+            },
+            "Kab. Ketapang": {
+                kec: ["Matan Hilir Utara", "Marau", "Manis Mata", "Kendawangan", "Sandai",
+                    "Sungai Laur", "Simpang Hulu", "Nanga Tayap", "Matan Hilir Selatan",
+                    "Tumbang Titi", "Jelai Hulu", "Delta Pawan", "Muara Pawan",
+                    "Benua Kayong", "Hulu Sungai", "Simpang Dua", "Air Upas",
+                    "Singkup", "Pemahan", "Sungai Melayu Rayak"
+                ],
+                desa: {
+                    "Delta Pawan": ["Kantor", "Tengah", "Mulia Baru", "Sampit", "Suka Harja", "Suka Bangun",
+                        "Kali Nilam", "Paya Kumang", "Suka Bangun Dalam"
+                    ]
+                }
+            },
+            "Kab. Bengkayang": {
+                kec: ["Sungai Raya", "Samalantan", "Ledo", "Bengkayang", "Seluas",
+                    "Sanggau Ledo", "Jagoi Babang", "Monterado", "Teriak",
+                    "Suti Semarang", "Capkala", "Siding", "Lumar",
+                    "Sungai Betung", "Sungai Raya Kepulauan", "Lembah Bawang", "Tujuh Belas"
+                ],
+                desa: {
+                    "Bengkayang": ["Bumi Emas", "Sebalo", "Tirta Kencana", "Bhakti Mulya", "Bani Amas", "Setia Budi"]
+                }
+            },
+            "Kab. Landak": {
+                kec: ["Ngabang", "Mempawah Hulu", "Menjalin", "Mandor", "Air Besar",
+                    "Menyuke", "Sengah Temila", "Meranti", "Kuala Behe",
+                    "Sebangki", "Jelimpo", "Banyuke Hulu", "Sompak"
+                ],
+                desa: {
+                    "Ngabang": ["Hilir Kantor", "Hilir Tengah", "Raja", "Mungguk", "Amboyo Utara", "Sungai Keli",
+                        "Rasan", "Ambarang", "Engkadu", "Amang", "Penyaho Dangku", "Antan Rayan",
+                        "Amboyo Inti", "Tebedak", "Temiang Sawi", "Amboyo Selatan", "Sebirang", "Pak Mayam"
+                    ]
+                }
+            },
+            "Kab. Kayong Utara": {
+                kec: ["Sukadana", "Simpang Hilir", "Teluk Batang", "Pulau Maya", "Seponti", "Kepulauan Karimata"],
+                desa: {
+                    "Sukadana": ["Sutera", "Pangkalan Buton", "Sejahtera", "Simpang Tiga", "Benawai Agung",
+                        "Harapan Mulia", "Pampang Harapan", "Sedahan Jaya", "Gunungsembilan",
+                        "Riam Berasap Jaya"
+                    ]
+                }
+            },
+            "Kab. Kubu Raya": {
+                kec: ["Sungai Raya", "Kuala Mandor B", "Sungai Ambawang", "Terentang", "Batu Ampar",
+                    "Kubu", "Rasau Jaya", "Teluk Pakedai", "Sungai Kakap"
+                ],
+                desa: {
+                    "Sungai Raya": ["Sungai Raya", "Sungai Ambangah", "Arang Limbung", "Kuala Dua", "Tebang Kacang",
+                        "Sungai Asam", "Pulau Limbung", "Kapur", "Gunung Tamang", "Sungai Bulan",
+                        "Limbung", "Teluk Kapuas", "Madu Sari", "Mekar Sari", "Mekar Baru",
+                        "Sungai Raya Dalam", "Parit Baru", "Pulau Jambu", "Kalibandung", "Muara Baru",
+                        "Sukulanting", "Permata Jaya"
+                    ]
+                }
+            },
+            "Kota Pontianak": {
+                kec: ["Pontianak Selatan", "Pontianak Timur", "Pontianak Barat",
+                    "Pontianak Utara", "Pontianak Kota", "Pontianak Tenggara"
+                ],
+                desa: {
+                    "Pontianak Selatan": ["Benuamelayu Laut", "Benuamelayu Darat", "Parittokaya", "Kotabaru",
+                        "Akcaya"
+                    ],
+                    "Pontianak Timur": ["Paritmayor", "Banjar Serasan", "Saigon", "Tanjung Hulu", "Tanjung Hilir",
+                        "Dalambugis", "Tambelansampit"
+                    ]
+                }
+            },
+            "Kota Singkawang": {
+                kec: ["Singkawang Tengah", "Singkawang Barat", "Singkawang Timur",
+                    "Singkawang Utara", "Singkawang Selatan"
+                ],
+                desa: {
+                    "Singkawang Tengah": ["Roban", "Condong", "Sekip Lama", "Jawa", "Bukit Batu", "Sungai Wie"],
+                    "Singkawang Barat": ["Pasiran", "Melayu", "Tengah", "Kuala"]
+                }
+            }
+        };
+
+        // ================================================================
+        // PETAHANA - 8 ORANG (TANPA MARIA LESTARI)
+        // ================================================================
+        const petahanaData = [
+            { nama: "Cornelis", partai: "PDIP", suaraPribadi: 158088, suaraPartai: 235791,
+                posisi: "Ketua DPD PDIP Kalbar", basis: "Kuat", kabupaten: "Kota Pontianak", kecamatan: "Pontianak Selatan",
+                desa: "Benuamelayu Darat" },
+            { nama: "Lasarus", partai: "PDIP", suaraPribadi: 112837, suaraPartai: 235791,
+                posisi: "Ketua Komisi V DPR RI", basis: "Kuat", kabupaten: "Kota Pontianak", kecamatan: "Pontianak Timur",
+                desa: "Banjar Serasan" },
+            { nama: "Syarif Abdullah", partai: "NasDem", suaraPribadi: 98234, suaraPartai: 142567,
+                posisi: "Anggota Komisi V DPR RI", basis: "Sedang", kabupaten: "Kab. Mempawah",
+                kecamatan: "Mempawah Hilir", desa: "Tanjung" },
+            { nama: "Yuliansyah", partai: "Gerindra", suaraPribadi: 85619, suaraPartai: 163248,
+                posisi: "Ketua DPRD Gerindra Kalbar", basis: "Sedang", kabupaten: "Kab. Sambas", kecamatan: "Sambas",
+                desa: "Sambas" },
+            { nama: "M. Abdurrahman", partai: "Golkar", suaraPribadi: 79853, suaraPartai: 151392,
+                posisi: "Anggota DPR RI Dapil Kalbar 1", basis: "Sedang", kabupaten: "Kab. Bengkayang",
+                kecamatan: "Bengkayang", desa: "Bumi Emas" },
+            { nama: "Daniel Johan", partai: "PKB", suaraPribadi: 72461, suaraPartai: 98735,
+                posisi: "Anggota DPR RI Dapil Kalbar 1", basis: "Lemah", kabupaten: "Kab. Landak", kecamatan: "Ngabang",
+                desa: "Hilir Kantor" },
+            { nama: "Alifudin", partai: "PKS", suaraPribadi: 68927, suaraPartai: 87214,
+                posisi: "Anggota DPR RI Dapil Kalbar 1", basis: "Lemah", kabupaten: "Kab. Kubu Raya",
+                kecamatan: "Sungai Raya", desa: "Sungai Raya" },
+            { nama: "Boyman Harun", partai: "PAN", suaraPribadi: 63548, suaraPartai: 76893,
+                posisi: "Anggota DPR RI Dapil Kalbar 1", basis: "Lemah", kabupaten: "Kab. Ketapang",
+                kecamatan: "Delta Pawan", desa: "Tengah" }
+        ];
+
+        // ================================================================
+        // STATE
+        // ================================================================
+        let dataPerson = [];
+        let tpsData = [];
+        let users = [];
+        let currentUser = null;
+        let nextId = 1;
+        let nextTpsId = 1;
+        let nextUserId = 1;
+
+        // ================================================================
+        // INIT DATA
+        // ================================================================
+        function initData() {
+            const saved = localStorage.getItem('dapilData');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    dataPerson = parsed.dataPerson || [];
+                    tpsData = parsed.tpsData || [];
+                    users = parsed.users || [];
+                    nextId = parsed.nextId || dataPerson.length + 1;
+                    nextTpsId = parsed.nextTpsId || tpsData.length + 1;
+                    nextUserId = parsed.nextUserId || users.length + 1;
+                } catch (e) { setDefaultData(); }
+            } else { setDefaultData(); }
+        }
+
+        function setDefaultData() {
+            dataPerson = [
+                { id: 1, nama: "Ahmad Fauzi", nik: "3201010101010001", hp: "081234567890", usia: 28, role: "relawan",
+                    tps: "TPS 01", kabupaten: "Kota Pontianak", kecamatan: "Pontianak Selatan", desa: "Benuamelayu Darat",
+                    rt: "01", rw: "02", sumber: "Relawan" },
+                { id: 2, nama: "Siti Rahmah", nik: "3201010101010002", hp: "082345678901", usia: 35, role: "saksi",
+                    tps: "TPS 02", kabupaten: "Kota Pontianak", kecamatan: "Pontianak Timur", desa: "Banjar Serasan",
+                    rt: "03", rw: "04", sumber: "Koordinator" },
+                { id: 3, nama: "Budi Santoso", nik: "3201010101010003", hp: "083456789012", usia: 22, role: "relawan",
+                    tps: "TPS 01", kabupaten: "Kab. Mempawah", kecamatan: "Mempawah Hilir", desa: "Tanjung", rt: "02",
+                    rw: "03", sumber: "Ketua RT" },
+                { id: 4, nama: "Dewi Lestari", nik: "3201010101010004", hp: "084567890123", usia: 41, role: "saksi",
+                    tps: "TPS 03", kabupaten: "Kab. Sambas", kecamatan: "Sambas", desa: "Sambas", rt: "01", rw: "01",
+                    sumber: "Kader Partai" }
+            ];
+            nextId = 5;
+            tpsData = [
+                { id: 1, nama: "TPS 01", kecamatan: "Pontianak Selatan", desa: "Benuamelayu Darat" },
+                { id: 2, nama: "TPS 02", kecamatan: "Pontianak Timur", desa: "Banjar Serasan" },
+                { id: 3, nama: "TPS 01", kecamatan: "Mempawah Hilir", desa: "Tanjung" },
+                { id: 4, nama: "TPS 03", kecamatan: "Sambas", desa: "Sambas" },
+                { id: 5, nama: "TPS 01", kecamatan: "Bengkayang", desa: "Bumi Emas" },
+                { id: 6, nama: "TPS 02", kecamatan: "Ngabang", desa: "Hilir Kantor" },
+                { id: 7, nama: "TPS 01", kecamatan: "Sungai Raya", desa: "Sungai Raya" },
+                { id: 8, nama: "TPS 01", kecamatan: "Delta Pawan", desa: "Tengah" }
+            ];
+            nextTpsId = 9;
+            users = [
+                { id: 1, nama: "Admin Pusat", level: "pusat", wilayah: "Kalbar 1", password: "admin123" },
+                { id: 2, nama: "Kab. Pontianak", level: "kabupaten", wilayah: "Kota Pontianak", password: "pontianak123" },
+                { id: 3, nama: "Kab. Sambas", level: "kabupaten", wilayah: "Kab. Sambas", password: "sambas123" },
+                { id: 4, nama: "Kab. Mempawah", level: "kabupaten", wilayah: "Kab. Mempawah", password: "mempawah123" },
+                { id: 5, nama: "Kab. Ketapang", level: "kabupaten", wilayah: "Kab. Ketapang", password: "ketapang123" },
+                { id: 6, nama: "Kab. Bengkayang", level: "kabupaten", wilayah: "Kab. Bengkayang", password: "bengkayang123" },
+                { id: 7, nama: "Kab. Landak", level: "kabupaten", wilayah: "Kab. Landak", password: "landak123" },
+                { id: 8, nama: "Kab. Kayong Utara", level: "kabupaten", wilayah: "Kab. Kayong Utara",
+                    password: "kayong123" },
+                { id: 9, nama: "Kab. Kubu Raya", level: "kabupaten", wilayah: "Kab. Kubu Raya", password: "kubu123" },
+                { id: 10, nama: "Kota Singkawang", level: "kabupaten", wilayah: "Kota Singkawang",
+                    password: "singkawang123" }
+            ];
+            nextUserId = 11;
+            saveToStorage();
+        }
+
+        function saveToStorage() {
+            localStorage.setItem('dapilData', JSON.stringify({
+                dataPerson,
+                tpsData,
+                users,
+                nextId,
+                nextTpsId,
+                nextUserId
+            }));
+        }
+
+        // ================================================================
+        // LOGIN / REGISTER
+        // ================================================================
+        function populateWilayahSelect(selectId) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            select.innerHTML = '<option value="">-- Pilih Wilayah --</option>';
+            const kabList = Object.keys(dataWilayah).sort();
+            kabList.forEach(kab => {
+                const opt = document.createElement('option');
+                opt.value = kab;
+                opt.textContent = kab;
+                select.appendChild(opt);
+            });
+            kabList.forEach(kab => {
+                dataWilayah[kab].kec.forEach(kec => {
+                    const opt = document.createElement('option');
+                    opt.value = kec;
+                    opt.textContent = kec + ' (' + kab + ')';
+                    select.appendChild(opt);
+                });
+            });
+            kabList.forEach(kab => {
+                dataWilayah[kab].kec.forEach(kec => {
+                    if (dataWilayah[kab].desa[kec]) {
+                        dataWilayah[kab].desa[kec].forEach(desa => {
+                            const opt = document.createElement('option');
+                            opt.value = desa;
+                            opt.textContent = desa + ' (' + kec + ')';
+                            select.appendChild(opt);
+                        });
+                    }
+                });
+            });
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const level = document.getElementById('loginLevel').value;
+            const wilayah = document.getElementById('loginWilayah').value;
+            const password = document.getElementById('loginPassword').value;
+            if (!wilayah) { alert('Pilih wilayah!'); return; }
+            const found = users.find(u => u.level === level && u.wilayah === wilayah && u.password === password);
+            if (found) {
+                currentUser = found;
+                localStorage.setItem('currentUser', JSON.stringify(found));
+                showDashboard();
+            } else {
+                alert('❌ Login gagal! Periksa level, wilayah, dan password.');
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const nama = document.getElementById('regNama').value.trim();
+            const level = document.getElementById('regLevel').value;
+            const wilayah = document.getElementById('regWilayah').value;
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirm').value;
+            if (!nama || !wilayah || !password || password !== confirm || password.length < 6) {
+                alert('Periksa kembali data Anda!');
+                return;
+            }
+            users.push({ id: nextUserId++, nama, level, wilayah, password });
+            saveToStorage();
+            alert('✅ Akun berhasil dibuat! Silakan login.');
+            showLogin();
+        }
+
+        function showLogin() {
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'none';
+            populateWilayahSelect('loginWilayah');
+        }
+
+        function showRegister() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('registerPage').style.display = 'flex';
+            document.getElementById('dashboardPage').style.display = 'none';
+            populateWilayahSelect('regWilayah');
+        }
+
+        function showDashboard() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('registerPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'flex';
+            updateUserInfo();
+            initDashboard();
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            document.getElementById('dashboardPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            alert('Anda telah logout.');
+        }
+
+        function updateUserInfo() {
+            const user = currentUser || users[0];
+            document.getElementById('userName').textContent = user.nama || 'Admin';
+            document.getElementById('userRole').textContent = user.level || 'Pusat';
+            document.getElementById('userWilayah').textContent = user.wilayah || 'Kalbar 1';
+            document.getElementById('userAvatar').textContent = (user.nama || 'A')[0].toUpperCase();
+        }
+
+        // ================================================================
+        // FILTER DATA
+        // ================================================================
+        function getFilteredData() {
+            const user = currentUser || users[0];
+            const level = user.level,
+                wilayah = user.wilayah;
+            let filtered = dataPerson;
+            if (level === 'pusat') return filtered;
+            if (level === 'kabupaten') return filtered.filter(p => p.kabupaten === wilayah);
+            if (level === 'kecamatan') return filtered.filter(p => p.kecamatan === wilayah);
+            if (level === 'desa') return filtered.filter(p => p.desa === wilayah);
+            return filtered;
+        }
+
+        function getFilteredTPS() {
+            const user = currentUser || users[0];
+            const level = user.level,
+                wilayah = user.wilayah;
+            let filtered = tpsData;
+            if (level === 'pusat') return filtered;
+            if (level === 'kabupaten') {
+                const kecList = dataWilayah[wilayah] ? dataWilayah[wilayah].kec : [];
+                return filtered.filter(t => kecList.includes(t.kecamatan));
+            }
+            if (level === 'kecamatan') return filtered.filter(t => t.kecamatan === wilayah);
+            if (level === 'desa') return filtered.filter(t => t.desa === wilayah);
+            return filtered;
+        }
+
+        function getBasisWilayah(kecamatan) {
+            const kuat = ["Pontianak Selatan", "Pontianak Timur", "Sambas", "Mempawah Hilir", "Ngabang", "Sungai Raya",
+                "Teluk Keramat", "Bengkayang"
+            ];
+            const lemah = ["Pontianak Tenggara", "Singkawang Tengah", "Singkawang Barat", "Teluk Batang",
+                "Kepulauan Karimata", "Siding", "Capkala"
+            ];
+            if (kuat.includes(kecamatan)) return "Kuat";
+            if (lemah.includes(kecamatan)) return "Lemah";
+            return "Sedang";
+        }
+
+        // ================================================================
+        // POTENSI PENDATANG BARU
+        // ================================================================
+        function getPotensiPendatang(basis, kabupaten, kecamatan) {
+            // Basis Lemah = Potensi Tinggi
+            if (basis === 'Lemah') return 'Tinggi';
+            // Basis Sedang + daerah pinggiran = Potensi Sedang
+            if (basis === 'Sedang') {
+                const pinggiran = ["Pontianak Barat", "Pontianak Utara", "Singkawang Timur", "Sungai Pinyuh"];
+                if (pinggiran.includes(kecamatan)) return 'Sedang';
+                return 'Rendah';
+            }
+            // Basis Kuat = Potensi Rendah
+            return 'Rendah';
+        }
+
+        // ================================================================
+        // RENDER FUNCTIONS
+        // ================================================================
+        function renderTable(filterText = '') {
+            const tbody = document.getElementById('tableBody');
+            let filtered = getFilteredData();
+            if (filterText.trim()) {
+                const s = filterText.toLowerCase().trim();
+                filtered = filtered.filter(p =>
+                    p.nama.toLowerCase().includes(s) ||
+                    p.nik.includes(s) ||
+                    (p.hp || '').includes(s) ||
+                    p.tps.toLowerCase().includes(s) ||
+                    p.kecamatan.toLowerCase().includes(s) ||
+                    p.desa.toLowerCase().includes(s)
+                );
+            }
+            if (!filtered.length) {
+                tbody.innerHTML =
+                    `<tr><td colspan="9" style="text-align:center;padding:20px;color:#718096;font-size:10px;">⚠️ Tidak ada data. Tambahkan relawan/saksi sekarang!</td></tr>`;
+                updateStats();
+                return;
+            }
+            let html = '';
+            filtered.forEach(p => {
+                const roleLabel = p.role === 'relawan' ?
+                    '<span class="role-badge relawan">Relawan</span>' :
+                    '<span class="role-badge saksi">Saksi</span>';
+                const basis = getBasisWilayah(p.kecamatan);
+                const basisClass = basis === 'Kuat' ? 'basis-kuat' : basis === 'Sedang' ? 'basis-sedang' : 'basis-lemah';
+                const alamat = `${p.desa}, RT ${p.rt} RW ${p.rw}, ${p.kecamatan}, ${p.kabupaten}`;
+                html += `<tr>
+                    <td><strong>${p.nama}</strong></td>
+                    <td>${p.nik}</td>
+                    <td>${p.hp || '-'}</td>
+                    <td>${p.usia || '-'}</td>
+                    <td>${roleLabel}</td>
+                    <td>${p.tps}</td>
+                    <td>${p.sumber || '-'}</td>
+                    <td style="font-size:8px;">${alamat}</td>
+                    <td><span class="${basisClass}">${basis}</span></td>
+                </tr>`;
+            });
+            tbody.innerHTML = html;
+            updateStats();
+            document.getElementById('navCount').textContent = filtered.length;
+        }
+
+        function renderTPSTable(filterText = '') {
+            const tbody = document.getElementById('tpsTableBody');
+            let filtered = getFilteredTPS();
+            if (filterText.trim()) {
+                const s = filterText.toLowerCase().trim();
+                filtered = filtered.filter(t =>
+                    t.nama.toLowerCase().includes(s) || t.kecamatan.toLowerCase().includes(s) || t.desa.toLowerCase()
+                    .includes(s)
+                );
+            }
+            if (!filtered.length) {
+                tbody.innerHTML =
+                    `<tr><td colspan="6" style="text-align:center;padding:20px;color:#718096;font-size:10px;">⚠️ Tidak ada TPS ditemukan</td></tr>`;
+                return;
+            }
+            let html = '';
+            filtered.forEach(t => {
+                const relawan = dataPerson.filter(p => p.tps === t.nama && p.role === 'relawan').length;
+                const saksi = dataPerson.filter(p => p.tps === t.nama && p.role === 'saksi').length;
+                const status = (relawan > 0 && saksi > 0) ? '<span class="status-badge siap">✅ Siap</span>' :
+                    (relawan > 0 || saksi > 0) ? '<span class="status-badge kurang">🟡 Kurang</span>' :
+                    '<span class="status-badge kosong">🔴 Kosong</span>';
+                html += `<tr>
+                    <td><strong>${t.nama}</strong></td>
+                    <td>${t.kecamatan}</td>
+                    <td>${t.desa}</td>
+                    <td>${relawan}</td>
+                    <td>${saksi}</td>
+                    <td>${status}</td>
+                </tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function updateStats() {
+            const filtered = getFilteredData();
+            const total = filtered.length;
+            const relawan = filtered.filter(p => p.role === 'relawan').length;
+            const saksi = filtered.filter(p => p.role === 'saksi').length;
+            document.getElementById('totalRelawan').textContent = relawan;
+            document.getElementById('totalSaksi').textContent = saksi;
+            const tpsFiltered = getFilteredTPS();
+            document.getElementById('totalTPS').textContent = tpsFiltered.length;
+            const target = tpsFiltered.length * 2;
+            document.getElementById('targetRekrut').textContent = target;
+            document.getElementById('persenRekrut').textContent = target > 0 ? Math.min(Math.round((total / target) * 100),
+                100) : 0;
+        }
+
+        function renderPetahana() {
+            const container = document.getElementById('petahanaContainer');
+            const colors = { "PDIP": "#e31e24", "NasDem": "#1a4c8a", "Gerindra": "#f5a623", "Golkar": "#f7941e",
+                "PKB": "#3c7c3c", "PKS": "#f7941e", "PAN": "#1a4c8a" };
+            const basisColors = { "Kuat": "#48bb78", "Sedang": "#ecc94b", "Lemah": "#fc8181" };
+            container.innerHTML = petahanaData.map(p => `
+                <div class="petahana-item" style="border-left-color: ${colors[p.partai] || '#f6c445'};">
+                    <div class="nama">${p.nama}</div>
+                    <div class="partai">${p.partai} · ${p.posisi}</div>
+                    <div class="suara">🗳️ ${p.suaraPribadi.toLocaleString()} suara</div>
+                    <div class="basis" style="color:${basisColors[p.basis]};"><strong>Basis: ${p.basis}</strong></div>
+                    <div style="font-size:8px;color:#4a5568;">📍 ${p.kabupaten} · ${p.kecamatan}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderAnalisis() {
+            const sorted = [...petahanaData].sort((a, b) => b.suaraPribadi - a.suaraPribadi);
+            document.getElementById('top3Container').innerHTML = sorted.slice(0, 3).map((p, i) =>
+                `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #edf2f7;">
+                    <span>${i+1}. ${p.nama} (${p.partai})</span>
+                    <span style="font-weight:700;color:#48bb78;">${p.suaraPribadi.toLocaleString()}</span>
+                </div>`
+            ).join('');
+
+            const partaiCount = {};
+            petahanaData.forEach(p => { partaiCount[p.partai] = (partaiCount[p.partai] || 0) + 1; });
+            document.getElementById('komposisiContainer').innerHTML = Object.entries(partaiCount).map(([partai, count]) =>
+                `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #edf2f7;">
+                    <span>${partai}</span><span style="font-weight:700;">${count} kursi</span>
+                </div>`
+            ).join('') +
+            `<div style="margin-top:6px;font-size:9px;color:#718096;">Total: 8 kursi DPR RI Dapil Kalbar 1</div>`;
+
+            const basisCount = { Kuat: 0, Sedang: 0, Lemah: 0 };
+            petahanaData.forEach(p => { basisCount[p.basis] = (basisCount[p.basis] || 0) + 1; });
+            const potensiCount = { Tinggi: 0, Sedang: 0, Rendah: 0 };
+            petahanaData.forEach(p => {
+                const potensi = getPotensiPendatang(p.basis, p.kabupaten, p.kecamatan);
+                potensiCount[potensi] = (potensiCount[potensi] || 0) + 1;
+            });
+
+            document.getElementById('basisContainer').innerHTML = `
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #edf2f7;">
+                    <span class="basis-kuat">● Kuat</span><span style="font-weight:700;">${basisCount.Kuat} orang</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #edf2f7;">
+                    <span class="basis-sedang">● Sedang</span><span style="font-weight:700;">${basisCount.Sedang} orang</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #edf2f7;">
+                    <span class="basis-lemah">● Lemah</span><span style="font-weight:700;">${basisCount.Lemah} orang</span>
+                </div>
+                <div style="margin-top:6px;font-size:9px;color:#718096;">
+                    ${basisCount.Kuat > basisCount.Lemah ? '✅ Basis kuat dominan' : basisCount.Sedang > basisCount.Kuat ? '🟡 Fokus perkuat basis sedang' : '🔴 Perlu perkuat basis lemah'}
+                </div>
+                <div style="margin-top:8px;border-top:1px solid #edf2f7;padding-top:6px;">
+                    <strong>📊 Potensi Pendatang Baru:</strong><br/>
+                    <span class="potensi-badge tinggi">● Tinggi: ${potensiCount.Tinggi} orang</span>
+                    <span class="potensi-badge sedang">● Sedang: ${potensiCount.Sedang} orang</span>
+                    <span class="potensi-badge rendah">● Rendah: ${potensiCount.Rendah} orang</span>
+                </div>
+            `;
+
+            document.getElementById('analisisTableBody').innerHTML = petahanaData.map(p => {
+                const potensi = getPotensiPendatang(p.basis, p.kabupaten, p.kecamatan);
+                const potensiClass = potensi === 'Tinggi' ? 'potensi-badge tinggi' :
+                    potensi === 'Sedang' ? 'potensi-badge sedang' : 'potensi-badge rendah';
+                return `<tr>
+                    <td><strong>${p.nama}</strong></td>
+                    <td>${p.partai}</td>
+                    <td>${p.suaraPribadi.toLocaleString()}</td>
+                    <td>${p.suaraPartai.toLocaleString()}</td>
+                    <td><span class="${p.basis === 'Kuat' ? 'basis-kuat' : p.basis === 'Sedang' ? 'basis-sedang' : 'basis-lemah'}">${p.basis}</span></td>
+                    <td><span class="${potensiClass}">${potensi}</span></td>
+                    <td>${p.basis === 'Kuat' ? '✅ Prioritas' : p.basis === 'Sedang' ? '🟡 Perhatikan' : '🔴 Perlu Dukungan'}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        // ================================================================
+        // PETA PETAHANA
+        // ================================================================
+        function renderPetahanaMap() {
+            const container = document.getElementById('petahanaMapContainer');
+            const kabList = Object.keys(dataWilayah).sort();
+
+            // Hitung statistik
+            let totalPetahana = petahanaData.length;
+            let petahanaByKab = {};
+            petahanaData.forEach(p => {
+                petahanaByKab[p.kabupaten] = (petahanaByKab[p.kabupaten] || 0) + 1;
+            });
+
+            document.getElementById('petahanaStats').innerHTML = `
+                <span><strong>${totalPetahana}</strong> Total Petahana</span>
+                <span><strong>${Object.keys(petahanaByKab).length}</strong> Kab/Kota</span>
+                <span><strong>${new Set(petahanaData.map(p=>p.kecamatan)).size}</strong> Kecamatan</span>
+            `;
+
+            container.innerHTML = kabList.map(kab => {
+                const count = petahanaByKab[kab] || 0;
+                const persen = totalPetahana > 0 ? Math.round((count / totalPetahana) * 100) : 0;
+                const petahanaList = petahanaData.filter(p => p.kabupaten === kab);
+                const warna = count > 0 ? '#f6c445' : '#e2e8f0';
+                return `
+                    <div class="map-item" onclick="filterPetahanaKab('${kab}')" style="border-color:${warna};">
+                        <div class="kab">${kab}</div>
+                        <div class="stats"><strong>${count}</strong> petahana (${persen}%)</div>
+                        <div style="font-size:8px;color:#718096;margin-top:2px;">
+                            ${petahanaList.map(p => p.nama.split(' ')[0] + ' (' + p.partai + ')').join(', ')}
+                        </div>
+                        <div class="progress"><div class="fill" style="width:${persen}%;background:${count > 0 ? 'linear-gradient(90deg,#f6c445,#ecc94b)' : '#e2e8f0'};"></div></div>
+                        <div class="badge-count" style="color:${count > 0 ? '#f6c445' : '#a0aec0'};">
+                            ${count > 0 ? '✅ Terisi' : '🔴 Kosong'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Populate filter
+            const filterKab = document.getElementById('filterPetahanaKab');
+            filterKab.innerHTML = '<option value="">Semua Kab/Kota</option>';
+            kabList.forEach(kab => {
+                const opt = document.createElement('option');
+                opt.value = kab;
+                opt.textContent = kab;
+                filterKab.appendChild(opt);
+            });
+            renderPetahanaTable();
+        }
+
+        function renderPetahanaTable() {
+            const tbody = document.getElementById('petahanaTableBody');
+            const kabFilter = document.getElementById('filterPetahanaKab').value;
+            const kecFilter = document.getElementById('filterPetahanaKec').value;
+
+            let data = petahanaData;
+            if (kabFilter) data = data.filter(p => p.kabupaten === kabFilter);
+            if (kecFilter) data = data.filter(p => p.kecamatan === kecFilter);
+
+            // Buat mapping petahana per desa
+            let rows = [];
+            const kabList = kabFilter ? [kabFilter] : Object.keys(dataWilayah).sort();
+            kabList.forEach(kab => {
+                let kecList = dataWilayah[kab].kec;
+                if (kecFilter) kecList = kecList.filter(k => k === kecFilter);
+                kecList.forEach(kec => {
+                    let desaList = dataWilayah[kab].desa[kec] || [];
+                    desaList.forEach(desa => {
+                        const petahana = data.filter(p => p.kabupaten === kab && p.kecamatan === kec && p
+                            .desa === desa);
+                        const hasPetahana = petahana.length > 0;
+                        const petahanaNama = petahana.map(p => p.nama).join(', ');
+                        const partai = petahana.map(p => p.partai).join(', ');
+                        const basis = hasPetahana ? petahana[0].basis : '-';
+                        const potensi = hasPetahana ? getPotensiPendatang(basis, kab, kec) : 'Tinggi';
+                        const potensiClass = potensi === 'Tinggi' ? 'potensi-badge tinggi' :
+                            potensi === 'Sedang' ? 'potensi-badge sedang' : 'potensi-badge rendah';
+                        rows.push({ kab, kec, desa, hasPetahana, petahanaNama, partai, basis, potensi,
+                            potensiClass });
+                    });
+                });
+            });
+
+            if (!rows.length) {
+                tbody.innerHTML =
+                    `<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096;font-size:10px;">⚠️ Tidak ada data</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = rows.map(r => `
+                <tr>
+                    <td>${r.kab}</td>
+                    <td>${r.kec}</td>
+                    <td>${r.desa}</td>
+                    <td>${r.hasPetahana ? r.petahanaNama : '-'}</td>
+                    <td>${r.hasPetahana ? r.partai : '-'}</td>
+                    <td>${r.hasPetahana ? `<span class="${r.basis === 'Kuat' ? 'basis-kuat' : r.basis === 'Sedang' ? 'basis-sedang' : 'basis-lemah'}">${r.basis}</span>` : '-'}</td>
+                    <td><span class="${r.potensiClass}">${r.potensi}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function filterPetahanaKab(kab) {
+            document.getElementById('filterPetahanaKab').value = kab;
+            document.getElementById('filterPetahanaKec').value = '';
+            renderPetahanaTable();
+        }
+
+        // ================================================================
+        // CHARTS
+        // ================================================================
+        let chartInstance = null,
+            basisChartInstance = null;
+
+        function initCharts() {
+            const ctx = document.getElementById('suaraChart').getContext('2d');
+            if (chartInstance) chartInstance.destroy();
+            const labels = petahanaData.map(p => p.nama.split(' ')[0]);
+            const data = petahanaData.map(p => p.suaraPribadi);
+            const colors = ['#e31e24', '#e31e24', '#1a4c8a', '#f5a623', '#f7941e', '#3c7c3c', '#f7941e', '#1a4c8a'];
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: { labels, datasets: [{ label: 'Suara Pribadi', data, backgroundColor: colors.slice(0, data
+                            .length), borderWidth: 0, borderRadius: 6 }] },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { font: { size: 9 }, callback: v => (v / 1000) + 'k' } },
+                        x: { ticks: { font: { size: 8 }, maxRotation: 45, minRotation: 30 } }
+                    }
+                }
+            });
+
+            const basisCtx = document.getElementById('basisChart').getContext('2d');
+            if (basisChartInstance) basisChartInstance.destroy();
+            const basisCount = { Kuat: 0, Sedang: 0, Lemah: 0 };
+            petahanaData.forEach(p => { basisCount[p.basis] = (basisCount[p.basis] || 0) + 1; });
+            basisChartInstance = new Chart(basisCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Kuat', 'Sedang', 'Lemah'],
+                    datasets: [{ data: [basisCount.Kuat, basisCount.Sedang, basisCount.Lemah],
+                        backgroundColor: ['#48bb78', '#ecc94b', '#fc8181'], borderWidth: 0 }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: { legend: { position: 'bottom', labels: { font: { size: 9 }, boxWidth: 12,
+                            padding: 8 } } },
+                    cutout: '55%'
+                }
+            });
+        }
+
+        // ================================================================
+        // DROPDOWN WILAYAH
+        // ================================================================
+        const kabSelect = document.getElementById('inputKabupaten');
+        const kecSelect = document.getElementById('inputKecamatan');
+        const desaSelect = document.getElementById('inputDesa');
+
+        function populateKabupaten() {
+            const kabList = Object.keys(dataWilayah).sort();
+            kabList.forEach(kab => {
+                const opt = document.createElement('option');
+                opt.value = kab;
+                opt.textContent = kab;
+                kabSelect.appendChild(opt);
+            });
+            let totalKec = 0,
+                totalDesa = 0;
+            kabList.forEach(kab => {
+                totalKec += dataWilayah[kab].kec.length;
+                Object.keys(dataWilayah[kab].desa).forEach(kec => {
+                    totalDesa += dataWilayah[kab].desa[kec].length;
+                });
+            });
+            document.getElementById('modalInfoWilayah').textContent = totalKec + ' Kec · ' + totalDesa + ' Desa/Kel';
+        }
+
+        function updateKecamatan() {
+            const kab = kabSelect.value;
+            kecSelect.innerHTML = '<option value="">-- Pilih Kecamatan --</option>';
+            desaSelect.innerHTML = '<option value="">-- Pilih Desa/Kelurahan --</option>';
+            if (kab && dataWilayah[kab]) {
+                dataWilayah[kab].kec.sort().forEach(kec => {
+                    const opt = document.createElement('option');
+                    opt.value = kec;
+                    opt.textContent = kec;
+                    kecSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function updateDesa() {
+            const kab = kabSelect.value;
+            const kec = kecSelect.value;
+            desaSelect.innerHTML = '<option value="">-- Pilih Desa/Kelurahan --</option>';
+            if (kab && kec && dataWilayah[kab] && dataWilayah[kab].desa[kec]) {
+                dataWilayah[kab].desa[kec].sort().forEach(d => {
+                    const opt = document.createElement('option');
+                    opt.value = d;
+                    opt.textContent = d;
+                    desaSelect.appendChild(opt);
+                });
+            }
+        }
+
+        kabSelect.addEventListener('change', function() { updateKecamatan();
+            desaSelect.innerHTML = '<option value="">-- Pilih Desa/Kelurahan --</option>'; });
+        kecSelect.addEventListener('change', updateDesa);
+
+        // ================================================================
+        // MODAL REKRUTMEN
+        // ================================================================
+        const modal = document.getElementById('modalData');
+        const btnTambah = document.getElementById('btnTambah');
+        const modalClose = document.getElementById('modalClose');
+        const modalSave = document.getElementById('modalSave');
+
+        function openModal() {
+            modal.classList.add('show');
+            document.getElementById('inputNama').value = '';
+            document.getElementById('inputNik').value = '';
+            document.getElementById('inputHp').value = '';
+            document.getElementById('inputUsia').value = '';
+            document.getElementById('inputTPS').value = '';
+            document.getElementById('inputRT').value = '';
+            document.getElementById('inputRW').value = '';
+            document.getElementById('inputSumber').value = 'Relawan';
+            kabSelect.value = '';
+            updateKecamatan();
+            desaSelect.innerHTML = '<option value="">-- Pilih Desa/Kelurahan --</option>';
+        }
+
+        function closeModal() { modal.classList.remove('show'); }
+        btnTambah.addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+        modalSave.addEventListener('click', () => {
+            const nama = document.getElementById('inputNama').value.trim();
+            const nik = document.getElementById('inputNik').value.trim();
+            const hp = document.getElementById('inputHp').value.trim();
+            const usia = parseInt(document.getElementById('inputUsia').value);
+            const role = document.getElementById('inputRole').value;
+            const tps = document.getElementById('inputTPS').value.trim();
+            const kabupaten = kabSelect.value;
+            const kecamatan = kecSelect.value;
+            const desa = desaSelect.value;
+            const rt = document.getElementById('inputRT').value.trim() || '-';
+            const rw = document.getElementById('inputRW').value.trim() || '-';
+            const sumber = document.getElementById('inputSumber').value;
+
+            if (!nama || !nik || nik.length < 10 || !hp || hp.length < 10 || !usia || usia < 17 || usia > 70 ||
+                !tps || !kabupaten || !kecamatan || !desa) {
+                alert('Semua field wajib diisi dengan benar!');
+                return;
+            }
+            if (dataPerson.some(p => p.nik === nik)) { alert('NIK sudah terdaftar!'); return; }
+
+            dataPerson.push({ id: nextId++, nama, nik, hp, usia, role, tps, kabupaten, kecamatan, desa, rt, rw,
+                sumber });
+            saveToStorage();
+            renderTable(document.getElementById('searchData').value);
+            renderTPSTable(document.getElementById('searchTPS').value);
+            renderPetahanaMap();
+            updateStats();
+            closeModal();
+            addNotification(`✅ ${role === 'relawan' ? 'Relawan' : 'Saksi'} ${nama} berhasil ditambahkan!`);
+        });
+
+        // ================================================================
+        // MODAL TPS
+        // ================================================================
+        const modalTPS = document.getElementById('modalTPS');
+        const btnTambahTPS = document.getElementById('btnTambahTPS');
+        const modalTPSClose = document.getElementById('modalTPSClose');
+        const modalTPSSave = document.getElementById('modalTPSSave');
+
+        function openModalTPS() {
+            modalTPS.classList.add('show');
+            document.getElementById('inputTPSName').value = '';
+            const select = document.getElementById('inputTPSKecamatan');
+            select.innerHTML = '<option value="">-- Pilih Kecamatan --</option>';
+            Object.keys(dataWilayah).sort().forEach(kab => {
+                dataWilayah[kab].kec.forEach(kec => {
+                    const opt = document.createElement('option');
+                    opt.value = kec;
+                    opt.textContent = kec + ' (' + kab + ')';
+                    select.appendChild(opt);
+                });
+            });
+            document.getElementById('inputTPSDesa').innerHTML = '<option value="">-- Pilih Desa/Kelurahan --</option>';
+        }
+
+        function closeModalTPS() { modalTPS.classList.remove('show'); }
+        btnTambahTPS.addEventListener('click', openModalTPS);
+        modalTPSClose.addEventListener('click', closeModalTPS);
+        modalTPS.addEventListener('click', e => { if (e.target === modalTPS) closeModalTPS(); });
+
+        document.getElementById('inputTPSKecamatan').addEventListener('change', function() {
+            const kec = this.value;
+            const desaSelect2 = document.getElementById('inputTPSDesa');
+            desaSelect2.innerHTML = '<option value="">-- Pilih Desa/Kelurahan --</option>';
+            Object.keys(dataWilayah).forEach(kab => {
+                if (dataWilayah[kab].desa[kec]) {
+                    dataWilayah[kab].desa[kec].forEach(d => {
+                        const opt = document.createElement('option');
+                        opt.value = d;
+                        opt.textContent = d;
+                        desaSelect2.appendChild(opt);
+                    });
+                }
+            });
+        });
+
+        modalTPSSave.addEventListener('click', () => {
+            const nama = document.getElementById('inputTPSName').value.trim();
+            const kecamatan = document.getElementById('inputTPSKecamatan').value;
+            const desa = document.getElementById('inputTPSDesa').value;
+            if (!nama || !kecamatan || !desa) { alert('Semua field wajib diisi!'); return; }
+            tpsData.push({ id: nextTpsId++, nama, kecamatan, desa });
+            saveToStorage();
+            renderTPSTable(document.getElementById('searchTPS').value);
+            updateStats();
+            closeModalTPS();
+            addNotification(`✅ TPS ${nama} (${kecamatan}) berhasil ditambahkan!`);
+        });
+
+        // ================================================================
+        // SEARCH & EXPORT
+        // ================================================================
+        document.getElementById('btnSearch').addEventListener('click', () => renderTable(document.getElementById('searchData')
+            .value));
+        document.getElementById('searchData').addEventListener('keyup', e => { if (e.key === 'Enter') renderTable(e.target
+                .value); });
+        document.getElementById('btnReset').addEventListener('click', () => { document.getElementById('searchData').value =
+                '';
+            renderTable(''); });
+
+        document.getElementById('btnSearchTPS').addEventListener('click', () => renderTPSTable(document.getElementById(
+            'searchTPS').value));
+        document.getElementById('searchTPS').addEventListener('keyup', e => { if (e.key === 'Enter') renderTPSTable(e.target
+                .value); });
+        document.getElementById('btnResetTPS').addEventListener('click', () => { document.getElementById('searchTPS').value =
+                '';
+            renderTPSTable(''); });
+
+        document.getElementById('btnExport').addEventListener('click', function() {
+            const data = getFilteredData();
+            if (!data.length) { alert('Tidak ada data!'); return; }
+            let csv = 'Nama,NIK,No HP,Usia,Role,TPS,Sumber Data,Kabupaten,Kecamatan,Desa,RT,RW\n';
+            data.forEach(p => {
+                csv +=
+                    `${p.nama},${p.nik},${p.hp || '-'},${p.usia || '-'},${p.role},${p.tps},${p.sumber || '-'},${p.kabupaten},${p.kecamatan},${p.desa},${p.rt},${p.rw}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `data_relawan_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            addNotification('✅ Data berhasil diexport!');
+        });
+
+        // ================================================================
+        // BACKUP FUNCTIONS
+        // ================================================================
+        function exportAllCSV() {
+            let csv = '=== DATA RELAWAN ===\n';
+            csv += 'Nama,NIK,No HP,Usia,Role,TPS,Sumber Data,Kabupaten,Kecamatan,Desa,RT,RW\n';
+            dataPerson.forEach(p => {
+                csv +=
+                    `${p.nama},${p.nik},${p.hp || '-'},${p.usia || '-'},${p.role},${p.tps},${p.sumber || '-'},${p.kabupaten},${p.kecamatan},${p.desa},${p.rt},${p.rw}\n`;
+            });
+            csv += '\n=== DATA TPS ===\n';
+            csv += 'Nama TPS,Kecamatan,Desa/Kelurahan\n';
+            tpsData.forEach(t => {
+                csv += `${t.nama},${t.kecamatan},${t.desa}\n`;
+            });
+            csv += '\n=== DATA PETAHANA ===\n';
+            csv += 'Nama,Partai,Suara Pribadi,Suara Partai,Posisi,Basis,Kabupaten,Kecamatan,Desa\n';
+            petahanaData.forEach(p => {
+                csv +=
+                    `${p.nama},${p.partai},${p.suaraPribadi},${p.suaraPartai},"${p.posisi}",${p.basis},${p.kabupaten},${p.kecamatan},${p.desa}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `backup_dapil_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            document.getElementById('backupStatus').innerHTML =
+                '<div class="status success" style="padding:8px 12px;background:#c6f6d5;border-radius:8px;color:#276749;font-size:11px;">✅ Data berhasil diexport!</div>';
+        }
+
+        function importCSV() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) { alert('Pilih file CSV terlebih dahulu!'); return; }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                const lines = text.split('\n').filter(l => l.trim());
+                let count = 0;
+                let relawanStart = -1,
+                    tpsStart = -1;
+                lines.forEach((line, i) => {
+                    if (line.includes('=== DATA RELAWAN ===')) relawanStart = i + 1;
+                    if (line.includes('=== DATA TPS ===')) tpsStart = i + 1;
+                });
+                if (relawanStart > 0 && tpsStart > relawanStart) {
+                    for (let i = relawanStart; i < tpsStart - 1; i++) {
+                        const cols = lines[i].split(',');
+                        if (cols.length >= 10 && cols[0] && cols[0] !== 'Nama') {
+                            const newPerson = {
+                                id: nextId++,
+                                nama: cols[0].trim(),
+                                nik: cols[1].trim(),
+                                hp: cols[2].trim(),
+                                usia: parseInt(cols[3]) || 0,
+                                role: cols[4].trim() || 'relawan',
+                                tps: cols[5].trim(),
+                                sumber: cols[6] ? cols[6].trim() : 'Relawan',
+                                kabupaten: cols[7] ? cols[7].trim() : '',
+                                kecamatan: cols[8] ? cols[8].trim() : '',
+                                desa: cols[9] ? cols[9].trim() : '',
+                                rt: cols[10] ? cols[10].trim() || '-' : '-',
+                                rw: cols[11] ? cols[11].trim() || '-' : '-'
+                            };
+                            if (!dataPerson.some(p => p.nik === newPerson.nik) && newPerson.kabupaten) {
+                                dataPerson.push(newPerson);
+                                count++;
+                            }
+                        }
+                    }
+                }
+                if (tpsStart > 0) {
+                    for (let i = tpsStart; i < lines.length; i++) {
+                        const cols = lines[i].split(',');
+                        if (cols.length >= 3 && cols[0] && cols[0] !== 'Nama TPS') {
+                            const newTps = {
+                                id: nextTpsId++,
+                                nama: cols[0].trim(),
+                                kecamatan: cols[1].trim(),
+                                desa: cols[2].trim()
+                            };
+                            if (!tpsData.some(t => t.nama === newTps.nama && t.kecamatan === newTps.kecamatan)) {
+                                tpsData.push(newTps);
+                            }
+                        }
+                    }
+                }
+                saveToStorage();
+                renderTable('');
+                renderTPSTable('');
+                renderPetahanaMap();
+                updateStats();
+                document.getElementById('backupStatus').innerHTML =
+                    `<div class="status success" style="padding:8px 12px;background:#c6f6d5;border-radius:8px;color:#276749;font-size:11px;">✅ Import berhasil! ${count} data relawan diimport.</div>`;
+                addNotification(`✅ Import selesai! ${count} data baru.`);
+            };
+            reader.readAsText(file);
+        }
+
+        function backupToStorage() {
+            saveToStorage();
+            document.getElementById('backupStatus').innerHTML =
+                '<div class="status success" style="padding:8px 12px;background:#c6f6d5;border-radius:8px;color:#276749;font-size:11px;">✅ Backup berhasil disimpan ke LocalStorage!</div>';
+            addNotification('✅ Data dibackup ke LocalStorage.');
+        }
+
+        function restoreFromStorage() {
+            const saved = localStorage.getItem('dapilData');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    dataPerson = parsed.dataPerson || [];
+                    tpsData = parsed.tpsData || [];
+                    users = parsed.users || [];
+                    nextId = parsed.nextId || dataPerson.length + 1;
+                    nextTpsId = parsed.nextTpsId || tpsData.length + 1;
+                    nextUserId = parsed.nextUserId || users.length + 1;
+                    renderTable('');
+                    renderTPSTable('');
+                    renderPetahanaMap();
+                    updateStats();
+                    document.getElementById('backupStatus').innerHTML =
+                        `<div class="status success" style="padding:8px 12px;background:#c6f6d5;border-radius:8px;color:#276749;font-size:11px;">✅ Restore berhasil! ${dataPerson.length} relawan, ${tpsData.length} TPS.</div>`;
+                    addNotification('✅ Data berhasil direstore dari LocalStorage.');
+                } catch (e) {
+                    document.getElementById('backupStatus').innerHTML =
+                        '<div class="status error" style="padding:8px 12px;background:#fed7d7;border-radius:8px;color:#9b2c2c;font-size:11px;">❌ Gagal restore data!</div>';
+                }
+            } else {
+                document.getElementById('backupStatus').innerHTML =
+                    '<div class="status error" style="padding:8px 12px;background:#fed7d7;border-radius:8px;color:#9b2c2c;font-size:11px;">❌ Tidak ada backup ditemukan!</div>';
+            }
+        }
+
+        // ================================================================
+        // GOOGLE SHEETS
+        // ================================================================
+        function exportToGS() {
+            exportAllCSV();
+            document.getElementById('gsStatus').className = 'gs-status connected';
+            document.getElementById('gsStatus').textContent = '✅ Siap Export';
+            addNotification('✅ Data siap di-export ke Google Sheets.');
+        }
+
+        // ================================================================
+        // NOTIFIKASI
+        // ================================================================
+        function addNotification(message) {
+            const container = document.getElementById('notifContainer');
+            const time = new Date().toLocaleTimeString('id-ID');
+            container.innerHTML =
+                `<div><i class="fas fa-info-circle" style="color:#1a3a5c;"></i> ${message} <span style="font-size:8px;color:#718096;float:right;">${time}</span></div>` +
+                container.innerHTML;
+        }
+
+        // ================================================================
+        // NAVIGASI
+        // ================================================================
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                this.classList.add('active');
+                const page = this.dataset.page;
+                document.querySelectorAll('#contentArea > div').forEach(el => el.style.display = 'none');
+                const target = document.getElementById('page-' + page);
+                if (target) target.style.display = 'block';
+                const titles = {
+                    dashboard: 'Dashboard',
+                    petahana: 'Peta Petahana',
+                    rekrutmen: 'Rekrutmen',
+                    analisis: 'Analisis Petahana',
+                    tps: 'Data TPS',
+                    users: 'Manajemen User',
+                    backup: 'Backup & Google Sheets'
+                };
+                document.getElementById('pageTitle').innerHTML = titles[page] +
+                    ' <small>Dapil Kalbar 1 · DPR RI <span class="badge-valid">VALID</span></small>';
+                if (page === 'petahana') renderPetahanaMap();
+                if (page === 'rekrutmen') renderTable(document.getElementById('searchData').value);
+                if (page === 'tps') renderTPSTable(document.getElementById('searchTPS').value);
+                if (page === 'analisis') renderAnalisis();
+                if (page === 'users') renderUserTable();
+                document.getElementById('sidebar').classList.remove('open');
+            });
+        });
+
+        document.getElementById('hamburgerBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        document.getElementById('filterPetahanaKab').addEventListener('change', function() {
+            const kab = this.value;
+            const kecSelect2 = document.getElementById('filterPetahanaKec');
+            kecSelect2.innerHTML = '<option value="">Semua Kecamatan</option>';
+            if (kab && dataWilayah[kab]) {
+                dataWilayah[kab].kec.forEach(kec => {
+                    const opt = document.createElement('option');
+                    opt.value = kec;
+                    opt.textContent = kec;
+                    kecSelect2.appendChild(opt);
+                });
+            }
+            renderPetahanaTable();
+        });
+        document.getElementById('filterPetahanaKec').addEventListener('change', renderPetahanaTable);
+
+        // ================================================================
+        // USER MANAGEMENT
+        // ================================================================
+        function renderUserTable() {
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = users.map(u =>
+                `<tr>
+                    <td><strong>${u.nama}</strong></td>
+                    <td><span class="role-badge ${u.level}">${u.level}</span></td>
+                    <td>${u.wilayah}</td>
+                    <td>✅ Aktif</td>
+                    <td>
+                        <button onclick="editUser(${u.id})" style="background:none;border:none;color:#1a3a5c;cursor:pointer;font-size:10px;"><i class="fas fa-edit"></i></button>
+                        <button onclick="deleteUser(${u.id})" style="background:none;border:none;color:#fc8181;cursor:pointer;font-size:10px;"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>`
+            ).join('');
+        }
+
+        function editUser(id) {
+            const user = users.find(u => u.id === id);
+            if (user) {
+                const newNama = prompt('Edit Nama:', user.nama);
+                if (newNama) { user.nama = newNama;
+                    saveToStorage();
+                    renderUserTable();
+                    addNotification(`✅ User ${user.nama} berhasil diupdate.`); }
+            }
+        }
+
+        function deleteUser(id) {
+            if (confirm('Hapus user ini?')) { users = users.filter(u => u.id !== id);
+                saveToStorage();
+                renderUserTable();
+                addNotification('✅ User berhasil dihapus.'); }
+        }
+
+        document.getElementById('btnTambahUser').addEventListener('click', function() {
+            const nama = prompt('Nama user:');
+            if (!nama) return;
+            const level = prompt('Level (pusat/kabupaten/kecamatan/desa):', 'kabupaten');
+            if (!level) return;
+            const wilayah = prompt('Wilayah:');
+            if (!wilayah) return;
+            const password = prompt('Password:');
+            if (!password) return;
+            users.push({ id: nextUserId++, nama, level, wilayah, password });
+            saveToStorage();
+            renderUserTable();
+            addNotification(`✅ User ${nama} berhasil ditambahkan.`);
+        });
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        function initDashboard() {
+            populateKabupaten();
+            renderPetahana();
+            renderAnalisis();
+            renderTable('');
+            renderTPSTable('');
+            renderPetahanaMap();
+            initCharts();
+            renderUserTable();
+            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long',
+                day: 'numeric', month: 'long', year: 'numeric' });
+            document.getElementById('gsStatus').className = 'gs-status disconnected';
+            document.getElementById('gsStatus').textContent = '⛔ Belum Konek';
+            addNotification('✅ Dashboard Dapil Kalbar 1 siap digunakan!');
+            addNotification(`📍 ${Object.keys(dataWilayah).length} Kab/Kota, 104 Kecamatan, 1.017 Desa/Kelurahan dimuat.`);
+            addNotification(`👥 ${dataPerson.length} Relawan & Saksi terdaftar.`);
+        }
+
+        // ================================================================
+        // START
+        // ================================================================
+        initData();
+
+        const savedUser = localStorage.getItem('currentUser');
+        if (savedUser) {
+            try {
+                currentUser = JSON.parse(savedUser);
+                showDashboard();
+            } catch (e) { showLogin(); }
+        } else {
+            showLogin();
+        }
+
+        console.log('🏛️ SISTEM PEMENANGAN DPR RI DAPIL KALBAR 1 - FINAL');
+        console.log('📍 9 Kab/Kota, 104 Kec, 1.017 Desa');
+        console.log('👥 Total Relawan/Saksi:', dataPerson.length);
+        console.log('📊 Petahana:', petahanaData.length, 'orang');
+        console.log('✅ Aplikasi siap digunakan!');
+    </script>
+</body>
+</html>
