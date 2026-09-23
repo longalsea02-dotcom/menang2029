@@ -15,31 +15,10 @@
 <!-- Leaflet CSS for GIS Mapping -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-<!-- Local & CDN Script Loaders with Fallback -->
-<script src="./chart.umd.min.js.unduhan"></script>
-<script src="./Sistem Terintegrasi Analisis TPS — Pemilu 2029_files/chart.umd.min.js.unduhan"></script>
-<script>
-  if (typeof Chart === 'undefined') {
-    document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js"><\/script>');
-  }
-</script>
-
-<script src="./xlsx.full.min.js.unduhan"></script>
-<script src="./Sistem Terintegrasi Analisis TPS — Pemilu 2029_files/xlsx.full.min.js.unduhan"></script>
-<script>
-  if (typeof XLSX === 'undefined') {
-    document.write('<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"><\/script>');
-  }
-</script>
-
-<script src="./jspdf.umd.min.js.unduhan"></script>
-<script src="./Sistem Terintegrasi Analisis TPS — Pemilu 2029_files/jspdf.umd.min.js.unduhan"></script>
-<script>
-  if (!window.jspdf) {
-    document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"><\/script>');
-  }
-</script>
-
+<!-- CDN Script Loaders: Chart.js, SheetJS, jsPDF, Leaflet -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
@@ -6056,16 +6035,6 @@ function fallbackCopy(text, btn) {
 }
 
 // --- ICONIC GIS WAR ROOM MAP (KAB. KUBU RAYA & KAB. MEMPAWAH) ---
-const KECAMATAN_KUBU_RAYA = [
-  'Sungai Raya', 'Sungai Kakap', 'Sungai Ambawang', 'Kuala Mandor B', 
-  'Rasau Jaya', 'Teluk Pakedai', 'Terentang', 'Kubu', 'Batu Ampar'
-];
-
-const KECAMATAN_MEMPAWAH = [
-  'Mempawah Hilir', 'Mempawah Timur', 'Sungai Pinyuh', 'Anjongan', 
-  'Toho', 'Sadaniang', 'Sungai Kunyit', 'Segedong', 'Jongkat'
-];
-
 let currentMapRegencyFilter = '';
 let currentMapTipologiFilter = '';
 let currentMapKecFilter = '';
