@@ -1832,10 +1832,207 @@ td.num-cell {
 .dash-collapsible-body {
   padding: 18px;
 }
+
+/* ==================== PRINT & VOLUNTEER FIELD STYLES ==================== */
+#printableFormSection {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 8mm 10mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+    font-size: 11px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .app-container,
+  .auth-status-bar,
+  header.command-header,
+  .nav-tabs,
+  .btn,
+  .action-btn,
+  .modal-backdrop,
+  .sync-drawer,
+  #passcodeGate,
+  .scope-locked-notice,
+  .kpi-grid,
+  .filter-bar,
+  .dash-map-hero-wrapper,
+  .panel-header {
+    display: none !important;
+  }
+  #printableFormSection {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .print-header-kop {
+    text-align: center;
+    border-bottom: 2.5px solid #000;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .print-kop-title {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #000;
+  }
+  .print-kop-sub {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 2px;
+  }
+  .print-kop-sheet-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin-top: 5px;
+    color: #000;
+  }
+  .print-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px 12px;
+    border: 1px solid #000;
+    background: #f8fafc;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    font-size: 10.5px;
+  }
+  .print-meta-item {
+    display: flex;
+    gap: 6px;
+  }
+  .print-meta-lbl {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .print-meta-val {
+    border-bottom: 1px dotted #555;
+    flex: 1;
+    min-height: 14px;
+    padding-left: 4px;
+    font-weight: 600;
+  }
+  .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 12px;
+    font-size: 10px !important;
+  }
+  .print-table th, .print-table td {
+    border: 1px solid #000 !important;
+    padding: 5px 6px !important;
+    color: #000 !important;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .print-table th {
+    background-color: #f1f5f9 !important;
+    font-weight: 700 !important;
+    text-align: center;
+  }
+  .print-table tr {
+    page-break-inside: avoid !important;
+  }
+  .print-signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    page-break-inside: avoid;
+  }
+  .print-sign-box {
+    text-align: center;
+    width: 220px;
+    font-size: 10.5px;
+  }
+  .print-sign-space {
+    height: 50px;
+  }
+  .print-sign-line {
+    border-top: 1px solid #000;
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .print-footer-notice {
+    margin-top: 12px;
+    font-size: 9px;
+    color: #555;
+    border-top: 1px dashed #999;
+    padding-top: 5px;
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+/* Volunteer mode & Email step UI styles */
+.volunteer-banner-active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.15));
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.email-step-indicator {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.email-step-chip {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+}
+.email-step-chip.active {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: var(--gold-light);
+}
+.email-token-box {
+  background: #0B1120;
+  border: 2px dashed rgba(245, 158, 11, 0.6);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  margin: 14px 0;
+}
+.email-token-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--gold-light);
+}
 </style>
 </head>
 
 <body>
+
+<!-- ==================== AREA CETAK KHUSUS LEMBAR KERJA LAPANGAN / PDF (@media print) ==================== -->
+<div id="printableFormSection" class="printable-form-container"></div>
 
 <!-- ==================== PASSCODE GATEWAY (DINONAKTIFKAN — DIGANTI RBAC 2FA) ==================== -->
 <div id="passcodeGate" class="passcode-gate-backdrop" style="display:none !important; pointer-events:none !important; visibility:hidden !important;">
@@ -1894,7 +2091,16 @@ td.num-cell {
     </div>
     <div class="auth-status-right">
       <div class="auth-restricted-notice" id="authRestrictedNotice" style="display:none;">
-        🔒 <span id="authNoticeText">Akses Terkunci Khusus Wilayah</span>
+        🔒 <span id="authNoticeText">Terkunci</span>
+      </div>
+      <!-- SEGMENTED MODE SWITCHER: LAPANGAN VS ADMIN WAR ROOM -->
+      <div class="mode-switcher-segmented" style="display:inline-flex; background:rgba(15,23,42,0.85); border:1.5px solid rgba(16,185,129,0.5); border-radius:10px; padding:3px; gap:4px; box-shadow:0 2px 12px rgba(0,0,0,0.35);">
+        <button type="button" class="btn sm" id="btnModeRelawanActive" onclick="setAppViewMode('relawan')" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:800; border:none; border-radius:7px; padding:5px 13px; font-size:12px; cursor:pointer;" title="Mode Relawan Lapangan: Hanya Input Pendukung Baru & Data Wilayah Tugas">
+          📱 Mode Input Relawan
+        </button>
+        <button type="button" class="btn sm secondary" id="btnModeAdminActive" onclick="setAppViewMode('admin')" style="background:transparent; color:#94A3B8; font-weight:600; border:none; border-radius:7px; padding:5px 13px; font-size:12px; cursor:pointer;" title="Mode Admin: Buka Semua 9 Modul Strategis (War Room, Petahana, Audit, Sainte-Laguë)">
+          👑 Mode Admin War Room
+        </button>
       </div>
       <button type="button" class="btn sm" id="btnOpenMobileGuide" onclick="openMobileGuideModal()" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:700; border:none; box-shadow:0 2px 14px rgba(16,185,129,0.45); cursor:pointer; display:inline-flex; align-items:center; gap:6px;" title="Petunjuk Akses di HP">
         <span class="hud-pulse" style="width:6px; height:6px;"></span>
@@ -1976,17 +2182,17 @@ td.num-cell {
 
     <!-- Tab Navigation -->
     <nav class="nav-tabs">
-      <button type="button" class="tab-btn active" data-tab="tab-dashboard">
+      <button type="button" class="tab-btn active" data-tab="tab-pendukung" style="color:#34D399; font-weight:800; border-bottom:2px solid #10B981;">
+        👥 Input &amp; Database Pendukung Baru <span class="badge-pill" id="badgeTotalPendukung" style="background:rgba(52,211,153,0.25); color:#34D399;">0</span>
+      </button>
+      <button type="button" class="tab-btn" data-tab="tab-dashboard">
         📊 Executive War Room
       </button>
-      <button type="button" class="tab-btn" data-tab="tab-petahana-11" style="color:#60A5FA; border-bottom:2px solid #3B82F6;">
+      <button type="button" class="tab-btn" data-tab="tab-petahana-11" style="color:#60A5FA;">
         🏛️ Data Petahana 2024 per TPS &amp; Desa (Model D.Hasil)
       </button>
       <button type="button" class="tab-btn" data-tab="tab-audit-petahana">
         ⚔️ Audit Ketat Petahana vs Pendatang
-      </button>
-      <button type="button" class="tab-btn" data-tab="tab-pendukung">
-        👥 Relawan &amp; Kanvasing Pendukung <span class="badge-pill" id="badgeTotalPendukung" style="background:rgba(52,211,153,0.2); color:#34D399;">0</span>
       </button>
       <button type="button" class="tab-btn" data-tab="tab-master">
         🗳️ Master Data TPS &amp; Tim <span class="badge-pill" id="badgeTotalTps">0</span>
@@ -2007,7 +2213,7 @@ td.num-cell {
   </header>
 
   <!-- ==================== TAB 1: EXECUTIVE WAR ROOM ==================== -->
-  <div class="tab-content active" id="tab-dashboard">
+  <div class="tab-content" id="tab-dashboard">
     <!-- Quick Actions Bar -->
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
       <div style="display:flex; align-items:center; gap:10px;">
@@ -2694,7 +2900,38 @@ td.num-cell {
   </div>
 
   <!-- ==================== TAB 8: RELAWAN & KANVASING PENDUKUNG ==================== -->
-  <div class="tab-content" id="tab-pendukung">
+  <div class="tab-content active" id="tab-pendukung">
+    <!-- HERO COMMAND BANNER FOR FIELD VOLUNTEER (INPUT & PENDATAAN) -->
+    <div style="background:linear-gradient(135deg, rgba(16,185,129,0.22), rgba(15,23,42,0.92)); border:2px solid rgba(16,185,129,0.55); border-radius:14px; padding:20px 24px; margin-bottom:22px; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(16,185,129,0.2); border:1px solid rgba(16,185,129,0.45); padding:4px 10px; border-radius:20px; font-size:11.5px; font-weight:700; color:#34D399; margin-bottom:8px;">
+            <span class="hud-pulse" style="width:7px; height:7px;"></span>
+            📱 MODE AKTIF: INPUT PENDUKUNG LAPANGAN &amp; WILAYAH TUGAS
+          </div>
+          <h2 style="font-size:22px; font-weight:900; color:#FFFFFF; margin-bottom:4px; letter-spacing:-0.02em;">
+            Portal Input Pendukung Baru &amp; Formulir Kanvasing 2029
+          </h2>
+          <div style="font-size:13px; color:var(--paper-muted); max-width:680px; line-height:1.5;">
+            Khusus pencatatan konstituen door-to-door, cetak formulir A4 bertanda tangan fisik, ekspor Excel otomatis, dan transmisi laporan terverifikasi 2 langkah ke koordinator.
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="btn" onclick="openPendukungModal()" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:800; font-size:13.5px; padding:11px 20px; box-shadow:0 4px 16px rgba(16,185,129,0.45); border:none; cursor:pointer; border-radius:8px;">
+            ＋ INPUT PENDUKUNG BARU
+          </button>
+          <button type="button" class="btn secondary" onclick="printBlankCanvassForm()" style="border-color:rgba(96,165,250,0.6); color:#93C5FD; font-weight:700; padding:11px 16px; border-radius:8px;" title="Cetak formulir fisik kanvasing kosong kertas A4">
+            🖨️ CETAK FORM LAPANGAN (A4)
+          </button>
+          <button type="button" class="btn secondary" onclick="exportScopedPendukungExcel()" style="border-color:rgba(52,211,153,0.6); color:#6EE7B7; font-weight:700; padding:11px 16px; border-radius:8px;" title="Simpan data pendukung ke file Excel (.xlsx)">
+            📗 SIMPAN KE EXCEL (.XLSX)
+          </button>
+          <button type="button" class="btn secondary" onclick="openEmailBackupModal()" style="border-color:rgba(245,158,11,0.6); color:#FCD34D; font-weight:700; padding:11px 16px; border-radius:8px;" title="Kirim data pendukung via email dengan token 2 langkah">
+            ✉️ KIRIM EMAIL (2 LANGKAH)
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="panel-card">
       <div class="panel-header">
         <div>
@@ -2707,9 +2944,11 @@ td.num-cell {
           </div>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="btn secondary sm" id="btnLoadSamplePendukung">Muat Contoh Pendukung (25 Warga)</button>
-          <button type="button" class="btn secondary sm" id="btnExportPendukungExcel">📗 Ekspor Excel</button>
-          <button type="button" class="btn sm" onclick="openPendukungModal()">+ Input Pendukung Baru</button>
+          <button type="button" class="btn secondary sm" id="btnOpenPrintModal" onclick="openPrintKanvasingModal()" style="border-color:rgba(96,165,250,0.5); color:#93C5FD; font-weight:600;" title="Cetak formulir fisik kosong untuk kanvasing lapangan atau cetak daftar pendukung wilayah">🖨️ Cetak Formulir (Print / PDF)</button>
+          <button type="button" class="btn secondary sm" id="btnExportPendukungExcel" onclick="exportScopedPendukungExcel()" style="border-color:rgba(16,185,129,0.5); color:#6EE7B7; font-weight:600;" title="Simpan data pendukung ke berkas Excel (.xlsx)">📗 Simpan ke Excel (.xlsx)</button>
+          <button type="button" class="btn secondary sm" id="btnOpenEmailBackupModal" onclick="openEmailBackupModal()" style="border-color:rgba(245,158,11,0.5); color:#FCD34D; font-weight:600;" title="Kirim rekap data pendukung dan backup melalui email dengan verifikasi 2 langkah">✉️ Kirim Email (2 Langkah)</button>
+          <button type="button" class="btn secondary sm" id="btnLoadSamplePendukung">Muat Contoh (25 Warga)</button>
+          <button type="button" class="btn sm" onclick="openPendukungModal()" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:700; box-shadow:0 2px 10px rgba(16,185,129,0.4);">+ Input Pendukung Baru</button>
         </div>
       </div>
 
@@ -3576,6 +3815,7 @@ TPS 003,Sungai Pinyuh,Sungai Pinyuh,285,140,195,0.2789,109.0765,H. Gusti Ramli,0
       </div>
 
       <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px;">
+        <button type="button" class="btn secondary" onclick="printBlankCanvassForm()" style="margin-right:auto; border-color:rgba(96,165,250,0.5); color:#93C5FD;" title="Cetak formulir fisik kanvasing kosong untuk survei door-to-door">🖨️ Cetak Form Kosong</button>
         <button type="button" class="btn secondary" onclick="closePendukungModal()">Batal</button>
         <button type="submit" class="btn" id="modalSubmitPendukungBtn">Simpan Data Pendukung</button>
       </div>
@@ -3633,6 +3873,174 @@ TPS 003,Sungai Pinyuh,Sungai Pinyuh,285,140,195,0.2789,109.0765,H. Gusti Ramli,0
         <button type="submit" class="btn" style="background:linear-gradient(135deg, #10B981, #059669); font-weight:700;">💾 Simpan Status Tugas</button>
       </div>
     </form>
+  </div>
+</div>
+
+<!-- ==================== MODAL: CETAK FORMULIR KANVASING & LAPORAN WILAYAH ==================== -->
+<div class="modal-backdrop" id="modalPrintKanvasingBackdrop">
+  <div class="modal-box" style="max-width:620px;">
+    <div class="modal-header">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:22px;">🖨️</span>
+        <h3>Cetak Formulir Kanvasing &amp; Laporan Wilayah (A4)</h3>
+      </div>
+      <button type="button" class="close-modal-btn" onclick="closePrintKanvasingModal()">✕</button>
+    </div>
+    
+    <div style="margin-bottom:16px;">
+      <p style="font-size:12.5px; color:var(--paper-muted); line-height:1.5;">
+        Pilih jenis dokumen cetak yang Anda butuhkan untuk dibawa ke lapangan atau diserahkan ke koordinator:
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+      <!-- Pilihan 1: Form Kanvasing Kosong A4 -->
+      <div style="background:rgba(255,255,255,0.03); border:2px solid rgba(59,130,246,0.4); border-radius:10px; padding:14px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;" onclick="printBlankCanvassForm()">
+        <div>
+          <div style="font-size:24px; margin-bottom:6px;">📋</div>
+          <div style="font-weight:700; font-size:14px; color:#93C5FD; margin-bottom:4px;">1. Formulir Lapangan Kosong</div>
+          <div style="font-size:11.5px; color:var(--paper-muted); line-height:1.4;">
+            Lembar kerja cetak A4 bergaris untuk relawan saat survei <i>door-to-door</i>. Dilengkapi kolom paraf warga &amp; tanda tangan.
+          </div>
+        </div>
+        <button type="button" class="btn sm" onclick="event.stopPropagation(); printBlankCanvassForm();" style="margin-top:12px; width:100%; background:linear-gradient(135deg, #2563EB, #1D4ED8); font-weight:700;">
+          🖨️ Cetak Form Kosong
+        </button>
+      </div>
+
+      <!-- Pilihan 2: Daftar Pendukung Terdata Wilayah -->
+      <div style="background:rgba(255,255,255,0.03); border:2px solid rgba(16,185,129,0.4); border-radius:10px; padding:14px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;" onclick="printScopedSupportersList()">
+        <div>
+          <div style="font-size:24px; margin-bottom:6px;">📑</div>
+          <div style="font-weight:700; font-size:14px; color:#6EE7B7; margin-bottom:4px;">2. Daftar Pendukung Terdata</div>
+          <div style="font-size:11.5px; color:var(--paper-muted); line-height:1.4;">
+            Mencetak seluruh daftar pendukung yang sudah terdata di wilayah Anda saat ini lengkap dengan identitas dan status komitmen.
+          </div>
+        </div>
+        <button type="button" class="btn sm" onclick="event.stopPropagation(); printScopedSupportersList();" style="margin-top:12px; width:100%; background:linear-gradient(135deg, #10B981, #059669); font-weight:700;">
+          🖨️ Cetak Data Wilayah
+        </button>
+      </div>
+    </div>
+
+    <!-- Kustomisasi Header Cetak -->
+    <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:12px 14px; margin-bottom:16px;">
+      <div style="font-size:11px; font-family:'IBM Plex Mono'; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">Identitas Lembar Lapangan (Otomatis / Ubah Jika Perlu):</div>
+      <div class="form-grid-2">
+        <div class="input-group">
+          <label>Kecamatan</label>
+          <input type="text" id="printKecCustom" class="input-control sm" placeholder="Kecamatan">
+        </div>
+        <div class="input-group">
+          <label>Desa / Kelurahan</label>
+          <input type="text" id="printDesaCustom" class="input-control sm" placeholder="Desa / Kelurahan">
+        </div>
+      </div>
+      <div class="form-grid-2" style="margin-top:8px;">
+        <div class="input-group">
+          <label>Target TPS (Opsional)</label>
+          <input type="text" id="printTpsCustom" class="input-control sm" placeholder="Contoh: TPS 001 - TPS 005">
+        </div>
+        <div class="input-group">
+          <label>Nama Relawan Pencatat</label>
+          <input type="text" id="printRelawanCustom" class="input-control sm" placeholder="Nama Anda">
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:10px;">
+      <button type="button" class="btn secondary" onclick="closePrintKanvasingModal()">Tutup</button>
+      <button type="button" class="btn" onclick="printBlankCanvassForm()" style="background:linear-gradient(135deg, #2563EB, #1D4ED8); font-weight:700;">🖨️ Buka Dialog Print (Ctrl+P)</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: CADANGKAN & TRANSMISI EMAIL 2 LANGKAH ==================== -->
+<div class="modal-backdrop" id="modalEmailBackupBackdrop">
+  <div class="modal-box" style="max-width:620px;">
+    <div class="modal-header">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:22px;">✉️</span>
+        <h3>Penyimpanan &amp; Transmisi Email (2 Langkah)</h3>
+      </div>
+      <button type="button" class="close-modal-btn" onclick="closeEmailBackupModal()">✕</button>
+    </div>
+
+    <!-- Stepper Indicator -->
+    <div class="email-step-indicator">
+      <div class="email-step-chip active" id="emailChipStep1">
+        1. Ringkasan &amp; Tujuan
+      </div>
+      <div class="email-step-chip" id="emailChipStep2">
+        2. Verifikasi Token &amp; Kirim
+      </div>
+    </div>
+
+    <!-- LANGKAH 1: RINGKASAN DATA & INPUT TUJUAN -->
+    <div id="emailStep1Container">
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:14px; margin-bottom:14px;">
+        <div style="font-size:11px; font-family:'IBM Plex Mono'; color:var(--gold); text-transform:uppercase; margin-bottom:6px;">Data Teritorial yang Akan Ditransmisikan:</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:12.5px;">
+          <div>📍 Wilayah Tugas: <b id="emailSummaryWilayah" style="color:#60A5FA;">-</b></div>
+          <div>📋 Total Pendukung: <b id="emailSummaryTotal" style="color:#34D399;">0 Warga</b></div>
+          <div>🤝 Komitmen Pasti: <b id="emailSummaryPasti" style="color:var(--gold-light);">0 Warga</b></div>
+          <div>👤 Relawan Pengirim: <b id="emailSummaryRelawan" style="color:#fff;">-</b></div>
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:12px;">
+        <label>Alamat Email Penerima (Koordinator / Pusat Data) *</label>
+        <input type="email" id="emailRecipientInput" class="input-control" value="pemenangan.kalbar2@gmail.com" required placeholder="pemenangan.kalbar2@gmail.com">
+        <span style="font-size:11px; color:var(--muted); margin-top:3px; display:block;">Default: Email Tim Pemenangan. Anda dapat mengubah sesuai instruksi koordinator.</span>
+      </div>
+
+      <div class="input-group" style="margin-bottom:14px;">
+        <label>Catatan Tambahan Laporan Lapangan (Opsional)</label>
+        <textarea id="emailNotesInput" class="input-control" style="height:65px;" placeholder="Contoh: Laporan kanvasing Dusun Melati selesai 100%, 25 warga menyatakan komitmen loyal."></textarea>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+        <button type="button" class="btn secondary" onclick="closeEmailBackupModal()">Batal</button>
+        <button type="button" class="btn" onclick="goToEmailStep2()" style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#000; font-weight:800;">
+          Lanjut ke Langkah 2: Verifikasi &amp; Kirim ➔
+        </button>
+      </div>
+    </div>
+
+    <!-- LANGKAH 2: VERIFIKASI TOKEN 6-DIGIT & PENGIRIMAN -->
+    <div id="emailStep2Container" style="display:none;">
+      <div class="email-token-box">
+        <div style="font-size:11px; color:var(--paper-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">TOKEN VERIFIKASI KEAMANAN DATA (6 DIGIT)</div>
+        <div class="email-token-code" id="emailGeneratedToken">TOKEN-2029-XXXX</div>
+        <div style="font-size:11px; color:var(--muted); margin-top:4px;">Token unik ini disertakan dalam subjek dan badan email sebagai bukti integritas data resmi relawan</div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:12px;">
+        <label>Pratinjau Format Teks Laporan:</label>
+        <textarea id="emailPreviewText" class="input-control" style="height:120px; font-family:'IBM Plex Mono', monospace; font-size:11px; white-space:pre;" readonly></textarea>
+      </div>
+
+      <!-- Action Buttons Grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
+        <button type="button" class="btn sm" onclick="executeEmailSendMailto()" style="background:linear-gradient(135deg, #2563EB, #1D4ED8); font-weight:700;" title="Buka aplikasi email default perangkat Anda">
+          📨 1. Buka Aplikasi Email
+        </button>
+        <button type="button" class="btn sm" onclick="executeEmailSendGmailWeb()" style="background:linear-gradient(135deg, #EA4335, #C5221F); font-weight:700;" title="Buka compose Gmail di browser">
+          🌐 2. Buka di Gmail Web
+        </button>
+        <button type="button" class="btn sm secondary" onclick="exportScopedPendukungExcel()" style="border-color:rgba(16,185,129,0.5); color:#6EE7B7; font-weight:700;" title="Unduh berkas Excel untuk dilampirkan pada email">
+          📗 3. Unduh Excel (.xlsx) Lampiran
+        </button>
+        <button type="button" class="btn sm secondary" onclick="copyEmailReportText()" style="border-color:rgba(37,211,102,0.5); color:#86EFAC; font-weight:700;" title="Salin laporan teks lengkap ke clipboard untuk dikirim lewat WhatsApp">
+          📋 4. Salin Teks ke WhatsApp
+        </button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.08); padding-top:14px;">
+        <button type="button" class="btn secondary sm" onclick="goToEmailStep1()">◀ Kembali ke Langkah 1</button>
+        <button type="button" class="btn secondary sm" onclick="closeEmailBackupModal()">Selesai &amp; Tutup</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -5292,6 +5700,12 @@ function initApp() {
   try { initPetahanaEvents(); } catch (e) { console.error('Error in initPetahanaEvents:', e); }
   try { initReportEvents(); } catch (e) { console.error('Error in initReportEvents:', e); }
   try { loadData(); } catch (e) { console.error('Error in loadData:', e); }
+  try {
+    const savedMode = localStorage.getItem('SIP_APP_VIEW_MODE') || 'relawan';
+    setAppViewMode(savedMode);
+  } catch (e) {
+    try { setAppViewMode('relawan'); } catch (err) {}
+  }
   try { checkPasscodeAuth(); } catch (e) { console.error('Error in checkPasscodeAuth:', e); }
   try { setTimeout(() => { initOrUpdateLeafletMap(); }, 250); } catch (e) {}
 }
@@ -7048,8 +7462,17 @@ function populatePendukungDesaSelect(kec, selectedDesa = '', selectedTps = '') {
   if (!desaSel) return;
 
   const desas = (kec && MASTER_DESA_KALBAR2[kec]) ? MASTER_DESA_KALBAR2[kec] : [];
-  desaSel.innerHTML = '<option value="">-- Pilih Desa / Kelurahan --</option>' +
-    desas.map(d => `<option value="${d}" ${d === selectedDesa ? 'selected' : ''}>${d}</option>`).join('');
+
+  // Jika akun adalah Relawan Desa atau mode relawan aktif dengan desa terdaftar, kunci dropdown desa
+  if (authSession && authSession.desa && (authSession.role === 'relawan_desa' || window._volunteerFieldModeActive)) {
+    desaSel.innerHTML = `<option value="${authSession.desa}" selected>🔒 Desa ${authSession.desa}</option>`;
+    desaSel.disabled = true;
+    selectedDesa = authSession.desa;
+  } else {
+    desaSel.disabled = false;
+    desaSel.innerHTML = '<option value="">-- Pilih Desa / Kelurahan --</option>' +
+      desas.map(d => `<option value="${d}" ${d === selectedDesa ? 'selected' : ''}>${d}</option>`).join('');
+  }
 
   populatePendukungTpsSelect(kec, selectedDesa || (desas[0] || ''), selectedTps);
 }
@@ -7106,18 +7529,21 @@ function onFilterPendukungKecChange() {
 function openPendukungModal(isEdit = false) {
   if (!isEdit) {
     document.getElementById('formPendukungId').value = '';
-    document.getElementById('modalPendukungTitle').textContent = authSession.role !== 'admin'
-      ? `Input Pendukung Baru — Terkunci Kec. ${authSession.kecamatan}`
+    const wilLabel = authSession.desa ? `Desa ${authSession.desa} (Kec. ${authSession.kecamatan})` : (authSession.kecamatan ? `Kec. ${authSession.kecamatan}` : '');
+    document.getElementById('modalPendukungTitle').textContent = ((authSession.role !== 'admin' || window._volunteerFieldModeActive) && wilLabel)
+      ? `Input Pendukung Baru — Terkunci ${wilLabel}`
       : 'Input Data Pendukung Baru (Kanvasing Relawan)';
     document.getElementById('pendukungForm').reset();
     document.getElementById('modalSubmitPendukungBtn').textContent = 'Simpan Data Pendukung';
     document.getElementById('p_gen_badge').textContent = 'Generasi';
     document.getElementById('p_gen_badge').className = 'gen-pill milenial';
 
-    if (authSession.role !== 'admin') {
-      document.getElementById('p_relawan').value = authSession.nama;
+    if (authSession.role !== 'admin' || window._volunteerFieldModeActive) {
+      if (authSession.nama && authSession.nama !== 'Pusat Komando Pemenangan Dapil 2') {
+        document.getElementById('p_relawan').value = authSession.nama;
+      }
     }
-    populatePendukungKecSelect(authSession.kecamatan || '');
+    populatePendukungKecSelect(authSession.kecamatan || '', authSession.desa || '');
   }
   document.getElementById('modalPendukungBackdrop').classList.add('active');
 }
@@ -7836,37 +8262,427 @@ function loadSamplePendukungData(showPrompt = true) {
   }
 }
 
-function exportPendukungExcel() {
-  const headers = ['No', 'Nama Lengkap', 'Jenis Kelamin', 'Usia', 'Kategori Usia', 'TPS', 'Kecamatan', 'Desa', 'Alamat Lengkap', 'RT', 'RW', 'No HP/WA', 'Pilihan Partai 2024', 'Faktor Utama Memilih', 'Tingkat Komitmen', 'Status Tugas Lapangan', 'Nama Relawan Pencatat', 'Catatan/Aspirasi'];
-  const rows = getScopedPendukungList().map((p, i) => [
+function exportScopedPendukungExcel() {
+  const scoped = getScopedPendukungList();
+  if (scoped.length === 0) {
+    alert('Belum ada data pendukung di wilayah tugas Anda untuk diekspor ke Excel.');
+    return;
+  }
+
+  const wilayahTag = authSession.desa 
+    ? `Desa_${authSession.desa.replace(/\s+/g, '_')}` 
+    : (authSession.kecamatan ? `Kec_${authSession.kecamatan.replace(/\s+/g, '_')}` : dapilConfig.namaDapil.replace(/\s+/g, '_'));
+
+  const headers = [
+    'No', 'Nama Lengkap Warga', 'Jenis Kelamin', 'Usia', 'Kategori Usia', 'TPS',
+    'Kecamatan', 'Desa/Kelurahan', 'Alamat Lengkap', 'RT', 'RW', 'No HP / WA',
+    'Pilihan Partai 2024', 'Faktor Utama Memilih 2029', 'Tingkat Komitmen',
+    'Status Tugas Lapangan', 'Nama Relawan Pencatat', 'Catatan / Aspirasi Warga', 'Waktu Pendataan'
+  ];
+
+  const rows = scoped.map((p, i) => [
     i + 1,
     p.nama,
     (p.gender || 'L') === 'P' ? 'Perempuan' : 'Laki-Laki',
     p.usia,
     getAgeCategory(p.usia).gen,
-    p.tpsNama,
-    p.kec,
-    p.desa,
-    p.alamat,
-    p.rt,
-    p.rw,
-    p.hp,
-    p.partai2024,
-    p.faktorMemilih,
-    p.komitmen,
+    p.tpsNama || '-',
+    p.kec || '-',
+    p.desa || '-',
+    p.alamat || '-',
+    p.rt || '00',
+    p.rw || '00',
+    p.hp || '-',
+    p.partai2024 || '-',
+    p.faktorMemilih || '-',
+    p.komitmen || '-',
     p.status_tugas || 'Selesai Lapangan',
-    p.relawan,
-    p.catatan || p.catatan_tugas || ''
+    p.relawan || '-',
+    p.catatan || p.catatan_tugas || '-',
+    p.updatedAt || new Date().toLocaleDateString('id-ID')
   ]);
 
   if (typeof XLSX !== 'undefined') {
     const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+    ws['!cols'] = [
+      { wch: 5 }, { wch: 24 }, { wch: 12 }, { wch: 6 }, { wch: 14 }, { wch: 10 },
+      { wch: 16 }, { wch: 18 }, { wch: 30 }, { wch: 6 }, { wch: 6 }, { wch: 16 },
+      { wch: 22 }, { wch: 26 }, { wch: 20 }, { wch: 20 }, { wch: 18 }, { wch: 35 }, { wch: 18 }
+    ];
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Data Pendukung Kanvasing');
-    XLSX.writeFile(wb, `Data_Pendukung_Kanvasing_${dapilConfig.namaDapil.replace(/\s+/g, '_')}.xlsx`);
+    XLSX.utils.book_append_sheet(wb, ws, 'Database Pendukung');
+    XLSX.writeFile(wb, `DATA_PENDUKUNG_${wilayahTag}_SIP_TPS_2029.xlsx`);
   } else {
     const csvContent = [headers.join(','), ...rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(','))].join('\n');
-    downloadBlob(csvContent, `Data_Pendukung_Kanvasing_${dapilConfig.namaDapil.replace(/\s+/g, '_')}.csv`, 'text/csv;charset=utf-8;');
+    downloadBlob(csvContent, `DATA_PENDUKUNG_${wilayahTag}_SIP_TPS_2029.csv`, 'text/csv;charset=utf-8;');
+  }
+}
+
+const exportPendukungExcel = exportScopedPendukungExcel;
+
+// ==================== MODUL CETAK LEMBAR KERJA LAPANGAN (PRINT / PDF) ====================
+function openPrintKanvasingModal() {
+  const m = document.getElementById('modalPrintKanvasingBackdrop');
+  if (!m) return;
+  
+  const kecInp = document.getElementById('printKecCustom');
+  const desaInp = document.getElementById('printDesaCustom');
+  const relInp = document.getElementById('printRelawanCustom');
+  const tpsInp = document.getElementById('printTpsCustom');
+  const lblScope = document.getElementById('printScopeWilayahLabel');
+
+  if (kecInp) kecInp.value = authSession.kecamatan || '';
+  if (desaInp) desaInp.value = authSession.desa || '';
+  if (relInp) relInp.value = (authSession.nama && authSession.nama !== 'Pusat Komando Pemenangan Dapil 2') ? authSession.nama : '';
+  if (tpsInp) tpsInp.value = '';
+  if (lblScope) lblScope.textContent = authSession.desa ? `Desa ${authSession.desa}` : (authSession.kecamatan ? `Kec. ${authSession.kecamatan}` : 'Dapil Kalbar 2');
+
+  m.classList.add('active');
+}
+
+function closePrintKanvasingModal() {
+  const m = document.getElementById('modalPrintKanvasingBackdrop');
+  if (m) m.classList.remove('active');
+}
+
+function printBlankCanvassForm() {
+  closePrintKanvasingModal();
+  const printArea = document.getElementById('printableFormSection');
+  if (!printArea) return;
+
+  const kec = document.getElementById('printKecCustom')?.value || authSession.kecamatan || '...................................';
+  const desa = document.getElementById('printDesaCustom')?.value || authSession.desa || '...................................';
+  const tps = document.getElementById('printTpsCustom')?.value || '...................................';
+  const relawan = document.getElementById('printRelawanCustom')?.value || ((authSession.nama && authSession.nama !== 'Pusat Komando Pemenangan Dapil 2') ? authSession.nama : '...................................');
+  const tgl = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  let rowsHtml = '';
+  for (let i = 1; i <= 10; i++) {
+    rowsHtml += `
+      <tr style="height: 38px;">
+        <td style="text-align:center; font-weight:bold;">${i}</td>
+        <td></td>
+        <td style="text-align:center;"></td>
+        <td style="text-align:center;"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="text-align:center; font-size:9px;">[ ] Pasti<br>[ ] Condong<br>[ ] Ragu</td>
+        <td></td>
+      </tr>
+    `;
+  }
+
+  printArea.innerHTML = `
+    <div class="print-header-kop">
+      <div class="print-kop-title">TIM PEMENANGAN PEMILU 2029 — DPRD PROVINSI KALBAR 2</div>
+      <div class="print-kop-sub">KABUPATEN KUBU RAYA &amp; KABUPATEN MEMPAWAH (18 KECAMATAN / 190 DESA)</div>
+      <div class="print-kop-sheet-title">LEMBAR KERJA KANVASING PENDATAAN PENDUKUNG DOOR-TO-DOOR (BY NAME BY ADDRESS)</div>
+    </div>
+
+    <div class="print-meta-grid">
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Kecamatan:</span>
+        <span class="print-meta-val">${escapeHtml(kec)}</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Desa/Kelurahan:</span>
+        <span class="print-meta-val">${escapeHtml(desa)}</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Dusun / RT / RW:</span>
+        <span class="print-meta-val">.................... / ........ / ........</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">TPS Sasaran:</span>
+        <span class="print-meta-val">${escapeHtml(tps)}</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Relawan Pencatat:</span>
+        <span class="print-meta-val">${escapeHtml(relawan)}</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">No. HP / WA:</span>
+        <span class="print-meta-val">...................................</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Tanggal Survei:</span>
+        <span class="print-meta-val">${tgl}</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Target Warga:</span>
+        <span class="print-meta-val">10 Konstituen (Min. 70% Pasti)</span>
+      </div>
+    </div>
+
+    <table class="print-table">
+      <thead>
+        <tr>
+          <th style="width:30px;">NO</th>
+          <th style="width:160px;">NAMA LENGKAP WARGA (SESUAI KTP)</th>
+          <th style="width:40px;">L / P</th>
+          <th style="width:45px;">USIA</th>
+          <th style="width:170px;">ALAMAT LENGKAP / GANG / DUSUN</th>
+          <th style="width:110px;">NO. HANDPHONE / WA</th>
+          <th style="width:110px;">PILIHAN 2024</th>
+          <th style="width:130px;">FAKTOR MEMILIH 2029</th>
+          <th style="width:90px;">KOMITMEN</th>
+          <th style="width:75px;">PARAF WARGA</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+
+    <div class="print-signatures">
+      <div class="print-sign-box">
+        <div>Petugas Relawan Lapangan,</div>
+        <div class="print-sign-space"></div>
+        <div class="print-sign-line">( ${escapeHtml(relawan)} )</div>
+        <div style="font-size:9.5px; color:#555; margin-top:2px;">Tanda Tangan &amp; Nama Terang</div>
+      </div>
+      <div style="text-align:center; padding-top:20px;">
+        <div style="font-weight:700; font-size:11px; text-transform:uppercase;">DOKUMEN RAHASIA TIM PEMENANGAN</div>
+        <div style="font-size:9.5px; color:#555;">Wajib disetorkan kepada Koordinator Lapangan dan diinput ke SIP-TPS 2029</div>
+      </div>
+      <div class="print-sign-box">
+        <div>Mengetahui,<br>Koordinator Wilayah / Desa (Kordes),</div>
+        <div class="print-sign-space"></div>
+        <div class="print-sign-line">( .................................................. )</div>
+        <div style="font-size:9.5px; color:#555; margin-top:2px;">Tanda Tangan &amp; Cap Validasi</div>
+      </div>
+    </div>
+
+    <div class="print-footer-notice">
+      SIP-TPS 2029 · Sistem Intelijen &amp; Pemenangan TPS Dapil Kalbar 2 · Dicetak pada: ${new Date().toLocaleString('id-ID')}
+    </div>
+  `;
+
+  setTimeout(() => {
+    window.print();
+  }, 180);
+}
+
+function printScopedSupportersList() {
+  closePrintKanvasingModal();
+  const printArea = document.getElementById('printableFormSection');
+  if (!printArea) return;
+
+  const scoped = getScopedPendukungList();
+  const wilLabel = authSession.desa ? `Desa ${authSession.desa} (Kec. ${authSession.kecamatan})` : (authSession.kecamatan ? `Kecamatan ${authSession.kecamatan}` : 'Dapil Kalbar 2');
+  const tgl = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  let rowsHtml = '';
+  if (scoped.length === 0) {
+    rowsHtml = `<tr><td colspan="10" style="text-align:center; padding:20px;">Belum ada data pendukung terdaftar untuk ${wilLabel}.</td></tr>`;
+  } else {
+    rowsHtml = scoped.map((p, idx) => `
+      <tr>
+        <td style="text-align:center; font-weight:bold;">${idx + 1}</td>
+        <td><b>${escapeHtml(p.nama)}</b> (${p.gender === 'P' ? 'P' : 'L'}, ${p.usia} th)</td>
+        <td>${escapeHtml(p.tpsNama || '-')}</td>
+        <td>${escapeHtml(p.desa || '-')}</td>
+        <td>${escapeHtml(p.alamat || '-')} RT ${escapeHtml(p.rt || '00')}/RW ${escapeHtml(p.rw || '00')}</td>
+        <td>${escapeHtml(p.hp || '-')}</td>
+        <td>${escapeHtml(p.partai2024 || '-')}</td>
+        <td>${escapeHtml(p.komitmen || '-')}</td>
+        <td>${escapeHtml(p.status_tugas || 'Selesai')}</td>
+        <td>${escapeHtml(p.relawan || '-')}</td>
+      </tr>
+    `).join('');
+  }
+
+  printArea.innerHTML = `
+    <div class="print-header-kop">
+      <div class="print-kop-title">TIM PEMENANGAN PEMILU 2029 — DPRD PROVINSI KALBAR 2</div>
+      <div class="print-kop-sub">REKAPITULASI RESMI DATABASE PENDUKUNG TERDATA (BY NAME BY ADDRESS)</div>
+      <div class="print-kop-sheet-title">WILAYAH TUGAS: ${wilLabel.toUpperCase()} · TOTAL ${scoped.length} KONSTITUEN</div>
+    </div>
+
+    <div class="print-meta-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Wilayah Terdata:</span>
+        <span class="print-meta-val">${wilLabel}</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Dicetak Oleh:</span>
+        <span class="print-meta-val">${escapeHtml(authSession.nama)} (${authSession.role.toUpperCase()})</span>
+      </div>
+      <div class="print-meta-item">
+        <span class="print-meta-lbl">Waktu Cetak:</span>
+        <span class="print-meta-val">${tgl}</span>
+      </div>
+    </div>
+
+    <table class="print-table">
+      <thead>
+        <tr>
+          <th style="width:30px;">NO</th>
+          <th style="width:160px;">NAMA LENGKAP &amp; PROFIL</th>
+          <th style="width:55px;">TPS</th>
+          <th style="width:85px;">DESA</th>
+          <th style="width:160px;">ALAMAT LENGKAP / RT-RW</th>
+          <th style="width:95px;">NO. HP/WA</th>
+          <th style="width:95px;">PILIHAN 2024</th>
+          <th style="width:95px;">KOMITMEN</th>
+          <th style="width:80px;">STATUS</th>
+          <th style="width:90px;">RELAWAN</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
+      </tbody>
+    </table>
+
+    <div class="print-signatures">
+      <div class="print-sign-box">
+        <div>Relawan Pelapor,</div>
+        <div class="print-sign-space"></div>
+        <div class="print-sign-line">( ${escapeHtml(authSession.nama)} )</div>
+      </div>
+      <div class="print-sign-box">
+        <div>Mengetahui / Menerima,<br>Koordinator Kecamatan / Admin,</div>
+        <div class="print-sign-space"></div>
+        <div class="print-sign-line">( .................................................. )</div>
+      </div>
+    </div>
+
+    <div class="print-footer-notice">
+      SIP-TPS 2029 · Database Pemenangan Pemilu 2029 · Dicetak pada: ${new Date().toLocaleString('id-ID')}
+    </div>
+  `;
+
+  setTimeout(() => {
+    window.print();
+  }, 180);
+}
+
+// ==================== TRANSMISI & CADANGAN EMAIL 2 LANGKAH ====================
+let currentEmailToken = '';
+
+function openEmailBackupModal() {
+  const scoped = getScopedPendukungList();
+  const wil = authSession.desa ? `Desa ${authSession.desa} (Kec. ${authSession.kecamatan})` : (authSession.kecamatan ? `Kecamatan ${authSession.kecamatan}` : 'Dapil Kalbar 2');
+  const total = scoped.length;
+  const pasti = scoped.filter(p => (p.komitmen || '').includes('Pasti')).length;
+
+  document.getElementById('emailSummaryWilayah').textContent = wil;
+  document.getElementById('emailSummaryTotal').textContent = `${total} Warga`;
+  document.getElementById('emailSummaryPasti').textContent = `${pasti} Warga (${total > 0 ? Math.round((pasti/total)*100) : 0}%)`;
+  document.getElementById('emailSummaryRelawan').textContent = authSession.nama;
+
+  goToEmailStep1();
+  document.getElementById('modalEmailBackupBackdrop').classList.add('active');
+}
+
+function closeEmailBackupModal() {
+  const m = document.getElementById('modalEmailBackupBackdrop');
+  if (m) m.classList.remove('active');
+}
+
+function goToEmailStep1() {
+  document.getElementById('emailStep1Container').style.display = 'block';
+  document.getElementById('emailStep2Container').style.display = 'none';
+  document.getElementById('emailChipStep1').classList.add('active');
+  document.getElementById('emailChipStep2').classList.remove('active');
+}
+
+function goToEmailStep2() {
+  const recipient = document.getElementById('emailRecipientInput').value.trim();
+  if (!recipient) {
+    alert('Harap masukkan alamat email penerima laporan!');
+    return;
+  }
+
+  // Generate 6-digit verification security token
+  const randNum = Math.floor(100000 + Math.random() * 900000);
+  currentEmailToken = `TOKEN-${randNum}`;
+  document.getElementById('emailGeneratedToken').textContent = currentEmailToken;
+
+  const notes = document.getElementById('emailNotesInput').value.trim();
+  const preview = generateEmailReportBodyText(currentEmailToken, notes);
+  document.getElementById('emailPreviewText').value = preview;
+
+  document.getElementById('emailStep1Container').style.display = 'none';
+  document.getElementById('emailStep2Container').style.display = 'block';
+  document.getElementById('emailChipStep1').classList.remove('active');
+  document.getElementById('emailChipStep2').classList.add('active');
+}
+
+function generateEmailReportBodyText(token, notes) {
+  const scoped = getScopedPendukungList();
+  const wil = authSession.desa ? `Desa ${authSession.desa} (Kec. ${authSession.kecamatan})` : (authSession.kecamatan ? `Kecamatan ${authSession.kecamatan}` : 'Dapil Kalbar 2');
+  const total = scoped.length;
+  const pasti = scoped.filter(p => (p.komitmen || '').includes('Pasti')).length;
+  const flip = scoped.filter(p => {
+    const pty = (p.partai2024 || '').toLowerCase();
+    return pty.includes('pdi') || pty.includes('golkar') || pty.includes('nasdem') || pty.includes('pkb');
+  }).length;
+  const genZ = scoped.filter(p => {
+    const a = Number(p.usia) || 0;
+    return a >= 17 && a <= 27;
+  }).length;
+
+  let text = `=== LAPORAN TRANSMISI DATA PENDUKUNG LAPANGAN — PEMILU 2029 ===\n`;
+  text += `TOKEN VERIFIKASI KEAMANAN: ${token}\n`;
+  text += `WAKTU PENGIRIMAN        : ${new Date().toLocaleString('id-ID')}\n`;
+  text += `RELAWAN / PELAPOR       : ${authSession.nama} (@${authSession.username})\n`;
+  text += `WILAYAH TUGAS           : ${wil}\n`;
+  text += `------------------------------------------------------------\n`;
+  text += `RINGKASAN ELEKTORAL:\n`;
+  text += `• Total Pendukung Terdata : ${total} Warga\n`;
+  text += `• Komitmen Pasti (100%)   : ${pasti} Warga\n`;
+  text += `• Rebutan Suara Petahana  : ${flip} Warga\n`;
+  text += `• Pemilih Pemula / Gen-Z  : ${genZ} Warga\n`;
+  if (notes) {
+    text += `• Catatan Lapangan        : ${notes}\n`;
+  }
+  text += `------------------------------------------------------------\n`;
+  text += `RINCIAN DAFTAR PENDUKUNG (BY NAME BY ADDRESS):\n`;
+
+  scoped.slice(0, 50).forEach((p, idx) => {
+    text += `${idx + 1}. ${p.nama} (${p.gender === 'P' ? 'P' : 'L'}, ${p.usia}th) | TPS: ${p.tpsNama || '-'} | Desa: ${p.desa} | HP: ${p.hp} | Pilihan 2024: ${p.partai2024} | Komitmen: ${p.komitmen}\n`;
+  });
+
+  if (scoped.length > 50) {
+    text += `\n... dan ${scoped.length - 50} data pendukung lainnya terlampir lengkap di berkas Excel.\n`;
+  }
+
+  text += `\n============================================================\n`;
+  text += `Dihasilkan oleh: SIP-TPS 2029 (Sistem Terintegrasi Analisis TPS Kalbar 2)\n`;
+  return text;
+}
+
+function executeEmailSendMailto() {
+  const recipient = document.getElementById('emailRecipientInput').value.trim() || 'pemenangan.kalbar2@gmail.com';
+  const wil = authSession.desa || authSession.kecamatan || 'Kalbar 2';
+  const subject = `[LAPORAN LAPANGAN 2029] Data Pendukung ${wil} - ${currentEmailToken}`;
+  const body = document.getElementById('emailPreviewText').value;
+
+  const mailtoUrl = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoUrl;
+}
+
+function executeEmailSendGmailWeb() {
+  const recipient = document.getElementById('emailRecipientInput').value.trim() || 'pemenangan.kalbar2@gmail.com';
+  const wil = authSession.desa || authSession.kecamatan || 'Kalbar 2';
+  const subject = `[LAPORAN LAPANGAN 2029] Data Pendukung ${wil} - ${currentEmailToken}`;
+  const body = document.getElementById('emailPreviewText').value;
+
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(recipient)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(gmailUrl, '_blank');
+}
+
+function copyEmailReportText() {
+  const text = document.getElementById('emailPreviewText').value;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✅ Format teks laporan berhasil disalin ke clipboard!\n\nAnda dapat langsung menempelkannya (paste) di WhatsApp koordinator atau aplikasi pesan lainnya.');
+    });
+  } else {
+    prompt('Salin teks laporan berikut:', text);
   }
 }
 
@@ -8001,8 +8817,64 @@ function canUserUpdateTask(p) {
   return true;
 }
 
+// Status Mode Relawan Lapangan (Bisa diaktifkan manual via tombol di status bar atau otomatis via role akun)
+window._volunteerFieldModeActive = true; // Default aktif untuk kesederhanaan akses di HP & PC
+
+function setAppViewMode(mode) {
+  const isRelawan = (mode === 'relawan');
+  window._volunteerFieldModeActive = isRelawan;
+  try {
+    localStorage.setItem('SIP_APP_VIEW_MODE', mode);
+  } catch (e) {}
+
+  applyTerritoryGeoFence(authSession);
+
+  if (isRelawan) {
+    const pendBtn = document.querySelector('[data-tab="tab-pendukung"]');
+    if (pendBtn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      pendBtn.classList.add('active');
+      const pTab = document.getElementById('tab-pendukung');
+      if (pTab) pTab.classList.add('active');
+    }
+  } else {
+    document.querySelectorAll('.tab-btn').forEach(btn => { btn.style.display = 'inline-flex'; });
+    const dashContent = document.getElementById('tab-dashboard');
+    if (dashContent && !document.querySelector('.tab-content.active')) {
+      dashContent.classList.add('active');
+      document.querySelector('[data-tab="tab-dashboard"]')?.classList.add('active');
+    }
+  }
+
+  refreshAllViews();
+}
+
+function toggleVolunteerFieldMode() {
+  const nextMode = window._volunteerFieldModeActive ? 'admin' : 'relawan';
+  setAppViewMode(nextMode);
+}
+
 function getScopedPendukungList() {
-  if (!authSession || authSession.role === 'admin' || authSession.role === 'admin_backup') {
+  if (!authSession) return pendukungData;
+
+  // Mode Relawan Lapangan aktif (baik via toggle manual maupun via akun relawan/korte)
+  if (window._volunteerFieldModeActive || authSession.role === 'relawan_desa' || authSession.role === 'korte_kecamatan') {
+    if (authSession.desa) {
+      return pendukungData.filter(p => {
+        if (p.desa !== authSession.desa) return false;
+        if (authSession.kecamatan && p.kec !== authSession.kecamatan) return false;
+        return true;
+      });
+    }
+    if (authSession.kecamatan) {
+      return pendukungData.filter(p => p.kec === authSession.kecamatan);
+    }
+    // Jika admin mengaktifkan mode relawan manual tanpa wilayah khusus, default ke 1 kecamatan/desa pertama
+    return pendukungData.filter(p => p.kec === 'Sungai Raya');
+  }
+
+  if (authSession.role === 'admin' || authSession.role === 'admin_backup') {
     return pendukungData;
   }
   
@@ -8033,9 +8905,85 @@ function getScopedPendukungList() {
   return pendukungData;
 }
 
-// Penerapan Pembatasan Wilayah Geografis (Geo-Fencing) pada Peta dan Filter
+// Penerapan Pembatasan Wilayah Geografis (Geo-Fencing) pada Peta, Tab Navigasi, dan Filter
 function applyTerritoryGeoFence(session) {
   if (!session) return;
+
+  const isVolunteerScoped = (session.role === 'relawan_desa' || session.role === 'korte_kecamatan' || window._volunteerFieldModeActive);
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const btnVol = document.getElementById('btnToggleVolunteerMode');
+  const txtVol = document.getElementById('txtBtnVolunteerMode');
+  const metaPanel = document.querySelector('.dapil-meta-panel');
+  const scopeNotice = document.getElementById('pendukungScopeNotice');
+  const scopeDesa = document.getElementById('scopeDesaName');
+  const scopeKec = document.getElementById('scopeKecName');
+
+  // Sinkronisasi status tombol switch tersegmentasi
+  const btnRelActive = document.getElementById('btnModeRelawanActive');
+  const btnAdmActive = document.getElementById('btnModeAdminActive');
+  if (btnRelActive && btnAdmActive) {
+    if (isVolunteerScoped) {
+      btnRelActive.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+      btnRelActive.style.color = '#FFFFFF';
+      btnAdmActive.style.background = 'transparent';
+      btnAdmActive.style.color = '#94A3B8';
+    } else {
+      btnAdmActive.style.background = 'linear-gradient(135deg, #2563EB, #1D4ED8)';
+      btnAdmActive.style.color = '#FFFFFF';
+      btnRelActive.style.background = 'transparent';
+      btnRelActive.style.color = '#94A3B8';
+    }
+  }
+
+  if (isVolunteerScoped) {
+    // 1. ISOLASI TAB NAVIGASI: Sembunyikan semua tab KECUALI tab-pendukung
+    tabBtns.forEach(btn => {
+      const tabTarget = btn.getAttribute('data-tab');
+      if (tabTarget === 'tab-pendukung') {
+        btn.style.display = 'inline-flex';
+        btn.classList.add('active');
+      } else {
+        btn.style.display = 'none';
+        btn.classList.remove('active');
+      }
+    });
+
+    // 2. ISOLASI KONTEN: Hanya tampilkan #tab-pendukung
+    document.querySelectorAll('.tab-content').forEach(c => {
+      if (c.id === 'tab-pendukung') {
+        c.classList.add('active');
+      } else {
+        c.classList.remove('active');
+      }
+    });
+
+    // 3. SEMBUNYIKAN WIDGET EKSEKUTIF PADA HEADER (Agar HP & laptop ringan & fokus)
+    if (metaPanel) metaPanel.style.display = 'none';
+    if (btnVol) {
+      btnVol.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+      btnVol.style.boxShadow = '0 2px 14px rgba(16,185,129,0.5)';
+      if (txtVol) txtVol.textContent = 'Mode Relawan (Aktif ✓)';
+    }
+
+    // 4. TAMPILKAN BANNER PEMBERITAHUAN WILAYAH DI TAB PENDUKUNG
+    if (scopeNotice) {
+      scopeNotice.style.display = 'flex';
+      if (scopeDesa) scopeDesa.textContent = session.desa ? `Desa ${session.desa}` : (session.kecamatan ? `Kec. ${session.kecamatan}` : 'Wilayah Anda');
+      if (scopeKec) scopeKec.textContent = session.kecamatan || 'Kalbar 2';
+    }
+  } else {
+    // KEMBALIKAN KE MODE NORMAL (ADMIN / KORWIL)
+    tabBtns.forEach(btn => { btn.style.display = 'inline-flex'; });
+    if (metaPanel) metaPanel.style.display = 'flex';
+    if (btnVol) {
+      btnVol.style.background = 'linear-gradient(135deg, #2563EB, #1D4ED8)';
+      btnVol.style.boxShadow = '0 2px 14px rgba(37,99,235,0.45)';
+      if (txtVol) txtVol.textContent = 'Mode Relawan Lapangan';
+    }
+    if (scopeNotice && session.role === 'admin') {
+      scopeNotice.style.display = 'none';
+    }
+  }
 
   // Korwil Kabupaten
   if (session.role === 'korwil_kabupaten') {
@@ -10412,6 +11360,22 @@ window.onFilterPendukungKecChange = onFilterPendukungKecChange;
 window.openUpdateTugasModal = openUpdateTugasModal;
 window.closeUpdateTugasModal = closeUpdateTugasModal;
 window.handleUpdateTugasSubmit = handleUpdateTugasSubmit;
+
+// VOLUNTEER ISOLATION, CETAK LAPANGAN & EMAIL 2 LANGKAH EXPORTS
+window.setAppViewMode = setAppViewMode;
+window.toggleVolunteerFieldMode = toggleVolunteerFieldMode;
+window.exportScopedPendukungExcel = exportScopedPendukungExcel;
+window.openPrintKanvasingModal = openPrintKanvasingModal;
+window.closePrintKanvasingModal = closePrintKanvasingModal;
+window.printBlankCanvassForm = printBlankCanvassForm;
+window.printScopedSupportersList = printScopedSupportersList;
+window.openEmailBackupModal = openEmailBackupModal;
+window.closeEmailBackupModal = closeEmailBackupModal;
+window.goToEmailStep1 = goToEmailStep1;
+window.goToEmailStep2 = goToEmailStep2;
+window.executeEmailSendMailto = executeEmailSendMailto;
+window.executeEmailSendGmailWeb = executeEmailSendGmailWeb;
+window.copyEmailReportText = copyEmailReportText;
 
 // ==================== PANDUAN BUKA DI HP (MENANG2029) ====================
 function openMobileGuideModal() {
