@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Anti-Cache Meta Tags untuk GitHub Pages & Browser HP -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>SIP-TPS 2029 — Sistem Intelijen & Pemenangan TPS (DPRD Provinsi Kalbar 2)</title>
+
+<!-- ZERO-LEAK HARD SECURITY BARRIER (WAJIB SANDI PADA PERANGKAT BARU / HP) -->
+<script>
+(function() {
+  try {
+    var isUnlocked = sessionStorage.getItem('SIP_SESSION_UNLOCKED') === 'true';
+    if (!isUnlocked) {
+      document.documentElement.classList.add('sip-locked-gate');
+    }
+  } catch (e) {
+    document.documentElement.classList.add('sip-locked-gate');
+  }
+})();
+</script>
 
 <!-- Typography: Inter, Outfit, & IBM Plex Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,16 +130,13 @@ header.command-header {
   gap: 16px;
 }
 .brand-badge {
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%);
-  border: 1.5px solid var(--gold);
-  border-radius: 14px;
+  width: 56px;
+  height: 66px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  box-shadow: 0 0 20px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 .brand-text .eyebrow {
   font-family: 'IBM Plex Mono', monospace;
@@ -1455,14 +1470,27 @@ td.num-cell {
   transform: translateY(-1px);
 }
 
-/* ==================== PASSCODE GATEWAY (MENANG2029) ==================== */
+/* ==================== PASSCODE GATEWAY (KUNCI PEMBUKA APLIKASI) ==================== */
 .passcode-gate-backdrop {
-  display: none !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
   position: fixed;
   inset: 0;
-  z-index: -9999;
+  z-index: 999999;
+  background: radial-gradient(circle at 50% 25%, rgba(16, 26, 48, 0.96), rgba(6, 9, 19, 0.98) 75%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
+}
+.passcode-gate-backdrop.unlocked {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(1.02);
 }
 .passcode-card {
   width: 100%;
@@ -2026,6 +2054,547 @@ td.num-cell {
   letter-spacing: 4px;
   color: var(--gold-light);
 }
+
+/* ==================== ZERO-LEAK SECURITY (PASSWORD MANDATORY ON FIRST OPEN) ==================== */
+html.sip-locked-gate .app-container,
+body:not(.sip-authenticated) .app-container {
+  display: none !important;
+}
+html.sip-locked-gate #passcodeGate,
+body:not(.sip-authenticated) #passcodeGate {
+  display: flex !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  background: #060913 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+body.sip-authenticated:not(.sip-locked-gate) #passcodeGate {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ==================== FORMULIR KANVASING PENDUKUNG BARU 1 LEMBAR A4 ==================== */
+.volunteer-a4-wrapper {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto 30px auto;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.a4-sheet {
+  background: #0D1527;
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75), 0 0 32px rgba(245, 158, 11, 0.08);
+  padding: 24px 28px;
+  color: #E2E8F0;
+  position: relative;
+  overflow: hidden;
+}
+.a4-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #F59E0B, #DC2626, #10B981, #F59E0B);
+}
+
+/* Header Kop Resmi A4 */
+.a4-header-kop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(245, 158, 11, 0.35);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  gap: 14px;
+}
+.a4-kop-logo {
+  flex-shrink: 0;
+}
+.a4-garuda-badge {
+  width: 58px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.a4-kop-text {
+  flex: 1;
+  text-align: left;
+}
+.a4-kop-org {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FCD34D;
+  text-transform: uppercase;
+}
+.a4-kop-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  margin: 2px 0;
+}
+.a4-kop-sub {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.a4-kop-badge-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.a4-serial-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FCD34D;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.a4-relawan-status-chip {
+  font-size: 10px;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #10B981, #059669);
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* Section Box Styling */
+.a4-section {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+.a4-section:focus-within {
+  border-color: rgba(245, 158, 11, 0.4);
+}
+.a4-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-bottom: 6px;
+}
+.a4-sec-num {
+  font-size: 15px;
+  color: #F59E0B;
+  font-weight: 800;
+}
+.a4-sec-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  flex: 1;
+}
+.a4-sec-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.a4-sec-tag.highlight {
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+/* Form Controls */
+.a4-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.a4-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+}
+.a4-label .req {
+  color: #EF4444;
+  margin-left: 3px;
+}
+.a4-input {
+  width: 100%;
+  background: #080D1A;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 13px;
+  padding: 8px 12px;
+  outline: none;
+  transition: all 0.15s ease;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+.a4-input:focus {
+  border-color: #F59E0B;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  background: #0B1120;
+}
+.a4-input::placeholder {
+  color: #64748B;
+  font-size: 12px;
+}
+
+/* Gender Selector */
+.a4-gender-selector {
+  display: flex;
+  gap: 6px;
+  height: 40px;
+}
+.a4-gender-btn {
+  flex: 1;
+  background: #080D1A;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #94A3B8;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.a4-gender-btn.active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(29, 78, 216, 0.45));
+  border-color: #3B82F6;
+  color: #93C5FD;
+}
+
+/* Quick Action & GPS Buttons */
+.a4-quick-action-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  background: rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  border-radius: 6px;
+  color: #34D399;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.a4-gps-btn {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 8px;
+  color: #FCD34D;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.a4-gps-btn:hover {
+  background: rgba(245, 158, 11, 0.35);
+}
+
+/* Interactive Commitment Selector */
+.a4-commitment-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+.a4-commit-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #080D1A;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.a4-commit-btn .commit-icon {
+  font-size: 20px;
+}
+.a4-commit-btn .commit-text {
+  display: flex;
+  flex-direction: column;
+}
+.a4-commit-btn .commit-text b {
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+}
+.a4-commit-btn .commit-text small {
+  font-size: 10.5px;
+  color: #94A3B8;
+  margin-top: 1px;
+}
+.a4-commit-btn .commit-check {
+  margin-left: auto;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.a4-commit-btn.pasti.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.3));
+  border-color: #10B981;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+}
+.a4-commit-btn.pasti.active .commit-text b { color: #34D399; }
+.a4-commit-btn.pasti.active .commit-check { opacity: 1; color: #34D399; }
+
+.a4-commit-btn.condong.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.3));
+  border-color: #F59E0B;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+}
+.a4-commit-btn.condong.active .commit-text b { color: #FCD34D; }
+.a4-commit-btn.condong.active .commit-check { opacity: 1; color: #FCD34D; }
+
+.a4-commit-btn.ragu.active {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(185, 28, 28, 0.25));
+  border-color: #EF4444;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+}
+.a4-commit-btn.ragu.active .commit-text b { color: #FCA5A5; }
+.a4-commit-btn.ragu.active .commit-check { opacity: 1; color: #FCA5A5; }
+
+/* Bilah Aksi Utama A4 */
+.a4-actions-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.btn-a4-primary {
+  flex: 2;
+  min-width: 220px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  border: none;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 13px 22px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.45);
+  transition: all 0.2s ease;
+}
+.btn-a4-primary:hover {
+  background: linear-gradient(135deg, #34D399, #10B981);
+  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+}
+.btn-a4-primary .shortcut-tag {
+  font-size: 10.5px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: normal;
+}
+.btn-a4-secondary {
+  flex: 1;
+  min-width: 140px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  color: #E2E8F0;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.btn-a4-secondary:hover {
+  border-color: #F59E0B;
+  color: #FCD34D;
+  background: rgba(245, 158, 11, 0.1);
+}
+.btn-a4-ghost {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #94A3B8;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-a4-ghost:hover {
+  color: #F8FAFC;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Toast Alert */
+.a4-toast-alert {
+  margin-top: 14px;
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.9), rgba(6, 95, 70, 0.85));
+  border: 1.5px solid #10B981;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Drawer Daftar Terdata */
+.a4-recent-drawer {
+  margin-top: 18px;
+  background: rgba(6, 9, 19, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  animation: fadeIn 0.25s ease;
+}
+.a4-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.a4-drawer-body {
+  padding: 10px 14px;
+}
+
+/* Responsive Mobile Rules */
+@media (max-width: 768px) {
+  .a4-sheet {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+  .a4-header-kop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .a4-kop-badge-box {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .a4-grid-form {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .a4-commitment-selector {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .a4-actions-bar {
+    flex-direction: column;
+  }
+  .btn-a4-primary, .btn-a4-secondary, .btn-a4-ghost {
+    width: 100%;
+    min-width: 100%;
+  }
+  .a4-input {
+    font-size: 14px; /* Cegah zoom otomatis di iOS Safari */
+    min-height: 44px;
+  }
+}
+
+/* Print Specific Rule for Single A4 Page */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .volunteer-a4-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .a4-sheet {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1.5px solid #000000 !important;
+    box-shadow: none !important;
+    padding: 10mm !important;
+    page-break-inside: avoid !important;
+  }
+  .a4-header-kop {
+    border-bottom: 2px solid #000000 !important;
+  }
+  .a4-kop-org, .a4-kop-title, .a4-kop-sub {
+    color: #000000 !important;
+  }
+  .a4-section {
+    background: #ffffff !important;
+    border: 1px solid #000000 !important;
+    margin-bottom: 8px !important;
+    padding: 8px 10px !important;
+  }
+  .a4-sec-num, .a4-sec-title, .a4-label {
+    color: #000000 !important;
+  }
+  .a4-input {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #333333 !important;
+    min-height: 28px !important;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+  }
+  .a4-actions-bar,
+  .a4-recent-drawer,
+  .a4-quick-action-btn,
+  .a4-gps-btn,
+  .shortcut-tag {
+    display: none !important;
+  }
+}
 </style>
 </head>
 
@@ -2034,32 +2603,115 @@ td.num-cell {
 <!-- ==================== AREA CETAK KHUSUS LEMBAR KERJA LAPANGAN / PDF (@media print) ==================== -->
 <div id="printableFormSection" class="printable-form-container"></div>
 
-<!-- ==================== PASSCODE GATEWAY (DINONAKTIFKAN — DIGANTI RBAC 2FA) ==================== -->
-<div id="passcodeGate" class="passcode-gate-backdrop" style="display:none !important; pointer-events:none !important; visibility:hidden !important;">
+<!-- ==================== PASSCODE GATEWAY (KUNCI PEMBUKA APLIKASI) ==================== -->
+<div id="passcodeGate" class="passcode-gate-backdrop" style="display:flex !important; opacity:1 !important; visibility:visible !important; z-index:9999999 !important;">
   <div class="passcode-card">
     <div class="passcode-brand">
-      <div class="passcode-icon">🦅</div>
+      <div class="passcode-icon" style="width:84px; height:98px; margin:0 auto 14px auto; display:flex; align-items:center; justify-content:center;">
+        <svg viewBox="0 0 200 236" class="gerindra-official-logo" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block; filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">
+          <!-- 1. PERISAI SEGI LIMA MERAH GERINDRA (OFFICIAL PENTAGON SHIELD) -->
+          <polygon points="100,6 192,54 158,178 42,178 8,54" fill="#C8102E" stroke="#111111" stroke-width="4.5" stroke-linejoin="round"/>
+          
+          <!-- 2. KEPALA GARUDA EMAS MENGHADAP KE KIRI -->
+          <g id="garuda_passcode">
+            <!-- Siluet Kepala & Leher Garuda -->
+            <path d="M 100 42 C 88 38, 76 45, 68 56 C 62 64, 56 72, 48 76 C 40 80, 32 86, 30 94 C 32 98, 42 98, 48 95 C 42 102, 48 106, 56 102 C 62 108, 70 114, 76 118 C 74 128, 70 142, 66 160 L 64 174 L 142 174 C 142 150, 140 128, 136 106 C 134 94, 130 84, 126 74 C 126 62, 120 50, 114 44 Z" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+            
+            <!-- Jambul Mahkota Bulu Atas Kepala -->
+            <path d="M 68 56 Q 72 40 84 34 Q 82 44 88 48 Q 96 36 108 34 Q 104 44 114 46 Q 124 38 132 40 Q 124 50 126 58" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+            
+            <!-- Paruh Melengkung Tajam Khas Garuda (Menghadap Kiri) -->
+            <path d="M 68 64 C 54 68 40 76 30 94 C 44 94 56 88 64 82 Z" fill="#F5B800" stroke="#111111" stroke-width="2.5"/>
+            <path d="M 30 94 C 36 97 48 96 54 90" fill="none" stroke="#111111" stroke-width="2.5"/>
+            <!-- Paruh Bawah Terbuka -->
+            <path d="M 40 94 Q 48 98 56 94 Q 50 102 44 100 Z" fill="#E69500" stroke="#111111" stroke-width="2"/>
+            <!-- Lidah Merah di dalam Paruh -->
+            <path d="M 44 94 Q 48 91 52 93" fill="none" stroke="#C8102E" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Lubang Hidung -->
+            <ellipse cx="54" cy="76" rx="3.5" ry="1.8" fill="#111111" transform="rotate(-15 54 76)"/>
+
+            <!-- Mata Elang & Alis Berwibawa -->
+            <path d="M 72 66 Q 84 62 94 65" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 74 68 Q 84 76 92 68 Q 84 65 74 68 Z" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+            <ellipse cx="83" cy="69" rx="3.2" ry="3.2" fill="#111111"/>
+            <circle cx="84" cy="68" r="1.1" fill="#FFFFFF"/>
+            
+            <!-- Guratan Bulu Pipi -->
+            <path d="M 94 72 Q 106 74 114 82" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 90 80 Q 104 84 110 94" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 82 88 Q 98 94 106 104" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- 4 TINGKAT BULU SISIK LEHER GARUDA (SCALLOPED NECK SCALES) -->
+            <!-- Tingkat 1 (Atas) -->
+            <path d="M 80 114 Q 88 124 96 114 Q 104 124 112 114 Q 120 124 128 114" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Tingkat 2 (Tengah) -->
+            <path d="M 74 130 Q 82 142 90 130 Q 98 142 106 130 Q 114 142 122 130 Q 130 142 136 130" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Tingkat 3 (Bawah) -->
+            <path d="M 68 148 Q 78 160 88 148 Q 98 160 108 148 Q 118 160 128 148 Q 136 160 142 148" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Tingkat 4 (Dasar Leher di garis bawah perisai) -->
+            <path d="M 64 166 Q 74 178 84 166 Q 94 178 104 166 Q 114 178 124 166 Q 134 178 144 166" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Garis Batas Bawah Leher -->
+            <line x1="58" y1="174" x2="146" y2="174" stroke="#111111" stroke-width="3"/>
+          </g>
+
+          <!-- 3. TEKS "GERINDRA" RESMI DI BAWAH PERISAI -->
+          <text x="100" y="214" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="30" fill="#C8102E" stroke="#111111" stroke-width="1.8" letter-spacing="2">GERINDRA</text>
+        </svg>
+      </div>
       <div class="passcode-title">SIP-TPS 2029</div>
-      <div class="passcode-badge">WAR ROOM ELEKTORAL KALBAR 2</div>
+      <div class="passcode-badge">DAPIL KALBAR 2 · KUBU RAYA &amp; MEMPAWAH</div>
     </div>
     <div class="passcode-subtitle">
-      Sistem Intelijen TPS · Kab. Kubu Raya &amp; Kab. Mempawah
+      Sistem Intelijen TPS · Pemenangan DPRD Provinsi 2029
     </div>
-    <div class="passcode-desc">
-      Sistem ini dilindungi enkripsi komando pemenangan. Silakan masukkan kata sandi akses Anda untuk membuka dashboard:
+    <div class="passcode-desc" style="font-size:13px; color:#CBD5E1; margin:14px 0 18px;">
+      Sistem ini dilindungi enkripsi komando pemenangan. Silakan masukkan kata sandi akses untuk membuka aplikasi:
+    </div>
+
+    <!-- PEMBERITAHUAN SESI TIMEOUT OTOMATIS (JIKA TERKUNCI KARENA TIDAK DIGUNAKAN) -->
+    <div id="passcodeTimeoutNotice" style="display:none; background:rgba(245,158,11,0.14); border:1px solid rgba(245,158,11,0.45); border-radius:10px; padding:10px 14px; margin-bottom:14px; font-size:12px; color:#FCD34D; line-height:1.5; text-align:left;">
+      ⏱️ <b>Sesi Terkunci Otomatis:</b> Aplikasi tidak digunakan selama <span id="lblTimeoutDurationNotice">15</span> menit. Demi keamanan data TPS, silakan masukkan kata sandi kembali untuk melanjutkan.
     </div>
 
     <form id="passcodeForm" onsubmit="handlePasscodeSubmit(event)">
-      <div class="passcode-input-wrap" style="position:relative;">
+      <div class="passcode-input-wrap" style="position:relative; margin-bottom:14px;">
         <span class="passcode-key-icon">🔑</span>
-        <input type="password" id="passcodeInput" class="passcode-input" placeholder="Masukkan kata sandi..." autocomplete="off" autocorrect="off" spellcheck="false" style="letter-spacing:2px; padding-right:45px;">
-        <button type="button" id="btnTogglePasscode" onclick="togglePasscodeVisibility()" style="position:absolute; right:110px; top:50%; transform:translateY(-50%); background:none; border:none; color:#94A3B8; cursor:pointer; font-size:16px; padding:4px 6px;" title="Tampilkan / Sembunyikan Sandi">👁️</button>
-        <button type="submit" class="passcode-submit-btn">BUKA ➔</button>
+        <input type="password" id="passcodeInput" class="passcode-input" placeholder="Masukkan kata sandi..." autocomplete="off" autocorrect="off" spellcheck="false" style="letter-spacing:2px; padding-right:85px;">
+        <button type="button" id="btnTogglePasscode" onclick="togglePasscodeVisibility()" style="position:absolute; right:115px; top:50%; transform:translateY(-50%); background:none; border:none; color:#94A3B8; cursor:pointer; font-size:16px; padding:4px 6px;" title="Tampilkan / Sembunyikan Sandi">👁️</button>
+        <button type="submit" class="passcode-submit-btn" style="min-width:105px;">BUKA ➔</button>
       </div>
-      <div id="passcodeError" class="passcode-error" style="display:none;">
+      <div id="passcodeError" class="passcode-error" style="display:none; margin-bottom:12px;">
         ⚠️ Kata sandi akses tidak valid! Silakan hubungi koordinator atau admin.
       </div>
     </form>
+
+    <!-- Pilihan Akses Cepat / Petunjuk Sandi -->
+    <div style="background:rgba(15,23,42,0.7); border:1px dashed rgba(245,158,11,0.35); border-radius:12px; padding:12px 14px; margin-top:14px; text-align:left;">
+      <div style="font-size:11px; font-family:'IBM Plex Mono'; color:var(--gold); text-transform:uppercase; margin-bottom:8px; font-weight:700;">
+        ⚡ Pilihan Hak Akses Pengguna:
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <button type="button" class="btn sm" onclick="quickFillPasscode('relawan2029')" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-size:11.5px; font-weight:700; border:none; padding:8px 10px; border-radius:8px; text-align:center; cursor:pointer;" title="Buka Mode Khusus Relawan Lapangan (Input Pendukung & Wilayah Sendiri)">
+          📱 Relawan Lapangan
+        </button>
+        <button type="button" class="btn sm secondary" onclick="quickFillPasscode('MENANG2029')" style="background:rgba(37,99,235,0.25); color:#93C5FD; border:1px solid #3B82F6; font-size:11.5px; font-weight:700; padding:8px 10px; border-radius:8px; text-align:center; cursor:pointer;" title="Buka Mode Admin Pusat Komando (Semua 9 Modul Strategis)">
+          👑 Admin Pusat Komando
+        </button>
+      </div>
+      <div style="font-size:10.5px; color:#94A3B8; margin-top:8px; text-align:center;">
+        Sandi Relawan: <code style="color:#6EE7B7;">relawan2029</code> · Sandi Admin: <code style="color:var(--gold-light);">MENANG2029</code>
+      </div>
+    </div>
+
+    <!-- Pengaturan Durasi Kunci Otomatis (Inactivity Timeout) -->
+    <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; background:rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:8px 12px; font-size:11.5px; color:#94A3B8; text-align:left;">
+      <span>⏱️ Auto-Kunci saat Tidak Dipakai:</span>
+      <select id="selInactivityTimeoutGate" onchange="changeInactivityTimeout(this.value)" style="background:rgba(11,18,34,0.9); border:1px solid rgba(245,158,11,0.4); border-radius:6px; color:#FCD34D; font-weight:700; font-size:11.5px; padding:3px 8px; cursor:pointer; outline:none;">
+        <option value="15">15 Menit (Standar)</option>
+        <option value="20">20 Menit</option>
+        <option value="30">30 Menit (Maksimal)</option>
+      </select>
+    </div>
 
     <div class="passcode-footer" style="margin-top:18px;">
       <span style="color:#64748B; font-size:11.5px; display:inline-flex; align-items:center; gap:6px;">
@@ -2098,10 +2750,22 @@ td.num-cell {
         <button type="button" class="btn sm" id="btnModeRelawanActive" onclick="setAppViewMode('relawan')" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:800; border:none; border-radius:7px; padding:5px 13px; font-size:12px; cursor:pointer;" title="Mode Relawan Lapangan: Hanya Input Pendukung Baru & Data Wilayah Tugas">
           📱 Mode Input Relawan
         </button>
-        <button type="button" class="btn sm secondary" id="btnModeAdminActive" onclick="setAppViewMode('admin')" style="background:transparent; color:#94A3B8; font-weight:600; border:none; border-radius:7px; padding:5px 13px; font-size:12px; cursor:pointer;" title="Mode Admin: Buka Semua 9 Modul Strategis (War Room, Petahana, Audit, Sainte-Laguë)">
-          👑 Mode Admin War Room
+        <button type="button" class="btn sm secondary" id="btnModeAdminActive" onclick="requestAdminWarRoomAccess()" style="background:transparent; color:#94A3B8; font-weight:600; border:none; border-radius:7px; padding:5px 13px; font-size:12px; cursor:pointer;" title="Mode Admin: Buka Semua 9 Modul Strategis (War Room, Petahana, Audit, Sainte-Laguë) — Butuh Sandi MENANG2029">
+          👑 Mode Admin War Room 🔒
         </button>
       </div>
+      <!-- PENGATURAN KUNCI OTOMATIS (INACTIVITY TIMEOUT) -->
+      <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(15,23,42,0.85); border:1px solid rgba(245,158,11,0.35); border-radius:8px; padding:4px 9px; font-size:11.5px; color:#94A3B8;" title="Aplikasi akan otomatis mengunci jika tidak digunakan selama durasi ini">
+        <span>⏱️ Auto-Kunci:</span>
+        <select id="selInactivityTimeout" onchange="changeInactivityTimeout(this.value)" style="background:transparent; border:none; color:var(--gold-light); font-weight:700; font-size:11.5px; cursor:pointer; outline:none;">
+          <option value="15" style="background:#0F172A; color:#fff;">15 Menit</option>
+          <option value="20" style="background:#0F172A; color:#fff;">20 Menit</option>
+          <option value="30" style="background:#0F172A; color:#fff;">30 Menit</option>
+        </select>
+      </div>
+      <button type="button" class="btn sm" id="btnLockAppGate" onclick="lockPasscodeGate('manual')" style="background:rgba(239,68,68,0.2); color:#FCA5A5; border:1px solid rgba(239,68,68,0.45); font-weight:700; border-radius:8px; cursor:pointer; padding:5px 11px; font-size:12px; display:inline-flex; align-items:center; gap:5px;" title="Kunci Aplikasi dan Kembali ke Tampilan Sandi Pembuka">
+        🔒 Kunci
+      </button>
       <button type="button" class="btn sm" id="btnOpenMobileGuide" onclick="openMobileGuideModal()" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:700; border:none; box-shadow:0 2px 14px rgba(16,185,129,0.45); cursor:pointer; display:inline-flex; align-items:center; gap:6px;" title="Petunjuk Akses di HP">
         <span class="hud-pulse" style="width:6px; height:6px;"></span>
         📱 Akses Mobile HP
@@ -2122,7 +2786,57 @@ td.num-cell {
   <header class="command-header">
     <div class="header-top">
       <div class="brand-section">
-        <div class="brand-badge">🦅</div>
+        <div class="brand-badge" style="width:56px; height:66px; padding:0; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg viewBox="0 0 200 236" class="gerindra-official-logo" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block; filter:drop-shadow(0 3px 10px rgba(0,0,0,0.5));">
+            <!-- 1. PERISAI SEGI LIMA MERAH GERINDRA (OFFICIAL PENTAGON SHIELD) -->
+            <polygon points="100,6 192,54 158,178 42,178 8,54" fill="#C8102E" stroke="#111111" stroke-width="4.5" stroke-linejoin="round"/>
+            
+            <!-- 2. KEPALA GARUDA EMAS MENGHADAP KE KIRI -->
+            <g id="garuda_hdr">
+              <!-- Siluet Kepala & Leher Garuda -->
+              <path d="M 100 42 C 88 38, 76 45, 68 56 C 62 64, 56 72, 48 76 C 40 80, 32 86, 30 94 C 32 98, 42 98, 48 95 C 42 102, 48 106, 56 102 C 62 108, 70 114, 76 118 C 74 128, 70 142, 66 160 L 64 174 L 142 174 C 142 150, 140 128, 136 106 C 134 94, 130 84, 126 74 C 126 62, 120 50, 114 44 Z" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+              
+              <!-- Jambul Mahkota Bulu Atas Kepala -->
+              <path d="M 68 56 Q 72 40 84 34 Q 82 44 88 48 Q 96 36 108 34 Q 104 44 114 46 Q 124 38 132 40 Q 124 50 126 58" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+              
+              <!-- Paruh Melengkung Tajam Khas Garuda (Menghadap Kiri) -->
+              <path d="M 68 64 C 54 68 40 76 30 94 C 44 94 56 88 64 82 Z" fill="#F5B800" stroke="#111111" stroke-width="2.5"/>
+              <path d="M 30 94 C 36 97 48 96 54 90" fill="none" stroke="#111111" stroke-width="2.5"/>
+              <!-- Paruh Bawah Terbuka -->
+              <path d="M 40 94 Q 48 98 56 94 Q 50 102 44 100 Z" fill="#E69500" stroke="#111111" stroke-width="2"/>
+              <!-- Lidah Merah di dalam Paruh -->
+              <path d="M 44 94 Q 48 91 52 93" fill="none" stroke="#C8102E" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Lubang Hidung -->
+              <ellipse cx="54" cy="76" rx="3.5" ry="1.8" fill="#111111" transform="rotate(-15 54 76)"/>
+
+              <!-- Mata Elang & Alis Berwibawa -->
+              <path d="M 72 66 Q 84 62 94 65" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+              <path d="M 74 68 Q 84 76 92 68 Q 84 65 74 68 Z" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+              <ellipse cx="83" cy="69" rx="3.2" ry="3.2" fill="#111111"/>
+              <circle cx="84" cy="68" r="1.1" fill="#FFFFFF"/>
+              
+              <!-- Guratan Bulu Pipi -->
+              <path d="M 94 72 Q 106 74 114 82" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 90 80 Q 104 84 110 94" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 82 88 Q 98 94 106 104" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- 4 TINGKAT BULU SISIK LEHER GARUDA (SCALLOPED NECK SCALES) -->
+              <!-- Tingkat 1 (Atas) -->
+              <path d="M 80 114 Q 88 124 96 114 Q 104 124 112 114 Q 120 124 128 114" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Tingkat 2 (Tengah) -->
+              <path d="M 74 130 Q 82 142 90 130 Q 98 142 106 130 Q 114 142 122 130 Q 130 142 136 130" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Tingkat 3 (Bawah) -->
+              <path d="M 68 148 Q 78 160 88 148 Q 98 160 108 148 Q 118 160 128 148 Q 136 160 142 148" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Tingkat 4 (Dasar Leher di garis bawah perisai) -->
+              <path d="M 64 166 Q 74 178 84 166 Q 94 178 104 166 Q 114 178 124 166 Q 134 178 144 166" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Garis Batas Bawah Leher -->
+              <line x1="58" y1="174" x2="146" y2="174" stroke="#111111" stroke-width="3"/>
+            </g>
+
+            <!-- 3. TEKS "GERINDRA" RESMI DI BAWAH PERISAI -->
+            <text x="100" y="214" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="30" fill="#C8102E" stroke="#111111" stroke-width="1.8" letter-spacing="2">GERINDRA</text>
+          </svg>
+        </div>
         <div class="brand-text">
           <div class="eyebrow"><span class="pulse"></span> Executive War Room · Pemilu 2029</div>
           <h1>SIP-TPS 2029</h1>
@@ -2901,38 +3615,333 @@ td.num-cell {
 
   <!-- ==================== TAB 8: RELAWAN & KANVASING PENDUKUNG ==================== -->
   <div class="tab-content active" id="tab-pendukung">
-    <!-- HERO COMMAND BANNER FOR FIELD VOLUNTEER (INPUT & PENDATAAN) -->
-    <div style="background:linear-gradient(135deg, rgba(16,185,129,0.22), rgba(15,23,42,0.92)); border:2px solid rgba(16,185,129,0.55); border-radius:14px; padding:20px 24px; margin-bottom:22px; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-        <div>
-          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(16,185,129,0.2); border:1px solid rgba(16,185,129,0.45); padding:4px 10px; border-radius:20px; font-size:11.5px; font-weight:700; color:#34D399; margin-bottom:8px;">
-            <span class="hud-pulse" style="width:7px; height:7px;"></span>
-            📱 MODE AKTIF: INPUT PENDUKUNG LAPANGAN &amp; WILAYAH TUGAS
+    <!-- ==================== FORMULIR KANVASING PENDUKUNG BARU 1 LEMBAR A4 (PORTAL UTAMA RELAWAN) ==================== -->
+    <div id="volunteerA4Container" class="volunteer-a4-wrapper">
+      <div class="a4-sheet" id="volunteerA4Sheet">
+        
+        <!-- KOP RESMI LEMBAR A4 DOKUMEN PARTAI GERINDRA -->
+        <div class="a4-header-kop">
+          <div class="a4-kop-logo">
+            <div class="a4-garuda-badge" style="width:58px; height:68px; padding:0; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg viewBox="0 0 200 236" class="gerindra-official-logo" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; display:block; filter:drop-shadow(0 3px 8px rgba(0,0,0,0.45));">
+                <!-- 1. PERISAI SEGI LIMA MERAH GERINDRA (OFFICIAL PENTAGON SHIELD) -->
+                <polygon points="100,6 192,54 158,178 42,178 8,54" fill="#C8102E" stroke="#111111" stroke-width="4.5" stroke-linejoin="round"/>
+                
+                <!-- 2. KEPALA GARUDA EMAS MENGHADAP KE KIRI -->
+                <g id="garuda_a4">
+                  <!-- Siluet Kepala & Leher Garuda -->
+                  <path d="M 100 42 C 88 38, 76 45, 68 56 C 62 64, 56 72, 48 76 C 40 80, 32 86, 30 94 C 32 98, 42 98, 48 95 C 42 102, 48 106, 56 102 C 62 108, 70 114, 76 118 C 74 128, 70 142, 66 160 L 64 174 L 142 174 C 142 150, 140 128, 136 106 C 134 94, 130 84, 126 74 C 126 62, 120 50, 114 44 Z" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+                  
+                  <!-- Jambul Mahkota Bulu Atas Kepala -->
+                  <path d="M 68 56 Q 72 40 84 34 Q 82 44 88 48 Q 96 36 108 34 Q 104 44 114 46 Q 124 38 132 40 Q 124 50 126 58" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"/>
+                  
+                  <!-- Paruh Melengkung Tajam Khas Garuda (Menghadap Kiri) -->
+                  <path d="M 68 64 C 54 68 40 76 30 94 C 44 94 56 88 64 82 Z" fill="#F5B800" stroke="#111111" stroke-width="2.5"/>
+                  <path d="M 30 94 C 36 97 48 96 54 90" fill="none" stroke="#111111" stroke-width="2.5"/>
+                  <!-- Paruh Bawah Terbuka -->
+                  <path d="M 40 94 Q 48 98 56 94 Q 50 102 44 100 Z" fill="#E69500" stroke="#111111" stroke-width="2"/>
+                  <!-- Lidah Merah di dalam Paruh -->
+                  <path d="M 44 94 Q 48 91 52 93" fill="none" stroke="#C8102E" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Lubang Hidung -->
+                  <ellipse cx="54" cy="76" rx="3.5" ry="1.8" fill="#111111" transform="rotate(-15 54 76)"/>
+
+                  <!-- Mata Elang & Alis Berwibawa -->
+                  <path d="M 72 66 Q 84 62 94 65" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M 74 68 Q 84 76 92 68 Q 84 65 74 68 Z" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+                  <ellipse cx="83" cy="69" rx="3.2" ry="3.2" fill="#111111"/>
+                  <circle cx="84" cy="68" r="1.1" fill="#FFFFFF"/>
+                  
+                  <!-- Guratan Bulu Pipi -->
+                  <path d="M 94 72 Q 106 74 114 82" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M 90 80 Q 104 84 110 94" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M 82 88 Q 98 94 106 104" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+
+                  <!-- 4 TINGKAT BULU SISIK LEHER GARUDA (SCALLOPED NECK SCALES) -->
+                  <!-- Tingkat 1 (Atas) -->
+                  <path d="M 80 114 Q 88 124 96 114 Q 104 124 112 114 Q 120 124 128 114" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Tingkat 2 (Tengah) -->
+                  <path d="M 74 130 Q 82 142 90 130 Q 98 142 106 130 Q 114 142 122 130 Q 130 142 136 130" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Tingkat 3 (Bawah) -->
+                  <path d="M 68 148 Q 78 160 88 148 Q 98 160 108 148 Q 118 160 128 148 Q 136 160 142 148" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Tingkat 4 (Dasar Leher di garis bawah perisai) -->
+                  <path d="M 64 166 Q 74 178 84 166 Q 94 178 104 166 Q 114 178 124 166 Q 134 178 144 166" fill="#F5B800" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Garis Batas Bawah Leher -->
+                  <line x1="58" y1="174" x2="146" y2="174" stroke="#111111" stroke-width="3"/>
+                </g>
+
+                <!-- 3. TEKS "GERINDRA" RESMI DI BAWAH PERISAI -->
+                <text x="100" y="214" text-anchor="middle" font-family="'Impact', 'Arial Black', sans-serif" font-weight="900" font-size="30" fill="#C8102E" stroke="#111111" stroke-width="1.8" letter-spacing="2">GERINDRA</text>
+              </svg>
+            </div>
           </div>
-          <h2 style="font-size:22px; font-weight:900; color:#FFFFFF; margin-bottom:4px; letter-spacing:-0.02em;">
-            Portal Input Pendukung Baru &amp; Formulir Kanvasing 2029
-          </h2>
-          <div style="font-size:13px; color:var(--paper-muted); max-width:680px; line-height:1.5;">
-            Khusus pencatatan konstituen door-to-door, cetak formulir A4 bertanda tangan fisik, ekspor Excel otomatis, dan transmisi laporan terverifikasi 2 langkah ke koordinator.
+          <div class="a4-kop-text">
+            <div class="a4-kop-org">PARTAI GERAKAN INDONESIA RAYA (GERINDRA)</div>
+            <div class="a4-kop-title">FORMULIR KANVASING PENDUKUNG BARU (MODEL F-1/A4)</div>
+            <div class="a4-kop-sub">SISTEM INTELIJEN ELEKTORAL TPS 2029 · DAPIL KALBAR 2 (KUBU RAYA &amp; MEMPAWAH)</div>
+          </div>
+          <div class="a4-kop-badge-box">
+            <span class="a4-serial-badge" id="a4FormSerialNumber">DOC #2029-A4</span>
+            <span class="a4-relawan-status-chip">📱 RELAWAN LAPANGAN</span>
           </div>
         </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button type="button" class="btn" onclick="openPendukungModal()" style="background:linear-gradient(135deg, #10B981, #059669); color:#fff; font-weight:800; font-size:13.5px; padding:11px 20px; box-shadow:0 4px 16px rgba(16,185,129,0.45); border:none; cursor:pointer; border-radius:8px;">
-            ＋ INPUT PENDUKUNG BARU
-          </button>
-          <button type="button" class="btn secondary" onclick="printBlankCanvassForm()" style="border-color:rgba(96,165,250,0.6); color:#93C5FD; font-weight:700; padding:11px 16px; border-radius:8px;" title="Cetak formulir fisik kanvasing kosong kertas A4">
-            🖨️ CETAK FORM LAPANGAN (A4)
-          </button>
-          <button type="button" class="btn secondary" onclick="exportScopedPendukungExcel()" style="border-color:rgba(52,211,153,0.6); color:#6EE7B7; font-weight:700; padding:11px 16px; border-radius:8px;" title="Simpan data pendukung ke file Excel (.xlsx)">
-            📗 SIMPAN KE EXCEL (.XLSX)
-          </button>
-          <button type="button" class="btn secondary" onclick="openEmailBackupModal()" style="border-color:rgba(245,158,11,0.6); color:#FCD34D; font-weight:700; padding:11px 16px; border-radius:8px;" title="Kirim data pendukung via email dengan token 2 langkah">
-            ✉️ KIRIM EMAIL (2 LANGKAH)
-          </button>
+
+        <!-- FORMULIR UTAMA A4 -->
+        <form id="directVolunteerA4Form" onsubmit="handleDirectVolunteerA4Submit(event)">
+          
+          <!-- BAGIAN 1: IDENTITAS KONSTITUEN (SESUAI KTP) -->
+          <div class="a4-section">
+            <div class="a4-section-header">
+              <span class="a4-sec-num">①</span>
+              <span class="a4-sec-title">IDENTITAS LENGKAP KONSTITUEN (SESUAI KTP)</span>
+              <span class="a4-sec-tag highlight">Wajib Diisi</span>
+            </div>
+            <div class="a4-grid-form" style="display:grid; grid-template-columns: 2fr 1fr 1fr; gap:12px;">
+              <div class="a4-form-group">
+                <label class="a4-label">Nama Lengkap Warga <span class="req">*</span></label>
+                <input type="text" id="a4_nama" class="a4-input" placeholder="Nama lengkap warga sesuai KTP..." required autocomplete="off">
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Jenis Kelamin <span class="req">*</span></label>
+                <div class="a4-gender-selector">
+                  <input type="hidden" id="a4_gender" value="L">
+                  <button type="button" class="a4-gender-btn active" id="btnA4GenderL" onclick="selectA4Gender('L')">👨 Laki-laki</button>
+                  <button type="button" class="a4-gender-btn" id="btnA4GenderP" onclick="selectA4Gender('P')">👩 Perempuan</button>
+                </div>
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">
+                  Usia (Tahun) <span class="req">*</span>
+                  <span id="a4_gen_badge" class="gen-pill milenial" style="font-size:10px; margin-left:4px;">Milenial</span>
+                </label>
+                <input type="number" id="a4_usia" class="a4-input" placeholder="Contoh: 32" min="17" max="110" value="32" oninput="updateA4AgeBadge(this.value)" required>
+              </div>
+            </div>
+            <div class="a4-grid-form" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:10px;">
+              <div class="a4-form-group">
+                <label class="a4-label">Nomor Handphone / WhatsApp</label>
+                <div style="position:relative; display:flex;">
+                  <input type="tel" id="a4_hp" class="a4-input" placeholder="08xxxxxxxxxx" style="padding-right:85px;">
+                  <button type="button" class="a4-quick-action-btn" onclick="testA4WhatsAppChat()" title="Uji Chat WhatsApp">💬 Chat WA</button>
+                </div>
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Nomor Induk Kependudukan (NIK - Opsional)</label>
+                <input type="text" id="a4_nik" class="a4-input" placeholder="16 digit NIK jika tersedia..." maxlength="16">
+              </div>
+            </div>
+          </div>
+
+          <!-- BAGIAN 2: WILAYAH TPS & ALAMAT TINGGAL -->
+          <div class="a4-section">
+            <div class="a4-section-header">
+              <span class="a4-sec-num">②</span>
+              <span class="a4-sec-title">WILAYAH TPS &amp; ALAMAT DOMISILI</span>
+              <span class="a4-sec-tag">Penetapan TPS</span>
+            </div>
+            <div class="a4-grid-form" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px;">
+              <div class="a4-form-group">
+                <label class="a4-label">Kecamatan <span class="req">*</span></label>
+                <select id="a4_kec" class="a4-input" onchange="onA4KecChange()" required></select>
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Desa / Kelurahan <span class="req">*</span></label>
+                <select id="a4_desa" class="a4-input" onchange="onA4DesaChange()" required></select>
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Nomor TPS Terdaftar <span class="req">*</span></label>
+                <select id="a4_tps" class="a4-input" required></select>
+              </div>
+            </div>
+            <div class="a4-grid-form" style="display:grid; grid-template-columns: 2fr 1fr 1fr; gap:12px; margin-top:10px;">
+              <div class="a4-form-group">
+                <label class="a4-label">Alamat / Jalan / Gang / Komplek / Dusun</label>
+                <input type="text" id="a4_alamat" class="a4-input" placeholder="Contoh: Jl. Adi Sucipto Gg. Sejahtera No. 12" required>
+              </div>
+              <div class="a4-form-group" style="display:flex; gap:8px;">
+                <div style="flex:1;">
+                  <label class="a4-label">RT</label>
+                  <input type="text" id="a4_rt" class="a4-input" placeholder="00" value="01">
+                </div>
+                <div style="flex:1;">
+                  <label class="a4-label">RW</label>
+                  <input type="text" id="a4_rw" class="a4-input" placeholder="00" value="01">
+                </div>
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Titik Koordinat GPS</label>
+                <div style="display:flex; gap:4px;">
+                  <input type="text" id="a4_gps" class="a4-input" placeholder="Lat, Lng" readonly style="font-size:11px;">
+                  <button type="button" class="a4-gps-btn" onclick="captureA4GpsLocation()" title="Ambil titik koordinat HP secara instan">📍 Tag</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BAGIAN 3: PREFERENSI ELEKTORAL & KOMITMEN SUARA -->
+          <div class="a4-section">
+            <div class="a4-section-header">
+              <span class="a4-sec-num">③</span>
+              <span class="a4-sec-title">PREFERENSI &amp; KOMITMEN ELEKTORAL</span>
+              <span class="a4-sec-tag highlight">Kunci Suara 2029</span>
+            </div>
+            <div class="a4-grid-form" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+              <div class="a4-form-group">
+                <label class="a4-label">Pilihan Partai Politik Pemilu 2024</label>
+                <select id="a4_partai2024" class="a4-input">
+                  <option value="Partai Gerindra">Partai Gerindra (Basis Loyalis)</option>
+                  <option value="Pemilih Pemula / Golput 2024" selected>Pemilih Pemula / Belum Tentukan 2024</option>
+                  <option value="PDI Perjuangan">PDI Perjuangan (Potensi Aliansi/Rebutan)</option>
+                  <option value="Partai Golkar">Partai Golkar (Potensi Rebutan)</option>
+                  <option value="Partai NasDem">Partai NasDem (Potensi Rebutan)</option>
+                  <option value="Partai Kebangkitan Bangsa (PKB)">Partai Kebangkitan Bangsa (PKB)</option>
+                  <option value="Partai Demokrat">Partai Demokrat</option>
+                  <option value="Partai Amanat Nasional (PAN)">Partai Amanat Nasional (PAN)</option>
+                  <option value="Partai Keadilan Sejahtera (PKS)">Partai Keadilan Sejahtera (PKS)</option>
+                  <option value="Partai Persatuan Pembangunan (PPP)">Partai Persatuan Pembangunan (PPP)</option>
+                  <option value="Partai Hanura">Partai Hanura</option>
+                  <option value="Lainnya">Partai Lainnya</option>
+                </select>
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Faktor Utama Memilih Caleg 2029</label>
+                <select id="a4_faktor" class="a4-input">
+                  <option value="Visi &amp; Program Kerja Riil" selected>Visi &amp; Program Kerja Riil (Bantuan Lapangan)</option>
+                  <option value="Ketokohan Caleg Pendatang Baru">Ketokohan Caleg Pendatang Baru</option>
+                  <option value="Kecewa Kinerja Petahana 2024">Kecewa Kinerja Petahana 2024</option>
+                  <option value="Kedekatan Kultural / Keagamaan">Kedekatan Kultural / Keagamaan</option>
+                  <option value="Hubungan Kekerabatan / Keluarga">Hubungan Kekerabatan / Keluarga</option>
+                  <option value="Rekomendasi Tokoh Masyarakat / RT">Rekomendasi Tokoh Masyarakat / RT</option>
+                  <option value="Perbaikan Jalan &amp; Infrastruktur">Perbaikan Jalan &amp; Infrastruktur</option>
+                  <option value="Bantuan Usaha / Pertanian / Perikanan">Bantuan Usaha / Pertanian / Perikanan</option>
+                </select>
+              </div>
+            </div>
+            <!-- STATUS KOMITMEN PEMILIH: 3 TOMBOL BESAR & JELAS -->
+            <div class="a4-form-group" style="margin-top:12px;">
+              <label class="a4-label">Tingkat Komitmen Pemilih Menangkan Partai Gerindra 2029 <span class="req">*</span></label>
+              <input type="hidden" id="a4_komitmen" value="Pasti Memilih (100%)">
+              <div class="a4-commitment-selector">
+                <button type="button" class="a4-commit-btn pasti active" id="btnCommitPasti" onclick="selectA4Commitment('Pasti Memilih (100%)')">
+                  <span class="commit-icon">🟢</span>
+                  <span class="commit-text">
+                    <b>PASTI MEMILIH (100%)</b>
+                    <small>Loyal &amp; Komitmen Menangkan Gerindra</small>
+                  </span>
+                  <span class="commit-check">✓</span>
+                </button>
+                <button type="button" class="a4-commit-btn condong" id="btnCommitCondong" onclick="selectA4Commitment('Cenderung Mendukung')">
+                  <span class="commit-icon">🟡</span>
+                  <span class="commit-text">
+                    <b>CENDERUNG MENDUKUNG</b>
+                    <small>Potensial Besar, Perlu Difollow-up</small>
+                  </span>
+                  <span class="commit-check">✓</span>
+                </button>
+                <button type="button" class="a4-commit-btn ragu" id="btnCommitRagu" onclick="selectA4Commitment('Ragu-ragu / Swing')">
+                  <span class="commit-icon">🔴</span>
+                  <span class="commit-text">
+                    <b>RAGU-RAGU / SWING</b>
+                    <small>Belum Putus, Target Pendekatan</small>
+                  </span>
+                  <span class="commit-check">✓</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- BAGIAN 4: ASPIRASI WARGA & PETUGAS RELAWAN -->
+          <div class="a4-section">
+            <div class="a4-section-header">
+              <span class="a4-sec-num">④</span>
+              <span class="a4-sec-title">ASPIRASI WARGA &amp; IDENTITAS RELAWAN</span>
+              <span class="a4-sec-tag">Laporan Progres</span>
+            </div>
+            <div class="a4-grid-form" style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
+              <div class="a4-form-group">
+                <label class="a4-label">Aspirasi / Kebutuhan Riil Warga</label>
+                <input type="text" id="a4_catatan" class="a4-input" placeholder="Contoh: Butuh bantuan bibit pertanian, lampu jalan parit, modal UMKM...">
+              </div>
+              <div class="a4-form-group">
+                <label class="a4-label">Nama Relawan Pencatat <span class="req">*</span></label>
+                <input type="text" id="a4_relawan" class="a4-input" placeholder="Nama relawan pencatat..." required>
+              </div>
+            </div>
+          </div>
+
+          <!-- BILAH AKSI UTAMA FORMULIR A4 -->
+          <div class="a4-actions-bar">
+            <button type="submit" class="btn-a4-primary" id="btnSubmitA4Form">
+              <span style="font-size:17px;">💾</span>
+              <span>SIMPAN DATA PENDUKUNG</span>
+              <span class="shortcut-tag">Enter ↵</span>
+            </button>
+            <button type="button" class="btn-a4-secondary" onclick="printA4DirectForm()" title="Cetak formulir ini ke kertas 1 Lembar A4 atau simpan PDF">
+              <span>🖨️ Cetak A4 / PDF</span>
+            </button>
+            <button type="button" class="btn-a4-secondary" onclick="toggleVolunteerRecentDrawer()" id="btnToggleRecentDrawer" title="Lihat daftar konstituen yang baru saja diinput">
+              <span>📋 Daftar Terdata (<span id="lblRecentCountBadge">0</span>)</span>
+            </button>
+            <button type="button" class="btn-a4-secondary" onclick="exportScopedPendukungExcel()" title="Unduh berkas Excel resmi seluruh konstituen terdata">
+              <span>📗 Excel (.xlsx)</span>
+            </button>
+            <button type="button" class="btn-a4-ghost" onclick="resetA4VolunteerForm()" title="Kosongkan formulir untuk mencatat pemilih berikutnya">
+              <span>🔄 Reset Form</span>
+            </button>
+          </div>
+
+          <!-- NOTIFIKASI TOAST BERHASIL SIMPAN -->
+          <div id="a4SuccessToast" class="a4-toast-alert" style="display:none;">
+            <span style="font-size:20px;">✅</span>
+            <div style="flex:1;">
+              <b id="a4ToastTitle">Data Pendukung Berhasil Disimpan!</b>
+              <div id="a4ToastMsg" style="font-size:12px; color:#A7F3D0;">Konstituen masuk ke database resmi Dapil Kalbar 2. Siap mencatat warga berikutnya.</div>
+            </div>
+            <button type="button" onclick="this.parentElement.style.display='none'" style="background:none; border:none; color:#fff; font-size:16px; cursor:pointer;">✕</button>
+          </div>
+
+        </form>
+
+        <!-- DRAWER DAFTAR TERDATA HARI INI (COLLAPSIBLE / RINGKAS) -->
+        <div id="a4RecentDrawer" class="a4-recent-drawer" style="display:none;">
+          <div class="a4-drawer-header">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:18px;">📋</span>
+              <h4 style="font-size:14px; color:#FFFFFF; margin:0;">Daftar Konstituen Terdata di Wilayah Anda</h4>
+              <span class="badge-pill" id="badgeRecentDrawerTotal" style="background:rgba(16,185,129,0.25); color:#34D399; font-weight:800;">0 Warga</span>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button type="button" class="btn sm secondary" onclick="exportScopedPendukungExcel()" style="padding:4px 9px; font-size:11px;">📗 Unduh Excel</button>
+              <button type="button" class="btn sm" onclick="toggleVolunteerRecentDrawer()" style="background:rgba(255,255,255,0.1); color:#fff; padding:4px 9px; font-size:11px;">✕ Tutup</button>
+            </div>
+          </div>
+          <div class="a4-drawer-body">
+            <div class="table-responsive" style="max-height:260px; overflow-y:auto;">
+              <table class="data-table" style="font-size:11.5px;">
+                <thead>
+                  <tr>
+                    <th style="width:30px;">No</th>
+                    <th>Nama Warga</th>
+                    <th>Usia / L-P</th>
+                    <th>TPS / Wilayah</th>
+                    <th>No. WhatsApp</th>
+                    <th>Komitmen</th>
+                    <th>Aspirasi / Catatan</th>
+                    <th style="text-align:center; width:65px;">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="a4RecentTableBody">
+                  <tr><td colspan="8" style="text-align:center; padding:16px; color:var(--muted);">Belum ada data pendukung yang dicatat.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
-    <div class="panel-card">
+
+    <!-- PANEL DATABASE MASTER LENGKAP (KHUSUS MODE ADMIN WAR ROOM) -->
+    <div class="panel-card" id="volunteerMasterDatabaseCard">
       <div class="panel-header">
         <div>
           <div style="display:flex; align-items:center; gap:8px;">
@@ -4516,6 +5525,9 @@ const STORAGE_PENDUKUNG = 'SIP_PENDUKUNG_KALBAR2_V1';
 const STORAGE_AUTH_SESSION = 'SIP_AUTH_SESSION_KALBAR2_V1';
 const STORAGE_AUTH_PASSWORDS = 'SIP_AUTH_PASSWORDS_KALBAR2_V1';
 const STORAGE_USERS_DATABASE = 'SIP_USERS_DATABASE_KALBAR2_V2';
+const STORAGE_PASSCODE_UNLOCKED = 'SIP_PASSCODE_UNLOCKED_V1';
+const STORAGE_LAST_ACTIVITY = 'SIP_LAST_ACTIVITY_TIMESTAMP';
+const STORAGE_TIMEOUT_MINUTES = 'SIP_INACTIVITY_TIMEOUT_MINUTES';
 
 // 9 KECAMATAN KABUPATEN KUBU RAYA
 const KECAMATAN_KUBU_RAYA = [
@@ -6344,13 +7356,145 @@ function getSaksiBadgeClass(status) {
   return 'belum';
 }
 
-// ==================== PASSCODE GATE & MOBILE LINK (MENANG2029) ====================
+// ==================== PASSCODE GATE & INACTIVITY TIMEOUT (15-30 MENIT) ====================
 let _isPasscodeGateUnlocked = false;
+let _lastActivityTimestamp = Date.now();
+let _inactivityTimerInterval = null;
+let _throttleActivitySaveTimer = null;
+let _inactivityListenersInitialized = false;
+
+function getSessionTimeoutMinutes() {
+  try {
+    const saved = Number(localStorage.getItem(STORAGE_TIMEOUT_MINUTES));
+    if (saved === 15 || saved === 20 || saved === 30) return saved;
+  } catch (e) {}
+  return 15; // Standar default: 15 menit
+}
+
+function getSessionTimeoutMs() {
+  return getSessionTimeoutMinutes() * 60 * 1000;
+}
+
+function changeInactivityTimeout(val) {
+  const num = Number(val) || 15;
+  try {
+    localStorage.setItem(STORAGE_TIMEOUT_MINUTES, String(num));
+  } catch (e) {}
+  syncTimeoutUI(num);
+  recordUserActivity();
+}
+window.changeInactivityTimeout = changeInactivityTimeout;
+
+function syncTimeoutUI(val) {
+  const num = val || getSessionTimeoutMinutes();
+  const selBar = document.getElementById('selInactivityTimeout');
+  if (selBar) selBar.value = String(num);
+  const selGate = document.getElementById('selInactivityTimeoutGate');
+  if (selGate) selGate.value = String(num);
+  const lblNotice = document.getElementById('lblTimeoutDurationNotice');
+  if (lblNotice) lblNotice.textContent = String(num);
+}
+
+function recordUserActivity() {
+  _lastActivityTimestamp = Date.now();
+  if (!_throttleActivitySaveTimer) {
+    _throttleActivitySaveTimer = setTimeout(() => {
+      try {
+        localStorage.setItem(STORAGE_LAST_ACTIVITY, String(_lastActivityTimestamp));
+      } catch (e) {}
+      _throttleActivitySaveTimer = null;
+    }, 4000);
+  }
+}
+
+function initInactivityListeners() {
+  if (_inactivityListenersInitialized) return;
+  _inactivityListenersInitialized = true;
+
+  const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click'];
+  events.forEach(evt => {
+    window.addEventListener(evt, () => {
+      if (_isPasscodeGateUnlocked) {
+        recordUserActivity();
+      }
+    }, { passive: true });
+  });
+
+  // Saat berpindah tab atau layar HP dibuka kembali
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && _isPasscodeGateUnlocked) {
+      checkInactivityExpiration();
+    }
+  });
+
+  window.addEventListener('focus', () => {
+    if (_isPasscodeGateUnlocked) {
+      checkInactivityExpiration();
+    }
+  });
+
+  // Pengecekan rutin setiap 5 detik
+  if (_inactivityTimerInterval) clearInterval(_inactivityTimerInterval);
+  _inactivityTimerInterval = setInterval(() => {
+    if (_isPasscodeGateUnlocked) {
+      checkInactivityExpiration();
+    }
+  }, 5000);
+}
+
+function checkInactivityExpiration() {
+  if (!_isPasscodeGateUnlocked) return;
+
+  let last = _lastActivityTimestamp;
+  try {
+    const stored = Number(localStorage.getItem(STORAGE_LAST_ACTIVITY));
+    if (stored && stored > 0) {
+      last = Math.max(last, stored);
+    }
+  } catch (e) {}
+
+  const elapsed = Date.now() - last;
+  const timeoutMs = getSessionTimeoutMs();
+
+  if (elapsed >= timeoutMs) {
+    // Sesi berakhir karena tidak dipakai selama 15-30 menit
+    lockPasscodeGate('timeout');
+  }
+}
 
 function checkPasscodeAuth() {
-  // Buka langsung aplikasi tanpa hambatan passcode gate lama,
-  // beralih sepenuhnya ke sistem Login Multi-User & 2FA yang baru.
-  unlockPasscodeGate(false);
+  syncTimeoutUI();
+  initInactivityListeners();
+
+  let isSessionActive = false;
+  try {
+    isSessionActive = (sessionStorage.getItem('SIP_SESSION_UNLOCKED') === 'true');
+  } catch (e) {}
+
+  let isUnlocked = false;
+  try {
+    isUnlocked = (localStorage.getItem(STORAGE_PASSCODE_UNLOCKED) === 'true');
+  } catch (e) {}
+
+  let last = 0;
+  try {
+    last = Number(localStorage.getItem(STORAGE_LAST_ACTIVITY) || 0);
+  } catch (e) {}
+
+  const now = Date.now();
+  const timeoutMs = getSessionTimeoutMs();
+
+  // PENTING: Pada perangkat baru (HP, Laptop lain, PC) atau saat browser dibuka kembali,
+  // sessionStorage belum ada, sehingga WAJIB memasukkan sandi pembuka (relawan2029 / MENANG2029)!
+  if (isSessionActive && isUnlocked && last > 0 && (now - last < timeoutMs)) {
+    _isPasscodeGateUnlocked = true;
+    recordUserActivity();
+    unlockPasscodeGate(true);
+  } else {
+    // Sesi baru ATAU waktu tidak aktif melampaui batas (15-30 menit)
+    const wasTimeout = isUnlocked && last > 0 && (now - last >= timeoutMs);
+    lockPasscodeGate(wasTimeout ? 'timeout' : 'initial');
+  }
 }
 
 function handlePasscodeSubmit(e) {
@@ -6359,16 +7503,131 @@ function handlePasscodeSubmit(e) {
   const val = inp ? inp.value.trim().toUpperCase() : '';
   const err = document.getElementById('passcodeError');
 
-  if (val === 'MENANG2029' || val === '2029' || val === 'MENANG' || val === 'ADMIN' || val === 'ADMIN2029') {
-    unlockPasscodeGate(true);
+  // Sandi Admin Pusat Komando
+  if (val === 'MENANG2029' || val === 'ADMIN' || val === 'ADMIN2029' || val === 'MENANG') {
+    _isPasscodeGateUnlocked = true;
+    authSession = {
+      username: 'admin',
+      role: 'admin',
+      nama: 'Pusat Komando Pemenangan Dapil 2',
+      tingkatWilayah: 'dapil',
+      kabupaten: 'Semua',
+      kecamatan: '',
+      desa: '',
+      twoFactorEnabled: true
+    };
+    saveAuthSession();
+    setAppViewMode('admin');
+    unlockPasscodeGate(false);
+    if (err) err.style.display = 'none';
+
+  // Sandi Relawan Lapangan
+  } else if (val === 'RELAWAN2029' || val === 'RELAWAN' || val === 'LAPANGAN') {
+    _isPasscodeGateUnlocked = true;
+    authSession = {
+      username: 'relawan_lapangan',
+      role: 'relawan_desa',
+      nama: 'Relawan Lapangan (Kanvasing)',
+      tingkatWilayah: 'desa',
+      kabupaten: 'Kubu Raya',
+      kecamatan: 'Sungai Raya',
+      desa: 'Sungai Raya',
+      twoFactorEnabled: false
+    };
+    saveAuthSession();
+    setAppViewMode('relawan');
+    unlockPasscodeGate(false);
+    if (err) err.style.display = 'none';
+
   } else {
     if (err) {
       err.style.display = 'block';
-      err.innerHTML = '⚠️ Kata sandi akses tidak valid! Silakan periksa kembali kata sandi Anda atau hubungi tim koordinator.';
+      err.innerHTML = '⚠️ Kata sandi akses tidak valid! Gunakan kata sandi <b>relawan2029</b> untuk Relawan Lapangan atau <b>MENANG2029</b> untuk Pusat Komando.';
     }
-    if (inp) inp.select();
+    if (inp) {
+      inp.select();
+      inp.focus();
+    }
   }
 }
+
+function quickFillPasscode(pass) {
+  const inp = document.getElementById('passcodeInput');
+  if (inp) {
+    inp.value = pass;
+    handlePasscodeSubmit();
+  }
+}
+window.quickFillPasscode = quickFillPasscode;
+
+function lockPasscodeGate(reason = 'manual') {
+  _isPasscodeGateUnlocked = false;
+  try {
+    sessionStorage.removeItem('SIP_SESSION_UNLOCKED');
+    localStorage.setItem(STORAGE_PASSCODE_UNLOCKED, 'false');
+  } catch (e) {}
+
+  document.documentElement.classList.add('sip-locked-gate');
+  document.body.classList.remove('sip-authenticated');
+
+  const gate = document.getElementById('passcodeGate');
+  if (gate) {
+    gate.classList.remove('unlocked');
+    gate.style.setProperty('display', 'flex', 'important');
+    gate.style.setProperty('opacity', '1', 'important');
+    gate.style.setProperty('visibility', 'visible', 'important');
+    gate.style.pointerEvents = 'auto';
+    gate.style.transform = 'scale(1)';
+  }
+
+  const err = document.getElementById('passcodeError');
+  if (err) err.style.display = 'none';
+
+  const timeoutNotice = document.getElementById('passcodeTimeoutNotice');
+  if (timeoutNotice) {
+    if (reason === 'timeout') {
+      const lbl = document.getElementById('lblTimeoutDurationNotice');
+      if (lbl) lbl.textContent = String(getSessionTimeoutMinutes());
+      timeoutNotice.style.display = 'block';
+    } else {
+      timeoutNotice.style.display = 'none';
+    }
+  }
+
+  syncTimeoutUI();
+
+  const inp = document.getElementById('passcodeInput');
+  if (inp) {
+    inp.value = '';
+    setTimeout(() => { inp.focus(); }, 180);
+  }
+}
+window.lockPasscodeGate = lockPasscodeGate;
+
+function requestAdminWarRoomAccess() {
+  const pass = prompt('🔐 VERIFIKASI PUSAT KOMANDO:\n\nSeluruh 9 Modul Strategis War Room Pemilu 2029 dilindungi enkripsi komando pusat.\n\nSilakan masukkan kata sandi Admin Pusat:');
+  if (pass === null) return;
+
+  const clean = pass.trim().toUpperCase();
+  if (clean === 'MENANG2029' || clean === 'ADMIN' || clean === 'ADMIN2029') {
+    authSession = {
+      username: 'admin',
+      role: 'admin',
+      nama: 'Pusat Komando Pemenangan Dapil 2',
+      tingkatWilayah: 'dapil',
+      kabupaten: 'Semua',
+      kecamatan: '',
+      desa: '',
+      twoFactorEnabled: true
+    };
+    saveAuthSession();
+    setAppViewMode('admin');
+    alert('👑 Akses Pusat Komando Terbuka Penuh!\n\nSeluruh 9 modul strategis (War Room, Petahana 2024, Audit Ketat, Peta GIS, Master TPS, Sainte-Laguë, Peringatan Dini, dan Laporan) kini dapat Anda akses.');
+  } else {
+    alert('⛔ AKSES DITOLAK!\n\nKata sandi Admin Pusat yang Anda masukkan salah. Mode tetap berada di Relawan Lapangan.');
+  }
+}
+window.requestAdminWarRoomAccess = requestAdminWarRoomAccess;
 
 function togglePasscodeVisibility() {
   const inp = document.getElementById('passcodeInput');
@@ -6384,34 +7643,386 @@ function togglePasscodeVisibility() {
 }
 window.togglePasscodeVisibility = togglePasscodeVisibility;
 
-function unlockPasscodeGate(updateHash = true) {
+function unlockPasscodeGate(immediate = false) {
   _isPasscodeGateUnlocked = true;
+  _lastActivityTimestamp = Date.now();
   try {
-    sessionStorage.setItem('SIP_UNLOCKED_2029', 'true');
-  } catch(e) {}
+    sessionStorage.setItem('SIP_SESSION_UNLOCKED', 'true');
+    localStorage.setItem(STORAGE_PASSCODE_UNLOCKED, 'true');
+    localStorage.setItem(STORAGE_LAST_ACTIVITY, String(_lastActivityTimestamp));
+  } catch (e) {}
 
-  if (updateHash && !window.location.hash.toUpperCase().includes('MENANG2029')) {
-    try {
-      history.replaceState(null, null, '#MENANG2029');
-    } catch(e) {
-      window.location.hash = 'MENANG2029';
-    }
-  }
+  document.documentElement.classList.remove('sip-locked-gate');
+  document.body.classList.add('sip-authenticated');
+
+  const timeoutNotice = document.getElementById('passcodeTimeoutNotice');
+  if (timeoutNotice) timeoutNotice.style.display = 'none';
 
   const gate = document.getElementById('passcodeGate');
   if (gate) {
-    gate.style.opacity = '0';
-    gate.style.transition = 'opacity 0.35s ease';
-    setTimeout(() => {
-      gate.style.display = 'none';
-      if (leafletMapInstance) {
-        leafletMapInstance.invalidateSize();
-      }
-    }, 350);
-  } else {
-    if (leafletMapInstance) {
-      leafletMapInstance.invalidateSize();
+    gate.classList.add('unlocked');
+    if (immediate) {
+      gate.style.setProperty('display', 'none', 'important');
+      gate.style.setProperty('opacity', '0', 'important');
+      gate.style.setProperty('pointer-events', 'none', 'important');
+      if (leafletMapInstance) leafletMapInstance.invalidateSize();
+    } else {
+      gate.style.setProperty('opacity', '0', 'important');
+      gate.style.setProperty('pointer-events', 'none', 'important');
+      gate.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+      setTimeout(() => {
+        gate.style.setProperty('display', 'none', 'important');
+        if (leafletMapInstance) leafletMapInstance.invalidateSize();
+      }, 350);
     }
+  } else {
+    if (leafletMapInstance) leafletMapInstance.invalidateSize();
+  }
+
+  // Inisialisasi formulir relawan A4
+  initA4VolunteerForm();
+}
+
+// ==================== ENGINE FORMULIR 1 LEMBAR A4 (PORTAL RELAWAN) ====================
+
+function initA4VolunteerForm() {
+  populateA4KecSelect();
+  updateA4AgeBadge(document.getElementById('a4_usia')?.value || 32);
+
+  const relInp = document.getElementById('a4_relawan');
+  if (relInp && (!relInp.value || relInp.value === 'Pusat Komando Pemenangan Dapil 2')) {
+    relInp.value = (authSession && authSession.nama && authSession.nama !== 'Pusat Komando Pemenangan Dapil 2') 
+      ? authSession.nama 
+      : 'Relawan Lapangan Gerindra';
+  }
+
+  const serialEl = document.getElementById('a4FormSerialNumber');
+  if (serialEl) {
+    serialEl.textContent = `DOC #${new Date().getFullYear()}-${String(Math.floor(Date.now() % 100000)).padStart(5, '0')}`;
+  }
+
+  renderVolunteerRecentList();
+}
+
+function populateA4KecSelect(defaultKec = '') {
+  const selKec = document.getElementById('a4_kec');
+  if (!selKec) return;
+
+  const allKec = Object.keys(MASTER_DESA_KALBAR2).sort();
+  let assignedKec = defaultKec || (authSession && authSession.kecamatan) || 'Sungai Raya';
+
+  // Kunci ke wilayah tugas jika role selain admin
+  if (authSession && authSession.role !== 'admin' && authSession.kecamatan) {
+    selKec.innerHTML = `<option value="${authSession.kecamatan}" selected>🔒 Kec. ${authSession.kecamatan}</option>`;
+    selKec.disabled = true;
+    assignedKec = authSession.kecamatan;
+  } else {
+    selKec.disabled = false;
+    selKec.innerHTML = allKec.map(k => `<option value="${k}" ${k === assignedKec ? 'selected' : ''}>Kec. ${k}</option>`).join('');
+  }
+
+  populateA4DesaSelect(assignedKec);
+}
+
+function onA4KecChange() {
+  const kec = document.getElementById('a4_kec')?.value || 'Sungai Raya';
+  populateA4DesaSelect(kec);
+}
+
+function populateA4DesaSelect(kec, defaultDesa = '') {
+  const selDesa = document.getElementById('a4_desa');
+  if (!selDesa) return;
+
+  const desas = (kec && MASTER_DESA_KALBAR2[kec]) ? MASTER_DESA_KALBAR2[kec] : [];
+  let assignedDesa = defaultDesa || (authSession && authSession.desa) || (desas[0] || '');
+
+  if (authSession && authSession.desa && authSession.role === 'relawan_desa') {
+    selDesa.innerHTML = `<option value="${authSession.desa}" selected>🔒 Desa ${authSession.desa}</option>`;
+    selDesa.disabled = true;
+    assignedDesa = authSession.desa;
+  } else {
+    selDesa.disabled = false;
+    selDesa.innerHTML = desas.map(d => `<option value="${d}" ${d === assignedDesa ? 'selected' : ''}>Desa ${d} (${getDesaTpsQuota(kec, d)} TPS)</option>`).join('');
+  }
+
+  populateA4TpsSelect(kec, assignedDesa);
+}
+
+function onA4DesaChange() {
+  const kec = document.getElementById('a4_kec')?.value || 'Sungai Raya';
+  const desa = document.getElementById('a4_desa')?.value || '';
+  populateA4TpsSelect(kec, desa);
+}
+
+function populateA4TpsSelect(kec, desa) {
+  const selTps = document.getElementById('a4_tps');
+  if (!selTps) return;
+
+  const quota = getDesaTpsQuota(kec, desa);
+  selTps.innerHTML = '';
+
+  for (let i = 1; i <= quota; i++) {
+    const tpsNum = `TPS ${String(i).padStart(3, '0')}`;
+    const opt = document.createElement('option');
+    opt.value = tpsNum;
+    opt.textContent = `${tpsNum} - ${desa}`;
+    selTps.appendChild(opt);
+  }
+}
+
+function selectA4Gender(g) {
+  const hiddenInp = document.getElementById('a4_gender');
+  if (hiddenInp) hiddenInp.value = g;
+
+  const btnL = document.getElementById('btnA4GenderL');
+  const btnP = document.getElementById('btnA4GenderP');
+  if (btnL && btnP) {
+    if (g === 'L') {
+      btnL.classList.add('active');
+      btnP.classList.remove('active');
+    } else {
+      btnP.classList.add('active');
+      btnL.classList.remove('active');
+    }
+  }
+}
+
+function selectA4Commitment(c) {
+  const hiddenInp = document.getElementById('a4_komitmen');
+  if (hiddenInp) hiddenInp.value = c;
+
+  const btnP = document.getElementById('btnCommitPasti');
+  const btnC = document.getElementById('btnCommitCondong');
+  const btnR = document.getElementById('btnCommitRagu');
+
+  if (btnP) btnP.classList.toggle('active', c.includes('Pasti'));
+  if (btnC) btnC.classList.toggle('active', c.includes('Cenderung'));
+  if (btnR) btnR.classList.toggle('active', c.includes('Ragu'));
+}
+
+function updateA4AgeBadge(val) {
+  const age = Number(val) || 0;
+  const badge = document.getElementById('a4_gen_badge');
+  if (!badge) return;
+
+  let gen = 'Gen-Z (17-27 th)';
+  let css = 'gen-pill gen-z';
+  if (age >= 17 && age <= 27) {
+    gen = 'Gen-Z';
+    css = 'gen-pill gen-z';
+  } else if (age >= 28 && age <= 43) {
+    gen = 'Milenial';
+    css = 'gen-pill milenial';
+  } else if (age >= 44 && age <= 59) {
+    gen = 'Gen-X';
+    css = 'gen-pill gen-x';
+  } else if (age >= 60) {
+    gen = 'Boomer';
+    css = 'gen-pill boomer';
+  } else {
+    gen = 'Pemilih';
+    css = 'gen-pill';
+  }
+
+  badge.textContent = gen;
+  badge.className = css;
+}
+
+function captureA4GpsLocation() {
+  const gpsInp = document.getElementById('a4_gps');
+  if (!gpsInp) return;
+
+  if (navigator.geolocation) {
+    gpsInp.value = 'Mencari sinyal GPS...';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const lat = pos.coords.latitude.toFixed(6);
+        const lng = pos.coords.longitude.toFixed(6);
+        gpsInp.value = `${lat}, ${lng}`;
+      },
+      (err) => {
+        alert('Gagal mengambil titik GPS: Pastikan izin lokasi HP Anda sudah diaktifkan.');
+        gpsInp.value = '';
+      },
+      { timeout: 10000, enableHighAccuracy: true }
+    );
+  } else {
+    alert('Perangkat Anda tidak mendukung fitur Geolocation GPS.');
+  }
+}
+
+function testA4WhatsAppChat() {
+  const hp = document.getElementById('a4_hp')?.value || '';
+  const nama = document.getElementById('a4_nama')?.value || 'Bapak/Ibu';
+  const clean = cleanPhone(hp);
+  if (!clean) {
+    alert('Harap masukkan nomor HP / WhatsApp yang valid!');
+    document.getElementById('a4_hp')?.focus();
+    return;
+  }
+  const text = encodeURIComponent(`Halo ${nama}, salam silaturahmi dari Relawan Pemenangan Partai Gerindra Pemilu 2029.`);
+  window.open(`https://wa.me/${clean}?text=${text}`, '_blank');
+}
+
+function handleDirectVolunteerA4Submit(e) {
+  if (e) e.preventDefault();
+
+  const nama = document.getElementById('a4_nama')?.value.trim();
+  if (!nama) {
+    alert('Harap isi Nama Lengkap Warga!');
+    document.getElementById('a4_nama')?.focus();
+    return;
+  }
+
+  const gender = document.getElementById('a4_gender')?.value || 'L';
+  const usia = Number(document.getElementById('a4_usia')?.value) || 30;
+  const hp = document.getElementById('a4_hp')?.value.trim() || '';
+  const nik = document.getElementById('a4_nik')?.value.trim() || '';
+  const kec = document.getElementById('a4_kec')?.value || 'Sungai Raya';
+  const desa = document.getElementById('a4_desa')?.value || 'Sungai Raya';
+  const tpsNama = document.getElementById('a4_tps')?.value || 'TPS 001';
+  const alamat = document.getElementById('a4_alamat')?.value.trim() || '';
+  const rt = document.getElementById('a4_rt')?.value.trim() || '01';
+  const rw = document.getElementById('a4_rw')?.value.trim() || '01';
+  const gps = document.getElementById('a4_gps')?.value.trim() || '';
+  const partai2024 = document.getElementById('a4_partai2024')?.value || 'Partai Gerindra';
+  const faktorMemilih = document.getElementById('a4_faktor')?.value || 'Visi & Program Kerja Riil';
+  const komitmen = document.getElementById('a4_komitmen')?.value || 'Pasti Memilih (100%)';
+  const catatan = document.getElementById('a4_catatan')?.value.trim() || '';
+  const relawan = document.getElementById('a4_relawan')?.value.trim() || 'Relawan Lapangan';
+
+  const newEntry = {
+    id: 'pend_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+    nama,
+    gender,
+    usia,
+    hp,
+    nik,
+    kec,
+    desa,
+    tpsNama,
+    alamat,
+    rt,
+    rw,
+    gps,
+    partai2024,
+    faktorMemilih,
+    komitmen,
+    status_tugas: 'Selesai Lapangan',
+    tugas: 'Kanvasing A4 Door-to-Door',
+    relawan,
+    catatan,
+    catatan_tugas: catatan,
+    updatedAt: new Date().toISOString()
+  };
+
+  pendukungData.unshift(newEntry);
+  savePendukungData();
+
+  // Tampilkan toast notifikasi
+  const toast = document.getElementById('a4SuccessToast');
+  if (toast) {
+    document.getElementById('a4ToastTitle').textContent = `✅ "${nama}" Berhasil Disimpan!`;
+    document.getElementById('a4ToastMsg').textContent = `Tercatat di ${tpsNama} (${desa}, Kec. ${kec}) · Komitmen: ${komitmen}`;
+    toast.style.display = 'flex';
+    setTimeout(() => { if (toast) toast.style.display = 'none'; }, 5000);
+  }
+
+  // Update serial number baru
+  const serialEl = document.getElementById('a4FormSerialNumber');
+  if (serialEl) {
+    serialEl.textContent = `DOC #${new Date().getFullYear()}-${String(Math.floor(Date.now() % 100000)).padStart(5, '0')}`;
+  }
+
+  // Bersihkan field spesifik warga (pertahankan wilayah & relawan agar cepat input warga tetangga berikutnya)
+  document.getElementById('a4_nama').value = '';
+  document.getElementById('a4_hp').value = '';
+  if (document.getElementById('a4_nik')) document.getElementById('a4_nik').value = '';
+  document.getElementById('a4_catatan').value = '';
+  document.getElementById('a4_nama').focus();
+
+  // Refresh semua metrik & drawer
+  refreshAllViews();
+  renderVolunteerRecentList();
+}
+
+function resetA4VolunteerForm() {
+  document.getElementById('directVolunteerA4Form')?.reset();
+  selectA4Gender('L');
+  selectA4Commitment('Pasti Memilih (100%)');
+  updateA4AgeBadge(32);
+  populateA4KecSelect();
+  document.getElementById('a4_nama')?.focus();
+}
+
+function printA4DirectForm() {
+  window.print();
+}
+
+function toggleVolunteerRecentDrawer() {
+  const drawer = document.getElementById('a4RecentDrawer');
+  if (!drawer) return;
+  const isHidden = (drawer.style.display === 'none' || !drawer.style.display);
+  drawer.style.display = isHidden ? 'block' : 'none';
+  if (isHidden) {
+    renderVolunteerRecentList();
+    drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function renderVolunteerRecentList() {
+  const tbody = document.getElementById('a4RecentTableBody');
+  const countBadge = document.getElementById('lblRecentCountBadge');
+  const drawerTotalBadge = document.getElementById('badgeRecentDrawerTotal');
+
+  const scoped = getScopedPendukungList();
+  if (countBadge) countBadge.textContent = scoped.length;
+  if (drawerTotalBadge) drawerTotalBadge.textContent = `${scoped.length} Warga`;
+
+  if (!tbody) return;
+
+  if (scoped.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:18px; color:var(--muted);">Belum ada data pendukung yang Anda input di wilayah ini.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = scoped.slice(0, 15).map((p, idx) => {
+    const wa = cleanPhone(p.hp);
+    const komitmenCls = (p.komitmen || '').includes('Pasti') ? 'pasti' : ((p.komitmen || '').includes('Cenderung') ? 'condong' : 'ragu');
+    return `
+      <tr>
+        <td style="text-align:center; font-family:'IBM Plex Mono'; font-weight:700; color:var(--gold);">${idx + 1}</td>
+        <td>
+          <b style="color:#FFFFFF;">${escapeHtml(p.nama)}</b>
+          <div style="font-size:10.5px; color:var(--muted);">${escapeHtml(p.alamat || '')} RT ${escapeHtml(p.rt || '01')}/RW ${escapeHtml(p.rw || '01')}</div>
+        </td>
+        <td>${p.usia} th (${p.gender === 'P' ? 'P' : 'L'})</td>
+        <td>
+          <span style="color:#60A5FA; font-weight:700;">${escapeHtml(p.tpsNama || 'TPS')}</span>
+          <div style="font-size:10.5px; color:var(--paper-muted);">${escapeHtml(p.desa)}</div>
+        </td>
+        <td>
+          ${wa ? `<a href="https://wa.me/${wa}" target="_blank" style="color:#34D399; font-weight:600; text-decoration:none;">💬 ${escapeHtml(p.hp)}</a>` : '-'}
+        </td>
+        <td><span class="komitmen-pill ${komitmenCls}" style="font-size:10.5px; padding:2px 7px;">${escapeHtml(p.komitmen)}</span></td>
+        <td style="font-size:11px; max-width:140px; color:#CBD5E1;">${escapeHtml(p.catatan || p.faktorMemilih || '-')}</td>
+        <td style="text-align:center;">
+          <button type="button" class="btn danger sm" onclick="deleteA4VolunteerEntry('${p.id}')" title="Hapus Data Ini" style="padding:3px 7px; font-size:10.5px;">✕</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function deleteA4VolunteerEntry(id) {
+  const item = pendukungData.find(p => p.id === id);
+  if (!item) return;
+
+  if (confirm(`Apakah Anda yakin ingin menghapus data "${item.nama}"?`)) {
+    pendukungData = pendukungData.filter(p => p.id !== id);
+    savePendukungData();
+    refreshAllViews();
+    renderVolunteerRecentList();
   }
 }
 
@@ -8925,25 +10536,36 @@ function applyTerritoryGeoFence(session) {
     if (isVolunteerScoped) {
       btnRelActive.style.background = 'linear-gradient(135deg, #10B981, #059669)';
       btnRelActive.style.color = '#FFFFFF';
+      btnRelActive.innerHTML = '📱 Mode Input Relawan (Aktif ✓)';
       btnAdmActive.style.background = 'transparent';
       btnAdmActive.style.color = '#94A3B8';
+      btnAdmActive.innerHTML = '👑 Mode Admin War Room 🔒';
     } else {
       btnAdmActive.style.background = 'linear-gradient(135deg, #2563EB, #1D4ED8)';
       btnAdmActive.style.color = '#FFFFFF';
+      btnAdmActive.innerHTML = '👑 Mode Admin War Room (Aktif ✓)';
       btnRelActive.style.background = 'transparent';
       btnRelActive.style.color = '#94A3B8';
+      btnRelActive.innerHTML = '📱 Beralih ke Mode Relawan';
     }
   }
 
+  const eyebrow = document.querySelector('.command-header .eyebrow');
+  const tagline = document.querySelector('.command-header .tagline');
+  const btnOpenRecoveryCodes = document.getElementById('btnOpenRecoveryCodes');
+  const btnOpenUserManager = document.getElementById('btnOpenUserManager');
+  const btnOpenAuthModal = document.getElementById('btnOpenAuthModal');
+
   if (isVolunteerScoped) {
-    // 1. ISOLASI TAB NAVIGASI: Sembunyikan semua tab KECUALI tab-pendukung
+    // 1. ISOLASI TOTAL NAVIGASI UNTUK RELAWAN: Sembunyikan bilah tab navigasi
+    const navTabs = document.querySelector('.nav-tabs');
+    if (navTabs) navTabs.style.setProperty('display', 'none', 'important');
+
     tabBtns.forEach(btn => {
       const tabTarget = btn.getAttribute('data-tab');
       if (tabTarget === 'tab-pendukung') {
-        btn.style.display = 'inline-flex';
         btn.classList.add('active');
       } else {
-        btn.style.display = 'none';
         btn.classList.remove('active');
       }
     });
@@ -8957,24 +10579,62 @@ function applyTerritoryGeoFence(session) {
       }
     });
 
-    // 3. SEMBUNYIKAN WIDGET EKSEKUTIF PADA HEADER (Agar HP & laptop ringan & fokus)
+    // 3. TAMPILKAN FORMULIR A4 & SEMBUNYIKAN TABEL MASTER LENGKAP DARI RELAWAN
+    const a4Form = document.getElementById('volunteerA4Container');
+    if (a4Form) a4Form.style.display = 'block';
+
+    const masterDbCard = document.getElementById('volunteerMasterDatabaseCard');
+    if (masterDbCard) masterDbCard.style.display = 'none';
+
+    // 4. HEADER KHUSUS RELAWAN (MODERN & PROFESIONAL)
+    if (eyebrow) {
+      eyebrow.innerHTML = '<span class="pulse" style="background:#10B981; box-shadow:0 0 10px #10B981;"></span> PORTAL KHUSUS RELAWAN · PEMILU 2029';
+    }
+    if (tagline) {
+      tagline.textContent = 'Formulir Kanvasing Konstituen 1 Lembar A4 (Model F-1/A4) — Dapil Kalimantan Barat 2';
+    }
+
+    // 5. SEMBUNYIKAN WIDGET EKSEKUTIF WAR ROOM & TOMBOL KHUSUS ADMIN DARI RELAWAN
     if (metaPanel) metaPanel.style.display = 'none';
+    if (btnOpenRecoveryCodes) btnOpenRecoveryCodes.style.display = 'none';
+    if (btnOpenUserManager) btnOpenUserManager.style.display = 'none';
+    if (btnOpenAuthModal) btnOpenAuthModal.style.display = 'none';
+    if (scopeNotice) scopeNotice.style.display = 'none';
+
     if (btnVol) {
       btnVol.style.background = 'linear-gradient(135deg, #10B981, #059669)';
       btnVol.style.boxShadow = '0 2px 14px rgba(16,185,129,0.5)';
       if (txtVol) txtVol.textContent = 'Mode Relawan (Aktif ✓)';
     }
 
-    // 4. TAMPILKAN BANNER PEMBERITAHUAN WILAYAH DI TAB PENDUKUNG
-    if (scopeNotice) {
-      scopeNotice.style.display = 'flex';
-      if (scopeDesa) scopeDesa.textContent = session.desa ? `Desa ${session.desa}` : (session.kecamatan ? `Kec. ${session.kecamatan}` : 'Wilayah Anda');
-      if (scopeKec) scopeKec.textContent = session.kecamatan || 'Kalbar 2';
-    }
   } else {
-    // KEMBALIKAN KE MODE NORMAL (ADMIN / KORWIL)
-    tabBtns.forEach(btn => { btn.style.display = 'inline-flex'; });
+    // KEMBALIKAN KE MODE NORMAL (ADMIN PUSAT / KOMANDO - SEMUA 9 MODUL TERBUKA)
+    const navTabs = document.querySelector('.nav-tabs');
+    if (navTabs) navTabs.style.removeProperty('display');
+
+    tabBtns.forEach(btn => {
+      btn.style.display = 'inline-flex';
+      const tabTarget = btn.getAttribute('data-tab');
+      if (tabTarget === 'tab-pendukung') {
+        btn.innerHTML = `👥 Input &amp; Database Pendukung Baru <span class="badge-pill" id="badgeTotalPendukung" style="background:rgba(52,211,153,0.25); color:#34D399;">${pendukungData ? pendukungData.length : 0}</span>`;
+      }
+    });
+
+    const masterDbCard = document.getElementById('volunteerMasterDatabaseCard');
+    if (masterDbCard) masterDbCard.style.display = 'block';
+
+    if (eyebrow) {
+      eyebrow.innerHTML = '<span class="pulse"></span> Executive War Room · Pemilu 2029';
+    }
+    if (tagline) {
+      tagline.textContent = 'Sistem Intelijen Komparatif: Analisis Suara Petahana 2024 vs Target Pendatang Baru 2029 — DPRD Provinsi Kalimantan Barat 2';
+    }
+
     if (metaPanel) metaPanel.style.display = 'flex';
+    if (btnOpenRecoveryCodes) btnOpenRecoveryCodes.style.display = 'inline-flex';
+    if (btnOpenUserManager && (session.role === 'admin' || session.role === 'admin_backup')) btnOpenUserManager.style.display = 'inline-flex';
+    if (btnOpenAuthModal) btnOpenAuthModal.style.display = 'inline-flex';
+
     if (btnVol) {
       btnVol.style.background = 'linear-gradient(135deg, #2563EB, #1D4ED8)';
       btnVol.style.boxShadow = '0 2px 14px rgba(37,99,235,0.45)';
@@ -11341,9 +13001,15 @@ window.renderStrictAuditTable = renderStrictAuditTable;
 // PASSCODE GATE & MOBILE LINK EXPORTS
 window.checkPasscodeAuth = checkPasscodeAuth;
 window.handlePasscodeSubmit = handlePasscodeSubmit;
+window.quickFillPasscode = quickFillPasscode;
+window.lockPasscodeGate = lockPasscodeGate;
+window.requestAdminWarRoomAccess = requestAdminWarRoomAccess;
 window.togglePasscodeVisibility = togglePasscodeVisibility;
 window.unlockPasscodeGate = unlockPasscodeGate;
 window.copyMobileAppLink = copyMobileAppLink;
+window.changeInactivityTimeout = changeInactivityTimeout;
+window.recordUserActivity = recordUserActivity;
+window.getSessionTimeoutMinutes = getSessionTimeoutMinutes;
 
 // ICONIC GIS MAP EXPORTS
 window.initOrUpdateLeafletMap = initOrUpdateLeafletMap;
@@ -11376,6 +13042,22 @@ window.goToEmailStep2 = goToEmailStep2;
 window.executeEmailSendMailto = executeEmailSendMailto;
 window.executeEmailSendGmailWeb = executeEmailSendGmailWeb;
 window.copyEmailReportText = copyEmailReportText;
+
+// FORMULIR A4 VOLUNTEER EXPORTS
+window.initA4VolunteerForm = initA4VolunteerForm;
+window.handleDirectVolunteerA4Submit = handleDirectVolunteerA4Submit;
+window.selectA4Gender = selectA4Gender;
+window.selectA4Commitment = selectA4Commitment;
+window.updateA4AgeBadge = updateA4AgeBadge;
+window.onA4KecChange = onA4KecChange;
+window.onA4DesaChange = onA4DesaChange;
+window.captureA4GpsLocation = captureA4GpsLocation;
+window.testA4WhatsAppChat = testA4WhatsAppChat;
+window.resetA4VolunteerForm = resetA4VolunteerForm;
+window.printA4DirectForm = printA4DirectForm;
+window.toggleVolunteerRecentDrawer = toggleVolunteerRecentDrawer;
+window.renderVolunteerRecentList = renderVolunteerRecentList;
+window.deleteA4VolunteerEntry = deleteA4VolunteerEntry;
 
 // ==================== PANDUAN BUKA DI HP (MENANG2029) ====================
 function openMobileGuideModal() {
